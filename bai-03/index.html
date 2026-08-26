@@ -1,1 +1,205 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>静中寻文 · HSK2 · Bài 3</title>
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script><style>
+:root{--p:#78A892;--p2:#668F7C;--soft:#EAF4EF;--soft2:#F1F7F4;--ink:#31443B;--muted:#718079;--line:#DCEAE2;--bg:#F4F9F6;--surface:#fff;--peach:#F7F4EC}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Noto Sans","Noto Sans SC",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:#F9FCFA;border-right:1px solid var(--line);padding:24px 16px}
+.brand{font-weight:900;font-size:25px;color:#5F907A}.brand small{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-top:4px}.nav-section{margin-top:18px}.nav-section-title{font-size:11px;color:#98a2b3;text-transform:uppercase;letter-spacing:.08em;padding:0 12px 6px}.nav button{width:100%;text-align:left;border:0;background:transparent;padding:10px 12px;border-radius:12px;margin:2px 0;cursor:pointer;color:#344054;font-size:14px}.nav button.active{background:#E8F3ED;color:#4F7F6A;font-weight:800}
+.main{padding:28px 32px 90px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.crumb{font-weight:800;color:var(--p)}.counter{background:var(--soft);color:var(--p);font-weight:800;border-radius:999px;padding:7px 12px}.slide{display:none}.slide.active{display:block}
+.hero{background:linear-gradient(135deg,#A8CBB9,#D8E9DF 62%,#F5F7F0);border:1px solid var(--line);border-radius:28px;padding:52px;min-height:340px;display:flex;align-items:center;box-shadow:0 20px 55px rgba(94,128,118,.10)}.hero h1{font-size:50px;margin:4px 0}.hero .py{font-size:20px}.go,.btn{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 15px;font-size:15px;cursor:pointer}.go{margin-top:18px;border:0;font-weight:800;color:var(--p)}.btn.primary{background:var(--p);color:#fff;border-color:var(--p)}
+h2{font-size:30px;margin:8px 0}.sub{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 26px rgba(16,24,40,.05)}.picq img{width:100%;aspect-ratio:1.1/1;object-fit:contain;background:#fff;border-radius:14px}.picq .opts{font-weight:700;margin-top:10px}
+.vocab{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.word{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;cursor:pointer}.word .hz{font-size:30px;font-weight:900}.word .py{color:var(--p2);font-weight:700}.meaning{margin-top:5px}.tag{display:inline-block;margin-top:9px;font-size:12px;background:var(--soft2);color:var(--p2);padding:4px 8px;border-radius:999px}.spk{position:absolute;right:9px;top:9px;border:0;background:var(--soft);border-radius:9px;padding:6px;cursor:pointer}
+.detailbox{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:16px}.chars{display:flex;gap:14px;flex-wrap:wrap}.charbox{min-width:160px;background:var(--soft);border-radius:15px;padding:12px}.writer{width:110px;height:110px;background:#fff;border-radius:10px;margin-bottom:7px}.small{font-size:13px;color:#596B63;margin-top:5px;max-width:180px}
+.word-extra{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.extra-box{background:var(--peach);border:1px solid #E2DDD2;border-radius:14px;padding:14px}.extra-box h4{margin:0 0 7px;color:#526C64}.extra-zh{font-size:20px;font-weight:750}.extra-py{font-size:13px;color:var(--p2);margin:3px 0}.extra-vi{color:#626477}.collocs{display:flex;flex-wrap:wrap;gap:7px}.colloc{background:rgba(255,255,255,.8);border:1px solid #DCE5E0;border-radius:999px;padding:6px 10px;font-size:14px}
+.dialogue{display:flex;flex-direction:column;gap:10px}.bubble{background:#EEF5F1;border-radius:16px;padding:14px 16px;max-width:88%}.bubble.right{align-self:flex-end;background:#E4F0EA}.speaker{font-size:12px;color:#5F907A;font-weight:800}.zh{font-size:23px;margin:4px 0}.py{color:var(--p2)}.trans{color:#475467;margin-top:3px}.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.listenbox audio{width:100%;margin:12px 0}.grammar .formula,.formula{font-size:19px;font-weight:750;background:var(--soft);padding:14px;border-radius:14px;margin:10px 0;line-height:1.8}.pageimg{width:min(100%,850px);display:block;margin:14px auto;border-radius:18px;border:1px solid var(--line)}
+.footer-nav{position:fixed;bottom:18px;left:330px;right:28px;display:flex;justify-content:space-between;pointer-events:none}.footer-nav button{pointer-events:auto}
+.lock{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#E7F2EC,#F8FBF9);display:grid;place-items:center}.lock-card{width:min(430px,90vw);background:#fff;border-radius:24px;padding:30px;text-align:center}.lock-card input{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;margin:10px 0}.err{color:#b42318;font-size:13px}
+#teachCanvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:8000;pointer-events:none;touch-action:none}.teachbar{position:fixed;z-index:8100;right:22px;top:18px;display:flex;gap:7px;flex-wrap:wrap;padding:8px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 30px rgba(63,64,86,.12)}.teachbar button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink);font-weight:700}.teachbar button.on{background:var(--soft);color:var(--p)}.teach-text{position:fixed;z-index:8050;min-width:120px;min-height:38px;padding:7px 9px;border:1px dashed var(--p);border-radius:8px;background:rgba(255,255,255,.75);outline:none;font-size:22px}.teach-text.selected{box-shadow:0 0 0 2px rgba(120,168,146,.25);border-style:solid}
+@media(max-width:1050px){.vocab,.grid4{grid-template-columns:repeat(2,1fr)}}@media(max-width:850px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.grid,.vocab,.grid4,.word-extra{grid-template-columns:1fr}.main{padding:20px}.footer-nav{left:20px}.hero{padding:30px}.hero h1{font-size:38px}}
 
+.mcq{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.mcq button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 8px;cursor:pointer;text-align:left;color:var(--ink);font-weight:700}
+.mcq button:hover{background:var(--soft2)}
+.mcq button.correct{background:#E7F6EC;border-color:#78A892;color:#35634F}
+.mcq button.wrong{background:#FCEBEC;border-color:#D58E95;color:#8A3F49}
+.warm-feedback{min-height:22px;margin-top:8px;font-size:13px;font-weight:800}
+.read-audio-controls{margin-top:0;margin-bottom:4px}
+.hide{display:none!important}
+</style></head><body>
+<div class="lock" id="lock"><div class="lock-card"><div class="brand">静中寻文 · HSK2</div><h2>Bài 3 · Khu vực học viên</h2><p class="sub">Nhập mật mã để mở bài học.</p><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><div class="err" id="err"></div></div></div>
+<div class="app"><aside><div class="brand">静中寻文<small>jingzhongxunwen · New HSK 2<br>Bài 3 · 我想去西安旅游</small></div><div class="nav">
+<div class="nav-section"><div class="nav-section-title">Mở đầu</div><button class="active" data-i="0">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động 1</button><button data-i="2">✍️ Khởi động 2</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 1</div><button data-i="3">📚 Từ vựng 1</button><button data-i="4">🎧 Nghe Bài khóa 1</button><button data-i="5">💬 Đọc Bài khóa 1</button><button data-i="6">🧠 Ngữ pháp · Bổ ngữ kết quả</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 2</div><button data-i="7">📚 Từ vựng 2</button><button data-i="8">🎧 Nghe Bài khóa 2</button><button data-i="9">💬 Đọc Bài khóa 2</button><button data-i="10">🧠 Động từ lặp lại (1)</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 3</div><button data-i="11">📚 Từ vựng 3</button><button data-i="12">🎧 Nghe Bài khóa 3</button><button data-i="13">💬 Đọc Bài khóa 3</button><button data-i="14">🧠 Động từ lặp lại (2)</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 4</div><button data-i="15">📚 Từ vựng 4</button><button data-i="16">🎧 Nghe Bài khóa 4</button><button data-i="17">📖 Đọc Bài khóa 4</button></div>
+<div class="nav-section"><div class="nav-section-title">Kết thúc</div><button data-i="18">✏️ Bài tập tổng hợp 1</button><button data-i="19">🖼️ Bài tập tổng hợp 2</button><button data-i="20">🎭 Hoạt động trên lớp</button><button data-i="21">✅ Tổng kết</button></div>
+</div></aside>
+<main class="main"><div class="top"><div class="crumb">HSK2 · Bài 3</div><div class="counter" id="counter">1 / 22</div></div><section class="slide active"><div class="hero"><div><div class="py">Wǒ xiǎng qù Xī'ān lǚyóu</div><h1>我想去西安旅游</h1><h3>Em muốn đi Tây An du lịch</h3><p>HSK 2 · Bài 3</p><button class="go" onclick="go(1)">Bắt đầu bài học →</button></div></div></section><section class="slide"><h2>🔥 Khởi động 1 · Chọn đáp án đúng cho từng hình</h2>
+<p class="sub">给下面的词语选择对应的图片。Mỗi hình có 4 đáp án A–D, học sinh chọn 1 đáp án.</p>
+<div class="grid4 warm-quiz">
+  <div class="card picq warm-card" data-answer="D">
+    <img src="assets/img/warm1.png" alt="Hình 1">
+    <div class="mcq">
+      <button onclick="checkWarm(this,'A')">A 洗 xǐ</button>
+      <button onclick="checkWarm(this,'B')">B 累 lèi</button>
+      <button onclick="checkWarm(this,'C')">C 拿 ná</button>
+      <button onclick="checkWarm(this,'D')">D 不错 búcuò</button>
+    </div><div class="warm-feedback"></div>
+  </div>
+  <div class="card picq warm-card" data-answer="A">
+    <img src="assets/img/warm2.png" alt="Hình 2">
+    <div class="mcq">
+      <button onclick="checkWarm(this,'A')">A 洗 xǐ</button>
+      <button onclick="checkWarm(this,'B')">B 累 lèi</button>
+      <button onclick="checkWarm(this,'C')">C 拿 ná</button>
+      <button onclick="checkWarm(this,'D')">D 不错 búcuò</button>
+    </div><div class="warm-feedback"></div>
+  </div>
+  <div class="card picq warm-card" data-answer="B">
+    <img src="assets/img/warm3.png" alt="Hình 3">
+    <div class="mcq">
+      <button onclick="checkWarm(this,'A')">A 洗 xǐ</button>
+      <button onclick="checkWarm(this,'B')">B 累 lèi</button>
+      <button onclick="checkWarm(this,'C')">C 拿 ná</button>
+      <button onclick="checkWarm(this,'D')">D 不错 búcuò</button>
+    </div><div class="warm-feedback"></div>
+  </div>
+  <div class="card picq warm-card" data-answer="C">
+    <img src="assets/img/warm4.png" alt="Hình 4">
+    <div class="mcq">
+      <button onclick="checkWarm(this,'A')">A 洗 xǐ</button>
+      <button onclick="checkWarm(this,'B')">B 累 lèi</button>
+      <button onclick="checkWarm(this,'C')">C 拿 ná</button>
+      <button onclick="checkWarm(this,'D')">D 不错 búcuò</button>
+    </div><div class="warm-feedback"></div>
+  </div>
+</div></section><section class="slide"><h2>✍️ Khởi động 2 · Thêm danh từ</h2><div class="card"><p>给下面的动词加上合适的名词。 Hãy thêm danh từ thích hợp cho các động từ sau.</p><div class="grid"><div><p>① 送 ________</p><p>② 拿 ________</p><p>③ 做 ________</p></div><div><p>④ 吃 ________</p><p>⑤ 洗 ________</p><p>⑥ 看 ________</p></div></div></div></section><section class="slide"><h2>📚 Từ vựng 1</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v1"></div><div id="d1"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-2.mp3')">▶ Nghe 3-2</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 1</h2><div class="card listenbox"><audio controls src="assets/audio/3-1.mp3"></audio><p>（1）刘明为什么回来晚了？ A 没做完工作　B 去外边吃饭　C 在公司休息</p><p>（2）刘明现在要做什么？ A 吃饭　B 喝水　C 工作</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 1</h2><div class="card"><div class="controls read-audio-controls">
+      <button class="btn primary" onclick="playAudio('assets/audio/3-1.mp3')">▶ Nghe bài khóa</button>
+      <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
+    </div>
+    <audio controls preload="metadata" src="assets/audio/3-1.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg1"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section><section class="slide grammar"><h2>🧠 Ngữ pháp 1 · 结果补语 Bổ ngữ kết quả</h2><div class="card"><p>Một số động từ hoặc tính từ đặt sau động từ để biểu thị kết quả của hành động.</p><div class="formula">菜都做好了。 · 我吃完饭了。 · 小雪今天来晚了。</div><p><b>Phủ định:</b> 没（有） + động từ + bổ ngữ kết quả; bỏ 了 ở cuối câu.</p><div class="formula">我没吃完饭。　小雪没来晚。</div><p><b>Nghi vấn:</b> V+结果+了吗？ / V+结果+了没有？ / V+没+V+结果？</p><div class="formula">你吃完饭了吗？　小雪来晚了没有？　你学没学会？</div></div></section><section class="slide"><h2>📚 Từ vựng 2</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v2"></div><div id="d2"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-4.mp3')">▶ Nghe 3-4</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 2</h2><div class="card listenbox"><audio controls src="assets/audio/3-3.mp3"></audio><p>（1）刘明想找时间做什么？ A 去吃饭　B 去旅游　C 买东西</p><p>（2）刘明让王一雪做什么？ A 去买票　B 看一下时间　C 想想去哪儿玩</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 2</h2><div class="card"><div class="controls read-audio-controls">
+      <button class="btn primary" onclick="playAudio('assets/audio/3-3.mp3')">▶ Nghe bài khóa</button>
+      <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
+    </div>
+    <audio controls preload="metadata" src="assets/audio/3-3.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg2"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section><section class="slide grammar"><h2>🧠 Ngữ pháp 2 · 动词重叠（1）Động từ lặp lại (1)</h2><div class="card"><p>Động từ có tính hành động mạnh có thể lặp lại để diễn đạt thời gian ngắn, số lượng ít, thử làm; sắc thái khẩu ngữ nhẹ nhàng.</p><div class="formula">Đơn âm tiết: A（一）A　·　Song âm tiết: ABAB　·　Từ li hợp: AAB</div><p>那你再想一想，你想好了，我来买票。<br>我有点儿累，现在想休息休息。<br>你能过来帮帮忙吗？</p></div></section><section class="slide"><h2>📚 Từ vựng 3</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v3"></div><div id="d3"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-6.mp3')">▶ Nghe 3-6</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 3</h2><div class="card listenbox"><audio controls src="assets/audio/3-5.mp3"></audio><p>（1）刘明让王一雪做什么？ A 洗手　B 洗苹果　C 吃苹果</p><p>（2）王一雪想去哪儿旅游？ A 西安　B 北京　C 上海</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 3</h2><div class="card"><div class="controls read-audio-controls">
+      <button class="btn primary" onclick="playAudio('assets/audio/3-5.mp3')">▶ Nghe bài khóa</button>
+      <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
+    </div>
+    <audio controls preload="metadata" src="assets/audio/3-5.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg3"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section><section class="slide grammar"><h2>🧠 Ngữ pháp 3 · 动词重叠（2）Động từ lặp lại (2)</h2><div class="card"><p>Khi diễn đạt tình huống đã xảy ra:</p><div class="formula">Động từ đơn âm tiết: A了A<br>Động từ song âm tiết: thường dùng AB了一下<br>Từ li hợp: A了AB</div><p>我看了看网上的介绍。<br>我休息了一下，现在觉得不累了。<br>他昨天来帮了帮忙。</p></div></section><section class="slide"><h2>📚 Từ vựng 4</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v4"></div><div id="d4"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-8.mp3')">▶ Nghe 3-8</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 4</h2><div class="card listenbox"><audio controls src="assets/audio/3-7.mp3"></audio><p>判断正误：</p><p>（1）刘明今天没去医院上班。</p><p>（2）今天早上是刘明送孩子去学校的。</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 4</h2><div class="card"><div class="controls read-audio-controls">
+      <button class="btn primary" onclick="playAudio('assets/audio/3-7.mp3')">▶ Nghe bài khóa</button>
+      <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
+    </div>
+    <audio controls preload="metadata" src="assets/audio/3-7.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg4"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section><section class="slide"><h2>✏️ Bài tập tổng hợp · Chọn từ</h2><div class="card"><p><b>A 一起　B 送　C 回去　D 拿　E 累</b></p>
+<p>（1）已经下班了，你为什么还不________？</p><p>（2）他每天早上都________女朋友去上班。</p><p>（3）爸爸________了一些水果给孩子们吃。</p><p>（4）A：我昨天晚上没睡好，今天觉得很________。<br>　　B：那你休息休息吧。</p><p>（5）A：你认识家月吗？<br>　　B：认识啊，我们每天________坐公交车来学校。</p></div></section><section class="slide"><h2>🖼️ Bài tập tổng hợp · Miêu tả tranh</h2><p class="sub">Mỗi ảnh là một khung riêng.</p><div class="grid">
+<div class="card picq"><img src="assets/img/ex1.png"><p>你吃苹果吗？我去给你________。</p></div>
+<div class="card picq"><img src="assets/img/ex2.png"><p>每天回家后他就想________。</p></div>
+<div class="card picq"><img src="assets/img/ex3.png"><p>这本书她还没________。</p></div>
+<div class="card picq"><img src="assets/img/ex4.png"><p>饭菜________，你们来吃饭吧。</p></div></div></section><section class="slide"><h2>🎭 Hoạt động trên lớp · 双人活动</h2><div class="card"><p>Hai người một nhóm, hỏi nhau: Có muốn đi du lịch hay không? Muốn đi đâu? Tại sao lựa chọn địa điểm du lịch đó? Cố gắng sử dụng tối đa từ ngữ và điểm ngôn ngữ đã học trong bài.</p><div class="formula">A：你想去旅游吗？<br>B：我想去旅游。<br>A：你想去哪儿旅游？为什么？<br>B：……</div></div></section><section class="slide"><h2>✅ Tổng kết Bài 3</h2><div class="grid"><div class="card"><h3>Từ mới</h3><p>回来、这么、完、一起、出去、洗、自己、拿、手、为什么、不错、送、回去、每、累。</p></div><div class="card"><h3>Ngữ pháp</h3><p>结果补语 · 动词重叠（1）· 动词重叠（2）</p><h3>Chủ đề</h3><p>Hỏi nguyên nhân, mô tả kết quả hành động và trao đổi kế hoạch du lịch Tây An.</p></div></div></section>
+<canvas id="teachCanvas"></canvas><div class="teachbar"><button id="tbPen" onclick="setTeachTool('pen')">✏️ Bút</button><button onclick="setTeachTool('highlight')">🖍 Highlight</button><button onclick="setTeachTool('eraser')">🧽 Tẩy</button><button onclick="undoTeach()">↶ Undo</button><button onclick="redoTeach()">↷ Redo</button><button onclick="addTeachText()">T Văn bản</button><button onclick="deleteTeachText()">🗑 Xóa văn bản</button><button id="tbToggle" onclick="toggleTeach()">📝 Bảng viết</button><button onclick="clearTeach()">🗑 Xóa bảng</button></div>
+<div class="footer-nav"><button class="btn" onclick="prev()">← Trước</button><button class="btn primary" onclick="next()">Tiếp →</button></div></main></div><script>
+const ACCESS_PASSWORD='jzhxw';
+
+function checkWarm(btn,choice){
+  const card=btn.closest('.warm-card'), answer=card.dataset.answer;
+  card.querySelectorAll('.mcq button').forEach(b=>b.classList.remove('correct','wrong'));
+  const fb=card.querySelector('.warm-feedback');
+  if(choice===answer){
+    btn.classList.add('correct');
+    fb.textContent='✓ Chính xác';
+    fb.style.color='#35634F';
+  }else{
+    btn.classList.add('wrong');
+    fb.textContent='Chưa đúng, thử lại nhé.';
+    fb.style.color='#8A3F49';
+  }
+}
+
+function unlock(){if(pass.value===ACCESS_PASSWORD){lock.style.display='none';sessionStorage.setItem('hsk2b3','1')}else err.textContent='Mật mã chưa đúng.'}
+if(sessionStorage.getItem('hsk2b3')==='1')lock.style.display='none';
+pass.addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+const slides=[...document.querySelectorAll('.slide')],navBtns=[...document.querySelectorAll('.nav button')];let cur=0;
+function go(i){cur=Math.max(0,Math.min(i,slides.length-1));slides.forEach((s,j)=>s.classList.toggle('active',j===cur));navBtns.forEach(b=>b.classList.toggle('active',+b.dataset.i===cur));counter.textContent=`${cur+1} / ${slides.length}`;window.scrollTo({top:0,behavior:'smooth'})}
+navBtns.forEach(b=>b.onclick=()=>go(+b.dataset.i));function next(){go(cur+1)}function prev(){go(cur-1)}
+let audio=new Audio();function playAudio(src){audio.pause();audio.src=src;audio.play()}function pauseAudio(){audio.pause()}function toggleClass(c){document.querySelectorAll('.'+c).forEach(x=>x.classList.toggle('hide'))}
+function toggleInCard(btn,c){
+  const card = btn.closest('.card');
+  if(!card) return;
+  card.querySelectorAll('.'+c).forEach(x=>x.classList.toggle('hide'));
+  const hidden = [...card.querySelectorAll('.'+c)].every(x=>x.classList.contains('hide'));
+  if(c==='pyline') btn.textContent = hidden ? '拼音 Hiện' : '拼音 Ẩn';
+  if(c==='trline') btn.textContent = hidden ? '🇻🇳 Nghĩa Hiện' : '🇻🇳 Nghĩa Ẩn';
+}
+
+function speak(t){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';speechSynthesis.speak(u)}
+const vocab={
+v1:[['回来','huílái','động từ','quay về, quay lại'],['这么','zhème','đại từ','như vậy'],['完','wán','động từ','xong']],
+v2:[['一起','yìqǐ','phó từ','cùng, cùng nhau'],['出去','chūqù','động từ','đi ra, đi khỏi, đi']],
+v3:[['洗','xǐ','động từ','rửa'],['自己','zìjǐ','đại từ','tự, tự mình, bản thân'],['拿','ná','động từ','cầm, nắm'],['手','shǒu','danh từ','tay'],['为什么','wèi shénme','đại từ nghi vấn','tại sao, vì sao'],['不错','búcuò','tính từ','không tồi, hay']],
+v4:[['送','sòng','động từ','đưa, tiễn, tặng'],['回去','huíqù','động từ','quay về, về'],['每','měi','đại từ','mỗi, hàng (ngày, năm...)'],['累','lèi','tính từ','mệt']]
+};
+const vocabNotes={
+'回来':{ex:['今天回来这么晚啊！','Jīntiān huílái zhème wǎn a!','Hôm nay anh về muộn thế!'],co:['回来吃饭','回来工作','回来以后']},
+'这么':{ex:['今天回来这么晚啊！','Jīntiān huílái zhème wǎn a!','Hôm nay anh về muộn thế!'],co:[]},
+'完':{ex:['下班的时候没做完。','Xiàbān de shíhou méi zuòwán.','Đến giờ tan làm vẫn chưa làm xong.'],co:['做完','吃完','写完']},
+'一起':{ex:['我也很想一起出去玩。','Wǒ yě hěn xiǎng yìqǐ chūqù wán.','Em cũng rất muốn cùng đi chơi.'],co:['一起去','一起学习','一起吃饭']},
+'出去':{ex:['我也很想一起出去玩。','Wǒ yě hěn xiǎng yìqǐ chūqù wán.','Em cũng rất muốn cùng đi chơi.'],co:['出去玩','出去吃饭','走出去']},
+'洗':{ex:['我去洗洗手。','Wǒ qù xǐxi shǒu.','Em đi rửa tay một chút.'],co:['洗手','洗苹果','洗衣服']},
+'自己':{ex:['就在桌子上，你自己拿。','Jiù zài zhuōzi shang, nǐ zìjǐ ná.','Ở ngay trên bàn, em tự lấy nhé.'],co:['自己做','自己去','自己拿']},
+'拿':{ex:['就在桌子上，你自己拿。','Jiù zài zhuōzi shang, nǐ zìjǐ ná.','Ở ngay trên bàn, em tự lấy nhé.'],co:['拿书','拿手机','拿东西']},
+'手':{ex:['我去洗洗手。','Wǒ qù xǐxi shǒu.','Em đi rửa tay một chút.'],co:['洗手','手里','手上']},
+'为什么':{ex:['为什么想去西安？','Wèishénme xiǎng qù Xī’ān?','Tại sao muốn đi Tây An?'],co:[]},
+'不错':{ex:['这个时候去西安很不错！','Zhège shíhou qù Xī’ān hěn búcuò!','Thời điểm này đi Tây An rất tuyệt!'],co:['很不错','真不错']},
+'送':{ex:['早上，刘明开车送孩子去学校。','Zǎoshang, Liú Míng kāichē sòng háizi qù xuéxiào.','Buổi sáng, Lưu Minh lái xe đưa con đến trường.'],co:['送孩子','送朋友','送礼物']},
+'回去':{ex:['让他回去上班。','Ràng tā huíqù shàngbān.','Yêu cầu anh ấy quay về bệnh viện làm việc.'],co:['回去上班','回去休息','送回去']},
+'每':{ex:['他这个月每天都很累。','Tā zhège yuè měitiān dōu hěn lèi.','Tháng này ngày nào anh ấy cũng rất mệt.'],co:['每天','每年','每个人']},
+'累':{ex:['我觉得他这个月每天都很累。','Wǒ juéde tā zhège yuè měitiān dōu hěn lèi.','Tôi thấy tháng này ngày nào anh ấy cũng rất mệt.'],co:['很累','太累了','觉得累']}
+};
+const radicals={'回':'囗 — bộ Vi; khung 囗 bao quanh 口.','来':'木 — bộ Mộc; chữ 来.','这':'辶 — bộ Sước; 辶 + 文.','么':'丿 — nét phẩy; dạng giản thể.','完':'宀 — bộ Miên; 宀 + 元.','一':'一 — bộ Nhất.','起':'走 — bộ Tẩu; 走 + 己.','出':'凵 — bộ Khảm; cấu tạo chữ 出.','去':'厶 — bộ Khư; 土 + 厶.','洗':'氵 — bộ Thủy; 氵 + 先.','自':'自 — bộ Tự.','己':'己 — bộ Kỷ.','拿':'手 — bộ Thủ; 合 + 手.','手':'手 — bộ Thủ.','为':'丶 — bộ Chủ; chữ 为.','什':'亻 — bộ Nhân; 亻 + 十.','错':'钅 — bộ Kim; 钅 + 昔.','送':'辶 — bộ Sước; 辶 + 关.','每':'母 — bộ Mẫu; cấu tạo 每.','累':'糸 — bộ Mịch; 田 + 糸.'};
+function renderV(id,did){document.getElementById(id).innerHTML=vocab[id].map(w=>`<div class="word" onclick="openWord('${w[0]}','${did}')"><button class="spk" onclick="event.stopPropagation();speak('${w[0]}')">🔊</button><div class="hz">${w[0]}</div><div class="py">${w[1]}</div><div class="meaning">${w[3]}</div><span class="tag">${w[2]}</span></div>`).join('')}
+function openWord(word,did){let chars=[...word].filter(c=>/\p{Script=Han}/u.test(c)),note=vocabNotes[word],h=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((c,i)=>h+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b>${c}</b><div class="small">${radicals[c]||'Phân tích theo thành phần chữ Hán và luyện thứ tự nét.'}</div></div>`);h+='</div>';if(note){h+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${note.ex[0]}</div><div class="extra-py">${note.ex[1]}</div><div class="extra-vi">${note.ex[2]}</div></div>${note.co&&note.co.length?`<div class="extra-box"><h4>词语搭配 · Cụm từ thường dùng</h4><div class="collocs">${note.co.map(x=>`<span class="colloc">${x}</span>`).join('')}</div></div>`:''}</div>`}h+='</div>';document.getElementById(did).innerHTML=h;if(window.HanziWriter)chars.forEach((c,i)=>{try{HanziWriter.create(`w_${did}_${i}`,c,{width:105,height:105,padding:5,showOutline:true}).loopCharacterAnimation()}catch(e){}})}
+['v1','v2','v3','v4'].forEach((x,i)=>renderV(x,'d'+(i+1)));
+const dialogues={
+1:[['王一雪','今天回来这么晚啊！','Jīntiān huílái zhème wǎn a!','Hôm nay anh về muộn thế!'],['刘明','工作太多了，下班的时候没做完。','Gōngzuò tài duō le, xiàbān de shíhou méi zuòwán.','Anh có nhiều việc quá, đến giờ tan làm mà vẫn chưa xong.'],['王一雪','菜都做好了，过来吃饭吧。','Cài dōu zuòhǎo le, guòlái chīfàn ba.','Cơm nấu xong rồi. Anh ra ăn cơm nhé.'],['刘明','我想休息一下，喝杯水。','Wǒ xiǎng xiūxi yíxià, hē bēi shuǐ.','Anh muốn nghỉ ngơi một lát, uống cốc nước đã.'],['王一雪','好的。','Hǎo de.','Vâng ạ.']],
+2:[['刘明','我们找个时间去旅游，怎么样？','Wǒmen zhǎo ge shíjiān qù lǚyóu, zěnmeyàng?','Chúng ta sắp xếp thời gian đi du lịch, em thấy thế nào?'],['王一雪','好啊，我也很想一起出去玩。','Hǎo a, wǒ yě hěn xiǎng yìqǐ chūqù wán.','Nhất trí! Em cũng rất muốn đi chơi cùng anh.'],['刘明','你想去哪儿？','Nǐ xiǎng qù nǎr?','Em muốn đi đâu?'],['王一雪','我还没想好呢。','Wǒ hái méi xiǎnghǎo ne.','Em vẫn chưa nghĩ ra.'],['刘明','那你再想一想，你想好了，我来买票。','Nà nǐ zài xiǎng yì xiǎng, nǐ xiǎnghǎo le, wǒ lái mǎi piào.','Vậy em cứ nghĩ thêm nhé. Khi nào em nghĩ xong, anh sẽ mua vé.']],
+3:[['刘明','吃个苹果吧，我都洗好了。','Chī ge píngguǒ ba, wǒ dōu xǐhǎo le.','Ăn quả táo đi, anh đã rửa sạch rồi.'],['王一雪','好的。','Hǎo de.','Vâng ạ.'],['刘明','就在桌子上，你自己拿。','Jiù zài zhuōzi shang, nǐ zìjǐ ná.','Táo để trên bàn, em tự đi lấy nhé.'],['王一雪','我去洗洗手。对了，我们去西安旅游，怎么样？','Wǒ qù xǐxi shǒu. Duìle, wǒmen qù Xī’ān lǚyóu, zěnmeyàng?','Em đi rửa tay đã. À đúng rồi, mình đi Tây An du lịch, anh thấy thế nào?'],['刘明','为什么想去西安？','Wèishénme xiǎng qù Xī’ān?','Vì sao em muốn đi Tây An?'],['王一雪','我看了看网上的介绍，这个时候去西安很不错！','Wǒ kànle kan wǎngshang de jièshào, zhège shíhou qù Xī’ān hěn búcuò!','Em có xem qua giới thiệu ở trên mạng. Thời điểm này đi Tây An rất tuyệt!']],
+4:[['旁白','早上，刘明开车送孩子去学校，送完孩子回家后，医院就来电话了，让他回去上班。','Zǎoshang, Liú Míng kāichē sòng háizi qù xuéxiào, sòngwán háizi huí jiā hòu, yīyuàn jiù lái diànhuà le, ràng tā huíqù shàngbān.','Buổi sáng, Lưu Minh lái xe đưa con đi đến trường, sau khi đưa con xong quay về nhà thì bệnh viện gọi điện đến, yêu cầu anh ấy quay về bệnh viện làm việc.'],['旁白','我觉得他这个月每天都很累，真想让他休息休息。','Wǒ juéde tā zhège yuè měitiān dōu hěn lèi, zhēn xiǎng ràng tā xiūxi xiūxi.','Tôi cảm thấy tháng này ngày nào Lưu Minh cũng đều rất bận, thật muốn anh ấy được nghỉ ngơi một chút.']]
+};
+for(let n=1;n<=4;n++){document.getElementById('dlg'+n).innerHTML=dialogues[n].map((x,i)=>`<div class="bubble ${i%2?'right':''}"><div class="speaker">${x[0]}</div><div class="zh">${x[1]}</div><div class="py pyline">${x[2]}</div><div class="trans trline">${x[3]}</div></div>`).join('')}
+function speakDialogue(n){speak(dialogues[n].map(x=>x[1]).join(' '))}
+let canvas=document.getElementById('teachCanvas'),ctx=canvas.getContext('2d'),drawing=false,tool='pen',on=false,history=[],redo=[];
+function sizeCanvas(){let d=devicePixelRatio||1,old=canvas.toDataURL();canvas.width=innerWidth*d;canvas.height=innerHeight*d;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.scale(d,d);let im=new Image();im.onload=()=>ctx.drawImage(im,0,0,innerWidth,innerHeight);im.src=old}sizeCanvas();addEventListener('resize',sizeCanvas);
+function toggleTeach(){on=!on;canvas.style.pointerEvents=on?'auto':'none';tbToggle.classList.toggle('on',on)}function setTeachTool(t){tool=t;if(!on)toggleTeach()}
+function pos(e){let r=canvas.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return [p.clientX-r.left,p.clientY-r.top]}
+function snap(){history.push(canvas.toDataURL());if(history.length>30)history.shift();redo=[]}
+canvas.addEventListener('pointerdown',e=>{snap();drawing=true;let [x,y]=pos(e);ctx.beginPath();ctx.moveTo(x,y)});
+canvas.addEventListener('pointermove',e=>{if(!drawing)return;let[x,y]=pos(e);ctx.lineCap='round';ctx.lineJoin='round';ctx.globalCompositeOperation=tool==='eraser'?'destination-out':'source-over';ctx.strokeStyle=tool==='highlight'?'rgba(255,220,70,.35)':'#31443B';ctx.lineWidth=tool==='highlight'?22:tool==='eraser'?28:3;ctx.lineTo(x,y);ctx.stroke()});canvas.addEventListener('pointerup',()=>drawing=false);
+function restore(url){let im=new Image();im.onload=()=>{ctx.clearRect(0,0,innerWidth,innerHeight);ctx.drawImage(im,0,0,innerWidth,innerHeight)};im.src=url}
+function undoTeach(){if(history.length){redo.push(canvas.toDataURL());restore(history.pop())}}function redoTeach(){if(redo.length){history.push(canvas.toDataURL());restore(redo.pop())}}function clearTeach(){snap();ctx.clearRect(0,0,innerWidth,innerHeight)}
+let activeTeachText=null;
+function addTeachText(){
+  let d=document.createElement('div');
+  d.className='teach-text';
+  d.contentEditable=true;
+  d.textContent='Nhập văn bản';
+  d.style.left='45%';
+  d.style.top='30%';
+  d.dataset.teachText='1';
+  d.addEventListener('pointerdown',()=>{activeTeachText=d;document.querySelectorAll('.teach-text').forEach(x=>x.classList.remove('selected'));d.classList.add('selected')});
+  d.addEventListener('focus',()=>{activeTeachText=d;document.querySelectorAll('.teach-text').forEach(x=>x.classList.remove('selected'));d.classList.add('selected')});
+  document.body.appendChild(d);
+  activeTeachText=d;
+  d.classList.add('selected');
+  d.focus();
+}
+function deleteTeachText(){
+  if(activeTeachText && document.body.contains(activeTeachText)){
+    activeTeachText.remove();
+    activeTeachText=null;
+    return;
+  }
+  const texts=[...document.querySelectorAll('.teach-text')];
+  if(texts.length){
+    texts[texts.length-1].remove();
+  }
+}
+</script></body></html>
