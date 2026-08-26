@@ -1,7 +1,185 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>静中寻文 · New HSK 2</title><style>:root{--p:#789B91;--p2:#91B3A8;--peach:#F6D8CB;--bg:#FAFCFB;--surface:#FFFFFF;--line:#DFEAE5;--ink:#3F514C;--muted:#7B8D87}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}.wrap{max-width:1180px;margin:auto;padding:44px 24px}.hero{background:linear-gradient(135deg,#F1EFFA,#EDF6F2 58%,#F7F4EC);color:var(--ink);border:1px solid var(--line);border-radius:28px;padding:42px}.hero h1{font-size:42px;margin:0 0 8px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}.num{color:var(--p);font-weight:900}.title{font-size:22px;font-weight:900;margin:8px 0}.status{color:var(--muted);margin-bottom:16px}.action{display:inline-block;text-decoration:none;background:#789B91;color:#fff;padding:10px 14px;border-radius:12px;font-weight:800}.disabled{background:#e5e7eb;color:#98a2b3;pointer-events:none}@media(max-width:800px){.grid{grid-template-columns:1fr}.hero h1{font-size:34px}}</style><style id="unified-green">
-:root{--bg:#F4F9F6!important;--panel:#fff!important;--ink:#31443B!important;--muted:#718079!important;--primary:#78A892!important;--primary2:#A8CBB9!important;--line:#DCEAE2!important;--blue:#668F7C!important;--yellow:#F5F8EE!important;--shadow:0 10px 30px rgba(72,110,91,.08)!important}
-body{background:#F4F9F6!important;color:#31443B!important}aside{background:#F9FCFA!important;border-color:#DCEAE2!important}.logo,.brand-mini{color:#5F907A!important}.nav button.active,.badge{background:#E8F3ED!important;color:#4F7F6A!important}.progress{background:#E4EEE8!important}.progress>i{background:#78A892!important}.hero{background:linear-gradient(135deg,#A8CBB9,#D8E9DF)!important;color:#31443B!important}.hero .go,.btn.primary,.lock button{background:#78A892!important;color:#fff!important}.card,.word,.footer button{background:#fff!important;border-color:#DCEAE2!important}.py{color:#668F7C!important}.spk{background:#EAF4EF!important;color:#557E6B!important}.bubble{background:#EEF5F1!important}.bubble.right{background:#E4F0EA!important}.speaker{color:#5F907A!important}.grammar .formula,.formula{background:#EAF4EF!important;color:#4D7865!important}.lesson-feature{background:#F2F8F5!important;border-color:#D8E8DF!important}.memo{background:#F4F8EF!important;border-color:#DCE8CF!important;color:#53634E!important}.listenbox{background:#EFF7F3!important;border-color:#D4E7DD!important}.lock{background:linear-gradient(135deg,#E7F2EC,#F8FBF9)!important}.lock-logo{color:#5F907A!important}#teacherTools button.active{background:#E8F3ED!important;color:#4F7F6A!important;border-color:#C9E0D4!important}
-</style></head><body><div class="wrap"><div class="hero"><h1>静中寻文 · New HSK 2</h1><p>Hệ thống bài học HSK2 · giao diện pastel dịu mắt để phân biệt rõ với HSK1.</p></div><div class="grid">
-<article class="card"><div class="num">LESSON 01</div><div class="title">她请我们吃了北京烤鸭</div><div class="status">Đã mở · 4 cụm học · 4 bài khóa</div><a class="action" href="bai-01/">▶ Vào học</a></article>
-<script>for(let i=2;i<=15;i++)document.write(`<article class="card"><div class="num">LESSON ${String(i).padStart(2,'0')}</div><div class="title">Bài ${i}</div><div class="status">Đang chuẩn bị</div><span class="action disabled">Chưa mở</span></article>`)</script>
-</div></div></body></html>
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>静中寻文 · HSK2 · Bài 4</title><script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script><style>
+:root{--p:#78A892;--p2:#668F7C;--soft:#EAF4EF;--soft2:#F1F7F4;--ink:#31443B;--muted:#718079;--line:#DCEAE2;--bg:#F4F9F6;--surface:#fff;--peach:#F7F4EC}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Noto Sans","Noto Sans SC",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:#F9FCFA;border-right:1px solid var(--line);padding:24px 16px}
+.brand{font-weight:900;font-size:25px;color:#5F907A}.brand small{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-top:4px}.nav-section{margin-top:18px}.nav-section-title{font-size:11px;color:#98a2b3;text-transform:uppercase;letter-spacing:.08em;padding:0 12px 6px}.nav button{width:100%;text-align:left;border:0;background:transparent;padding:10px 12px;border-radius:12px;margin:2px 0;cursor:pointer;color:#344054;font-size:14px}.nav button.active{background:#E8F3ED;color:#4F7F6A;font-weight:800}
+.main{padding:28px 32px 90px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.crumb{font-weight:800;color:var(--p)}.counter{background:var(--soft);color:var(--p);font-weight:800;border-radius:999px;padding:7px 12px}.slide{display:none}.slide.active{display:block}
+.hero{background:linear-gradient(135deg,#A8CBB9,#D8E9DF 62%,#F5F7F0);border:1px solid var(--line);border-radius:28px;padding:52px;min-height:340px;display:flex;align-items:center;box-shadow:0 20px 55px rgba(94,128,118,.10)}.hero h1{font-size:50px;margin:4px 0}.hero .py{font-size:20px}.go,.btn{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 15px;font-size:15px;cursor:pointer}.go{margin-top:18px;border:0;font-weight:800;color:var(--p)}.btn.primary{background:var(--p);color:#fff;border-color:var(--p)}
+h2{font-size:30px;margin:8px 0}.sub{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 26px rgba(16,24,40,.05)}.picq img{width:100%;aspect-ratio:1.1/1;object-fit:contain;background:#fff;border-radius:14px}.picq .opts{font-weight:700;margin-top:10px}
+.vocab{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.word{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;cursor:pointer}.word .hz{font-size:30px;font-weight:900}.word .py{color:var(--p2);font-weight:700}.meaning{margin-top:5px}.tag{display:inline-block;margin-top:9px;font-size:12px;background:var(--soft2);color:var(--p2);padding:4px 8px;border-radius:999px}.spk{position:absolute;right:9px;top:9px;border:0;background:var(--soft);border-radius:9px;padding:6px;cursor:pointer}
+.detailbox{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:16px}.chars{display:flex;gap:14px;flex-wrap:wrap}.charbox{min-width:160px;background:var(--soft);border-radius:15px;padding:12px}.writer{width:110px;height:110px;background:#fff;border-radius:10px;margin-bottom:7px}.small{font-size:13px;color:#596B63;margin-top:5px;max-width:180px}
+.word-extra{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.extra-box{background:var(--peach);border:1px solid #E2DDD2;border-radius:14px;padding:14px}.extra-box h4{margin:0 0 7px;color:#526C64}.extra-zh{font-size:20px;font-weight:750}.extra-py{font-size:13px;color:var(--p2);margin:3px 0}.extra-vi{color:#626477}.collocs{display:flex;flex-wrap:wrap;gap:7px}.colloc{background:rgba(255,255,255,.8);border:1px solid #DCE5E0;border-radius:999px;padding:6px 10px;font-size:14px}
+.dialogue{display:flex;flex-direction:column;gap:10px}.bubble{background:#EEF5F1;border-radius:16px;padding:14px 16px;max-width:88%}.bubble.right{align-self:flex-end;background:#E4F0EA}.speaker{font-size:12px;color:#5F907A;font-weight:800}.zh{font-size:23px;margin:4px 0}.py{color:var(--p2)}.trans{color:#475467;margin-top:3px}.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.listenbox audio{width:100%;margin:12px 0}.grammar .formula,.formula{font-size:19px;font-weight:750;background:var(--soft);padding:14px;border-radius:14px;margin:10px 0;line-height:1.8}.pageimg{width:min(100%,850px);display:block;margin:14px auto;border-radius:18px;border:1px solid var(--line)}
+.footer-nav{position:fixed;bottom:18px;left:330px;right:28px;display:flex;justify-content:space-between;pointer-events:none}.footer-nav button{pointer-events:auto}
+.lock{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#E7F2EC,#F8FBF9);display:grid;place-items:center}.lock-card{width:min(430px,90vw);background:#fff;border-radius:24px;padding:30px;text-align:center}.lock-card input{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;margin:10px 0}.err{color:#b42318;font-size:13px}
+#teachCanvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:8000;pointer-events:none;touch-action:none}.teachbar{position:fixed;z-index:8100;right:22px;top:18px;display:flex;gap:7px;flex-wrap:wrap;padding:8px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 30px rgba(63,64,86,.12)}.teachbar button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink);font-weight:700}.teachbar button.on{background:var(--soft);color:var(--p)}.teach-text{position:fixed;z-index:8050;min-width:120px;min-height:38px;padding:7px 9px;border:1px dashed var(--p);border-radius:8px;background:rgba(255,255,255,.75);outline:none;font-size:22px}.teach-text.selected{box-shadow:0 0 0 2px rgba(120,168,146,.25);border-style:solid}
+@media(max-width:1050px){.vocab,.grid4{grid-template-columns:repeat(2,1fr)}}@media(max-width:850px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.grid,.vocab,.grid4,.word-extra{grid-template-columns:1fr}.main{padding:20px}.footer-nav{left:20px}.hero{padding:30px}.hero h1{font-size:38px}}
+
+.mcq{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.mcq button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 8px;cursor:pointer;text-align:left;color:var(--ink);font-weight:700}
+.mcq button:hover{background:var(--soft2)}
+.mcq button.correct{background:#E7F6EC;border-color:#78A892;color:#35634F}
+.mcq button.wrong{background:#FCEBEC;border-color:#D58E95;color:#8A3F49}
+.warm-feedback{min-height:22px;margin-top:8px;font-size:13px;font-weight:800}
+.read-audio-controls{margin-top:0;margin-bottom:4px}
+.hide{display:none!important}
+
+.choice-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.choice-row button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;cursor:pointer}
+.table4{width:100%;border-collapse:collapse}.table4 th,.table4 td{border:1px solid var(--line);padding:12px;text-align:center}.table4 th{background:var(--soft)}
+.answerline{border-bottom:1px solid #9aa7a0;display:inline-block;min-width:140px}
+</style></head><body><div class="lock" id="lock"><div class="lock-card"><div class="brand">静中寻文 · HSK2</div><h2>Bài 4 · Khu vực học viên</h2><p class="sub">Nhập mật mã để mở bài học.</p><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><div class="err" id="err"></div></div></div>
+<div class="app"><aside><div class="brand">静中寻文<small>jingzhongxunwen · New HSK 2<br>Bài 4 · 你穿红色的很好看</small></div><div class="nav">
+<div class="nav-section"><div class="nav-section-title">Mở đầu</div><button class="active" data-i="0">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động 1</button><button data-i="2">✍️ Khởi động 2</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 1</div><button data-i="3">📚 Từ vựng 1</button><button data-i="4">🎧 Nghe Bài khóa 1</button><button data-i="5">💬 Đọc Bài khóa 1</button><button data-i="6">🧠 Ngữ pháp · 过</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 2</div><button data-i="7">📚 Từ vựng 2</button><button data-i="8">🎧 Nghe Bài khóa 2</button><button data-i="9">💬 Đọc Bài khóa 2</button><button data-i="10">🧠 因为…所以…</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 3</div><button data-i="11">📚 Từ vựng 3</button><button data-i="12">🎧 Nghe Bài khóa 3</button><button data-i="13">💬 Đọc Bài khóa 3</button><button data-i="14">🧠 “的”字短语</button></div>
+<div class="nav-section"><div class="nav-section-title">Cụm học 4</div><button data-i="15">📚 Từ vựng 4</button><button data-i="16">🎧 Nghe Bài khóa 4</button><button data-i="17">📖 Đọc Bài khóa 4</button></div>
+<div class="nav-section"><div class="nav-section-title">Kết thúc</div><button data-i="18">✏️ Bài tập tổng hợp 1</button><button data-i="19">🖼️ Bài tập tổng hợp 2</button><button data-i="20">🎭 Hoạt động trên lớp</button><button data-i="21">✅ Tổng kết</button></div>
+</div></aside>
+<main class="main"><div class="top"><div class="crumb">HSK2 · Bài 4</div><div class="counter" id="counter">1 / 22</div></div>
+<section class="slide active"><div class="hero"><div><div class="py">Nǐ chuān hóngsè de hěn hǎokàn</div><h1>你穿红色的很好看</h1><h3>Con mặc đồ màu đỏ rất đẹp</h3><p>HSK 2 · Bài 4</p><button class="go" onclick="go(1)">Bắt đầu bài học →</button></div></div></section>
+
+<section class="slide"><h2>🔥 Khởi động 1 · Chọn đáp án đúng cho từng hình</h2><p class="sub">给下面的词语选择对应的图片。Mỗi hình có 4 đáp án A–D.</p><div class="grid4 warm-quiz">
+<div class="card picq warm-card" data-answer="A"><img src="assets/img/warm1.png"><div class="mcq"><button onclick="checkWarm(this,'A')">A 裤子 kùzi</button><button onclick="checkWarm(this,'B')">B 书包 shūbāo</button><button onclick="checkWarm(this,'C')">C 过去 guòqù</button><button onclick="checkWarm(this,'D')">D 颜色 yánsè</button></div><div class="warm-feedback"></div></div>
+<div class="card picq warm-card" data-answer="C"><img src="assets/img/warm2.png"><div class="mcq"><button onclick="checkWarm(this,'A')">A 裤子 kùzi</button><button onclick="checkWarm(this,'B')">B 书包 shūbāo</button><button onclick="checkWarm(this,'C')">C 过去 guòqù</button><button onclick="checkWarm(this,'D')">D 颜色 yánsè</button></div><div class="warm-feedback"></div></div>
+<div class="card picq warm-card" data-answer="D"><img src="assets/img/warm3.png"><div class="mcq"><button onclick="checkWarm(this,'A')">A 裤子 kùzi</button><button onclick="checkWarm(this,'B')">B 书包 shūbāo</button><button onclick="checkWarm(this,'C')">C 过去 guòqù</button><button onclick="checkWarm(this,'D')">D 颜色 yánsè</button></div><div class="warm-feedback"></div></div>
+<div class="card picq warm-card" data-answer="B"><img src="assets/img/warm4.png"><div class="mcq"><button onclick="checkWarm(this,'A')">A 裤子 kùzi</button><button onclick="checkWarm(this,'B')">B 书包 shūbāo</button><button onclick="checkWarm(this,'C')">C 过去 guòqù</button><button onclick="checkWarm(this,'D')">D 颜色 yánsè</button></div><div class="warm-feedback"></div></div>
+</div></section>
+
+<section class="slide"><h2>✍️ Khởi động 2 · Trải nghiệm đã từng có</h2><div class="card"><p>读一读下列词语，圈出自己曾经有过的经历。Đọc và chọn trải nghiệm của bản thân.</p><table class="table4"><tr><th>Động từ</th><th>Lựa chọn 1</th><th>Lựa chọn 2</th><th>Lựa chọn 3</th></tr><tr><td>吃</td><td>包子</td><td>饺子</td><td>面条儿</td></tr><tr><td>喝</td><td>绿茶</td><td>红茶</td><td>花茶</td></tr><tr><td>去</td><td>中国</td><td>法国</td><td>泰国</td></tr></table></div></section>
+
+<section class="slide"><h2>📚 Từ vựng 1</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, ví dụ và cụm từ.</p><div class="vocab" id="v1"></div><div id="d1"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/4-2.mp3')">▶ Nghe 4-2</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section>
+<section class="slide"><h2>🎧 Nghe Bài khóa 1</h2><div class="card listenbox"><audio controls src="assets/audio/4-1.mp3"></audio><p>（1）王一雪和刘小雪要去哪儿看看？</p><div class="choice-row"><button>A 商场</button><button>B 超市</button><button>C 学校</button></div><p>（2）刘小雪为什么要进去看看？</p><div class="choice-row"><button>A 想买条裤子</button><button>B 妈妈让她进去</button><button>C 想给妈妈买衣服</button></div></div></section>
+<section class="slide"><h2>💬 Đọc Bài khóa 1</h2><div class="card"><div class="controls read-audio-controls"><button class="btn primary" onclick="playAudio('assets/audio/4-1.mp3')">▶ Nghe bài khóa</button><button class="btn" onclick="pauseAudio()">⏸ Pause</button></div><audio controls src="assets/audio/4-1.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg1"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section>
+<section class="slide grammar"><h2>🧠 Ngữ pháp 1 · 动态助词 “过”</h2><div class="card"><p>“过” đặt sau động từ, biểu thị hành động/trải nghiệm đã từng xảy ra trong quá khứ nhưng không kéo dài đến hiện tại.</p><div class="formula">主语 + 动词 + 过 + 宾语<br>Phủ định: 没（有）+ 动词 + 过</div><p>她去过中国。　我吃过饺子，很好吃。　她没去过中国。</p><p><b>Nghi vấn:</b> …过吗？ / …过没有？ / 动词 + 没 + 动词 + 过？</p><div class="formula">我们来过这家商场吗？　昨天中午吃过饺子没有？　你看没看过那个电影？</div></div></section>
+
+<section class="slide"><h2>📚 Từ vựng 2</h2><div class="vocab" id="v2"></div><div id="d2"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/4-4.mp3')">▶ Nghe 4-4</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section>
+<section class="slide"><h2>🎧 Nghe Bài khóa 2</h2><div class="card listenbox"><audio controls src="assets/audio/4-3.mp3"></audio><p>（1）刘小雪想买什么？</p><div class="choice-row"><button>A 白色的衣服</button><button>B 红色的衣服</button><button>C 白色的裤子</button></div><p>（2）王一雪让刘小雪试试什么？</p><div class="choice-row"><button>A 白色的衣服</button><button>B 红色的衣服</button><button>C 红色的裤子</button></div></div></section>
+<section class="slide"><h2>💬 Đọc Bài khóa 2</h2><div class="card"><div class="controls read-audio-controls"><button class="btn primary" onclick="playAudio('assets/audio/4-3.mp3')">▶ Nghe bài khóa</button><button class="btn" onclick="pauseAudio()">⏸ Pause</button></div><audio controls src="assets/audio/4-3.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg2"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section>
+<section class="slide grammar"><h2>🧠 Ngữ pháp 2 · 因为……所以……</h2><div class="card"><p>Câu ghép nhân quả được tạo bởi “因为……所以……”. “因为” và “所以” có thể dùng thành cặp hoặc có thể lược một trong hai.</p><div class="formula">因为 + nguyên nhân， 所以 + kết quả</div><p>就是因为没穿过，所以要试试啊！<br>因为我生病了，今天没去上班。<br>我没去过他家，所以让他来车站接我。</p></div></section>
+
+<section class="slide"><h2>📚 Từ vựng 3</h2><div class="vocab" id="v3"></div><div id="d3"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/4-6.mp3')">▶ Nghe 4-6</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section>
+<section class="slide"><h2>🎧 Nghe Bài khóa 3</h2><div class="card listenbox"><audio controls src="assets/audio/4-5.mp3"></audio><p>（1）刘小雪想买什么？</p><div class="choice-row"><button>A 新书</button><button>B 书包</button><button>C 衣服</button></div><p>（2）王一雪和刘小雪觉得哪个好看？</p><div class="choice-row"><button>A 红色的</button><button>B 绿色的</button><button>C 黑色的</button></div></div></section>
+<section class="slide"><h2>💬 Đọc Bài khóa 3</h2><div class="card"><div class="controls read-audio-controls"><button class="btn primary" onclick="playAudio('assets/audio/4-5.mp3')">▶ Nghe bài khóa</button><button class="btn" onclick="pauseAudio()">⏸ Pause</button></div><audio controls src="assets/audio/4-5.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg3"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section>
+<section class="slide grammar"><h2>🧠 Ngữ pháp 3 · “的”字短语</h2><div class="card"><p>“的” đặt sau danh từ, đại từ, động từ, tính từ… tạo thành cụm từ chữ “的”, tương đương một cụm danh từ.</p><div class="formula">红色的、绿色的、黑色的，你想买哪个？<br>这个面包是爸爸买的，妈妈买的在那儿。<br>这件衣服太贵了，还是买那件便宜的吧。</div></div></section>
+
+<section class="slide"><h2>📚 Từ vựng 4</h2><div class="vocab" id="v4"></div><div id="d4"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/4-8.mp3')">▶ Nghe 4-8</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section>
+<section class="slide"><h2>🎧 Nghe Bài khóa 4</h2><div class="card listenbox"><audio controls src="assets/audio/4-7.mp3"></audio><p>听两遍课文，判断正误。Nghe bài khóa hai lượt và phán đoán đúng sai.</p><p>（1）商场里的东西不便宜。 （　）</p><p>（2）刘小雪穿红色的裤子很好看。 （　）</p></div></section>
+<section class="slide"><h2>📖 Đọc Bài khóa 4</h2><div class="card"><div class="controls read-audio-controls"><button class="btn primary" onclick="playAudio('assets/audio/4-7.mp3')">▶ Nghe bài khóa</button><button class="btn" onclick="pauseAudio()">⏸ Pause</button></div><audio controls src="assets/audio/4-7.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg4"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section>
+
+<section class="slide"><h2>✏️ Bài tập tổng hợp · Chọn từ</h2><div class="card"><p><b>A 进去　B 书包　C 颜色　D 条　E 商场</b></p><p>（1）我看见老师在教室里，你________找她吧。</p><p>（2）你已经有一________黑色的裤子了，别买了。</p><p>（3）我来过这家________，它是今年一月新开的。</p><p>（4）A：妈妈，你看见我的________了吗？ B：没看见，你再找找吧。</p><p>（5）A：你想买什么________的衣服？ B：我喜欢绿色，买绿色的吧。</p></div></section>
+<section class="slide"><h2>🖼️ Bài tập tổng hợp · Miêu tả tranh</h2><p class="sub">Sử dụng từ ngữ và điểm ngôn ngữ đã học trong bài để hoàn thành câu.</p><div class="grid"><div class="card picq"><img src="assets/img/ex1.png"><p>她们 ________ 北京。</p></div><div class="card picq"><img src="assets/img/ex2.png"><p>这两个书包，我喜欢 ________，你呢？</p></div><div class="card picq"><img src="assets/img/ex3.png"><p>________，所以她没去上班。</p></div><div class="card picq"><img src="assets/img/ex4.png"><p>你看，学校就在那儿，________吧。</p></div></div></section>
+<section class="slide"><h2>🎭 Hoạt động trên lớp · 角色扮演</h2><div class="card"><p>Hai người một nhóm: một người đóng vai người bán hàng, một người đóng vai khách hàng. Khách muốn mua quần, hỏi màu sắc, kích cỡ, giá tiền… Cố gắng sử dụng tối đa từ ngữ và điểm ngôn ngữ đã học.</p><div class="formula">A：请问，你们有白色的裤子吗？<br>B：有，您看看。<br>……</div></div></section>
+<section class="slide"><h2>✅ Tổng kết Bài 4</h2><div class="grid"><div class="card"><h3>Từ mới</h3><p>过、商场、进去、条、裤子、白色、因为、试、红色、所以、书包、过去、绿色、黑色、更、颜色。</p></div><div class="card"><h3>Ngữ pháp</h3><p>动态助词“过” · 因为……所以…… · “的”字短语</p><h3>Chủ đề</h3><p>Trải nghiệm trong quá khứ; mua sắm quần áo/cặp sách; màu sắc; nguyên nhân và kết quả.</p></div></div></section>
+
+<canvas id="teachCanvas"></canvas><div class="teachbar"><button id="tbPen" onclick="setTeachTool('pen')">✏️ Bút</button><button onclick="setTeachTool('highlight')">🖍 Highlight</button><button onclick="setTeachTool('eraser')">🧽 Tẩy</button><button onclick="undoTeach()">↶ Undo</button><button onclick="redoTeach()">↷ Redo</button><button onclick="addTeachText()">T Văn bản</button><button onclick="deleteTeachText()">🗑 Xóa văn bản</button><button id="tbToggle" onclick="toggleTeach()">📝 Bảng viết</button><button onclick="clearTeach()">🗑 Xóa bảng</button></div>
+<div class="footer-nav"><button class="btn" onclick="prev()">← Trước</button><button class="btn primary" onclick="next()">Tiếp →</button></div></main></div><script>
+const ACCESS_PASSWORD='jzhxw';
+function checkWarm(btn,choice){const card=btn.closest('.warm-card'),answer=card.dataset.answer;card.querySelectorAll('.mcq button').forEach(b=>b.classList.remove('correct','wrong'));const fb=card.querySelector('.warm-feedback');if(choice===answer){btn.classList.add('correct');fb.textContent='✓ Chính xác';fb.style.color='#35634F'}else{btn.classList.add('wrong');fb.textContent='Chưa đúng, thử lại nhé.';fb.style.color='#8A3F49'}}
+function unlock(){if(pass.value===ACCESS_PASSWORD){lock.style.display='none';sessionStorage.setItem('hsk2b4','1')}else err.textContent='Mật mã chưa đúng.'}
+if(sessionStorage.getItem('hsk2b4')==='1')lock.style.display='none';pass.addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+const slides=[...document.querySelectorAll('.slide')],navBtns=[...document.querySelectorAll('.nav button')];let cur=0;
+function go(i){cur=Math.max(0,Math.min(i,slides.length-1));slides.forEach((s,j)=>s.classList.toggle('active',j===cur));navBtns.forEach(b=>b.classList.toggle('active',+b.dataset.i===cur));counter.textContent=`${cur+1} / ${slides.length}`;window.scrollTo({top:0,behavior:'smooth'})}
+navBtns.forEach(b=>b.onclick=()=>go(+b.dataset.i));function next(){go(cur+1)}function prev(){go(cur-1)}
+let audio=new Audio();function playAudio(src){audio.pause();audio.src=src;audio.play()}function pauseAudio(){audio.pause()}
+function toggleInCard(btn,c){const card=btn.closest('.card');if(!card)return;card.querySelectorAll('.'+c).forEach(x=>x.classList.toggle('hide'));const hidden=[...card.querySelectorAll('.'+c)].every(x=>x.classList.contains('hide'));if(c==='pyline')btn.textContent=hidden?'拼音 Hiện':'拼音 Ẩn';if(c==='trline')btn.textContent=hidden?'🇻🇳 Nghĩa Hiện':'🇻🇳 Nghĩa Ẩn'}
+function speak(t){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';speechSynthesis.speak(u)}
+
+const vocab={
+v1:[['过','guo','trợ từ','đã từng'],['商场','shāngchǎng','danh từ','trung tâm thương mại, khu mua sắm'],['进去','jìnqù','động từ','đi vào'],['条','tiáo','lượng từ','cái, chiếc (quần, váy...)'],['裤子','kùzi','danh từ','quần']],
+v2:[['白色','báisè','danh từ','màu trắng'],['因为','yīnwèi','liên từ','bởi vì, vì'],['试','shì','động từ','thử'],['红色','hóngsè','danh từ','màu đỏ'],['所以','suǒyǐ','liên từ','cho nên, nên']],
+v3:[['书包','shūbāo','danh từ','cặp sách'],['过去','guòqù','động từ','sang, đi sang'],['绿色','lǜsè','danh từ','màu xanh lá cây'],['黑色','hēisè','danh từ','màu đen'],['更','gèng','phó từ','càng, hơn']],
+v4:[['颜色','yánsè','danh từ','màu sắc']]
+};
+
+const vocabNotes={
+'过':{ex:['我们来过这家商场吗？','Wǒmen láiguo zhè jiā shāngchǎng ma?','Chúng ta đã từng đến trung tâm mua sắm này chưa?'],co:['去过','吃过','看过']},
+'商场':{ex:['这是新开的商场。','Zhè shì xīn kāi de shāngchǎng.','Đây là trung tâm thương mại mới mở.'],co:['去商场','商场里']},
+'进去':{ex:['我们进去看看吧。','Wǒmen jìnqù kànkan ba.','Chúng ta vào xem một chút nhé.'],co:['走进去','进去看看']},
+'条':{ex:['我想买条裤子。','Wǒ xiǎng mǎi tiáo kùzi.','Con muốn mua một chiếc quần.'],co:['一条裤子']},
+'裤子':{ex:['我想买条裤子。','Wǒ xiǎng mǎi tiáo kùzi.','Con muốn mua một chiếc quần.'],co:['白色的裤子','红色的裤子']},
+'白色':{ex:['我想买这条白色的裤子。','Wǒ xiǎng mǎi zhè tiáo báisè de kùzi.','Con muốn mua chiếc quần màu trắng này.'],co:['白色的衣服','白色的裤子']},
+'因为':{ex:['因为我喜欢白色啊！','Yīnwèi wǒ xǐhuan báisè a!','Vì con thích màu trắng ạ!'],co:['因为……所以……']},
+'试':{ex:['你试试那条红色的吧。','Nǐ shìshi nà tiáo hóngsè de ba.','Con thử chiếc màu đỏ kia xem.'],co:['试试','试衣服']},
+'红色':{ex:['我没穿过红色的。','Wǒ méi chuānguo hóngsè de.','Con chưa từng mặc đồ màu đỏ.'],co:['红色的裤子']},
+'所以':{ex:['就是因为没穿过，所以要试试啊！','Jiù shì yīnwèi méi chuānguo, suǒyǐ yào shìshi a!','Chính vì chưa từng mặc nên phải thử xem!'],co:['因为……所以……']},
+'书包':{ex:['妈妈，我想买个新书包。','Māma, wǒ xiǎng mǎi ge xīn shūbāo.','Mẹ ơi, con muốn mua cặp sách mới.'],co:['新书包','买书包']},
+'过去':{ex:['那边卖书包，我们过去看看吧。','Nàbian mài shūbāo, wǒmen guòqù kànkan ba.','Đằng kia bán cặp sách, chúng ta sang xem nhé.'],co:['走过去','过去看看']},
+'绿色':{ex:['绿色的吧。','Lǜsè de ba.','Cái màu xanh lá cây ạ.'],co:['绿色的书包']},
+'黑色':{ex:['红色的、绿色的、黑色的，你想买哪个？','Hóngsè de, lǜsè de, hēisè de, nǐ xiǎng mǎi nǎge?','Màu đỏ, xanh lá, đen, con muốn mua cái nào?'],co:['黑色的书包']},
+'更':{ex:['我也觉得绿色的更好看。','Wǒ yě juéde lǜsè de gèng hǎokàn.','Mẹ cũng thấy cái màu xanh lá đẹp hơn.'],co:['更好看','更便宜']},
+'颜色':{ex:['商场里的衣服颜色很多。','Shāngchǎng li de yīfu yánsè hěn duō.','Quần áo trong trung tâm thương mại có rất nhiều màu sắc.'],co:['衣服颜色','什么颜色']}
+};
+
+const radicals={
+'过':'部首：辶（走之旁）— bộ Sước / 辵. Phần còn lại：寸。',
+'商':'部首：口（口字旁）— bộ Khẩu. Các thành phần khác：亠、丷、冂。',
+'场':'部首：土（提土旁）— bộ Thổ. Phần bên phải là dạng giản thể của 昜。',
+'进':'部首：辶（走之旁）— bộ Sước / 辵. Phần còn lại：井。',
+'去':'部首：厶（私字旁）— bộ Khư. Phần phía trên：土。',
+'条':'部首：木（木字底）— bộ Mộc. Phần phía trên：夂。',
+'裤':'部首：衤（衣字旁）— bộ Y / 衣. Phần còn lại：库。',
+'子':'部首：子（子字旁）— bộ Tử。',
+'白':'部首：白（白字旁）— bộ Bạch。',
+'色':'部首：色（色字旁）— bộ Sắc。',
+'因':'部首：囗（大口框）— bộ Vi. Bên trong：大。',
+'为':'部首：丶（点）— bộ Chủ / nét chấm。',
+'试':'部首：讠（言字旁）— bộ Ngôn / 言. Phần còn lại：式。',
+'红':'部首：纟（绞丝旁）— bộ Mịch / 糸. Phần còn lại：工。',
+'所':'部首：户（户字旁）— bộ Hộ. Phần còn lại：斤。',
+'以':'部首：人（人字旁）— bộ Nhân。',
+'书':'部首：乛（横折钩）— bộ tra từ điển của chữ 书。',
+'包':'部首：勹（包字头）— bộ Bao. Bên trong：己。',
+'绿':'部首：纟（绞丝旁）— bộ Mịch / 糸. Phần còn lại：录。',
+'黑':'部首：黑（黑字旁）— bộ Hắc。',
+'更':'部首：曰（曰字旁）— bộ Viết / 曰。',
+'颜':'部首：页（页字旁）— bộ Hiệt / 頁. Phần còn lại：彦。'
+};
+function renderV(id,did){document.getElementById(id).innerHTML=vocab[id].map(w=>`<div class="word" onclick="openWord('${w[0]}','${did}')"><button class="spk" onclick="event.stopPropagation();speak('${w[0]}')">🔊</button><div class="hz">${w[0]}</div><div class="py">${w[1]}</div><div class="meaning">${w[3]}</div><span class="tag">${w[2]}</span></div>`).join('')}
+function openWord(word,did){let chars=[...word].filter(c=>/\p{Script=Han}/u.test(c)),note=vocabNotes[word],h=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((c,i)=>h+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b>${c}</b><div class="small">${radicals[c]||'⚠ Chưa có dữ liệu bộ thủ cho chữ này.'}</div></div>`);h+='</div>';if(note){h+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${note.ex[0]}</div><div class="extra-py">${note.ex[1]}</div><div class="extra-vi">${note.ex[2]}</div></div>${note.co&&note.co.length?`<div class="extra-box"><h4>词语搭配 · Cụm từ thường dùng</h4><div class="collocs">${note.co.map(x=>`<span class="colloc">${x}</span>`).join('')}</div></div>`:''}</div>`}h+='</div>';document.getElementById(did).innerHTML=h;if(window.HanziWriter)chars.forEach((c,i)=>{try{HanziWriter.create(`w_${did}_${i}`,c,{width:105,height:105,padding:5,showOutline:true}).loopCharacterAnimation()}catch(e){}})}
+['v1','v2','v3','v4'].forEach((x,i)=>renderV(x,'d'+(i+1)));
+const dialogues={
+1:[['刘小雪','妈妈，我们来过这家商场吗？','Māma, wǒmen láiguo zhè jiā shāngchǎng ma?','Mẹ ơi, chúng ta đã từng đến trung tâm mua sắm này chưa ạ?'],['王一雪','没来过，这是新开的。','Méi láiguo, zhè shì xīn kāi de.','Chưa con ạ, đây là trung tâm mua sắm mới mở.'],['刘小雪','我们进去看看吧。','Wǒmen jìnqù kànkan ba.','Chúng ta đi vào xem một chút nhé.'],['王一雪','好啊！你想买点儿什么？','Hǎo a! Nǐ xiǎng mǎi diǎnr shénme?','Được thôi. Con muốn mua chút gì không?'],['刘小雪','我想买条裤子。','Wǒ xiǎng mǎi tiáo kùzi.','Con muốn mua chiếc quần.'],['王一雪','没问题。','Méi wèntí.','Được nhé.']],
+2:[['刘小雪','妈妈，我想买这条白色的裤子。','Māma, wǒ xiǎng mǎi zhè tiáo báisè de kùzi.','Mẹ ơi, con muốn mua chiếc quần màu trắng này.'],['王一雪','你有很多白色的衣服，为什么还买白色的？','Nǐ yǒu hěn duō báisè de yīfu, wèishénme hái mǎi báisè de?','Con đã có rất nhiều quần áo màu trắng rồi, sao vẫn còn mua màu trắng nữa?'],['刘小雪','因为我喜欢白色啊！','Yīnwèi wǒ xǐhuan báisè a!','Vì con thích màu trắng ạ!'],['王一雪','我觉得这条白色的不太好看，你试试那条红色的吧。','Wǒ juéde zhè tiáo báisè de bú tài hǎokàn, nǐ shìshi nà tiáo hóngsè de ba.','Mẹ thấy chiếc quần màu trắng này không được đẹp lắm, con thử chiếc màu đỏ kia xem sao.'],['刘小雪','我没穿过红色的，红色的好看吗？','Wǒ méi chuānguo hóngsè de, hóngsè de hǎokàn ma?','Con chưa từng mặc quần màu đỏ, quần màu đỏ có đẹp không mẹ?'],['王一雪','就是因为没穿过，所以要试试啊！','Jiù shì yīnwèi méi chuānguo, suǒyǐ yào shìshi a!','Chính là vì chưa từng mặc nên cần phải thử xem.']],
+3:[['刘小雪','妈妈，我想买个新书包。','Māma, wǒ xiǎng mǎi ge xīn shūbāo.','Mẹ ơi, con muốn mua cặp sách mới ạ.'],['王一雪','好，那边卖书包，我们过去看看吧。','Hǎo, nàbian mài shūbāo, wǒmen guòqù kànkan ba.','Được, đằng kia có bán cặp sách, chúng ta sang đó xem thử nhé.'],['刘小雪','这么多漂亮的书包！','Zhème duō piàoliang de shūbāo!','Bao nhiêu là cặp sách đẹp!'],['王一雪','红色的、绿色的、黑色的，你想买哪个？','Hóngsè de, lǜsè de, hēisè de, nǐ xiǎng mǎi nǎge?','Cái màu đỏ, cái màu xanh lá cây, cái màu đen, con muốn mua cái nào?'],['刘小雪','绿色的吧。','Lǜsè de ba.','Cái màu xanh lá cây ạ.'],['王一雪','不错，我也觉得绿色的更好看。','Búcuò, wǒ yě juéde lǜsè de gèng hǎokàn.','Đẹp đấy, mẹ cũng thấy cặp sách màu xanh lá cây đẹp hơn.']],
+4:[['刘小雪','我和妈妈去了一家商场。因为是新开的，所以这儿东西很便宜。商场里的衣服颜色很多。我没穿过红色的裤子，妈妈让我试了试，我觉得我穿红色的也很好看。','Wǒ hé māma qùle yì jiā shāngchǎng. Yīnwèi shì xīn kāi de, suǒyǐ zhèr dōngxi hěn piányi. Shāngchǎng li de yīfu yánsè hěn duō. Wǒ méi chuānguo hóngsè de kùzi, māma ràng wǒ shìle shi, wǒ juéde wǒ chuān hóngsè de yě hěn hǎokàn.','Mình đã đi đến một trung tâm thương mại với mẹ. Vì trung tâm thương mại vừa mới khai trương, nên mấy hôm nay đồ rất rẻ. Quần áo trong trung tâm thương mại có rất nhiều màu sắc. Mình chưa từng mặc quần màu đỏ, mẹ đã bảo mình thử xem, mình nghĩ mình mặc quần màu đỏ cũng rất đẹp.']]
+};
+for(let n=1;n<=4;n++){document.getElementById('dlg'+n).innerHTML=dialogues[n].map((x,i)=>`<div class="bubble ${i%2?'right':''}"><div class="speaker">${x[0]}</div><div class="zh">${x[1]}</div><div class="py pyline">${x[2]}</div><div class="trans trline">${x[3]}</div></div>`).join('')}
+function speakDialogue(n){speak(dialogues[n].map(x=>x[1]).join(' '))}
+let canvas=document.getElementById('teachCanvas'),ctx=canvas.getContext('2d'),drawing=false,tool='pen',on=false,history=[],redo=[];
+function sizeCanvas(){let d=devicePixelRatio||1,old=canvas.toDataURL();canvas.width=innerWidth*d;canvas.height=innerHeight*d;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.scale(d,d);let im=new Image();im.onload=()=>ctx.drawImage(im,0,0,innerWidth,innerHeight);im.src=old}sizeCanvas();addEventListener('resize',sizeCanvas);
+function toggleTeach(){on=!on;canvas.style.pointerEvents=on?'auto':'none';tbToggle.classList.toggle('on',on)}function setTeachTool(t){tool=t;if(!on)toggleTeach()}
+function pos(e){let r=canvas.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return [p.clientX-r.left,p.clientY-r.top]}
+function snap(){history.push(canvas.toDataURL());if(history.length>30)history.shift();redo=[]}
+canvas.addEventListener('pointerdown',e=>{snap();drawing=true;let [x,y]=pos(e);ctx.beginPath();ctx.moveTo(x,y)});
+canvas.addEventListener('pointermove',e=>{if(!drawing)return;let[x,y]=pos(e);ctx.lineCap='round';ctx.lineJoin='round';ctx.globalCompositeOperation=tool==='eraser'?'destination-out':'source-over';ctx.strokeStyle=tool==='highlight'?'rgba(255,220,70,.35)':'#31443B';ctx.lineWidth=tool==='highlight'?22:tool==='eraser'?28:3;ctx.lineTo(x,y);ctx.stroke()});canvas.addEventListener('pointerup',()=>drawing=false);
+function restore(url){let im=new Image();im.onload=()=>{ctx.clearRect(0,0,innerWidth,innerHeight);ctx.drawImage(im,0,0,innerWidth,innerHeight)};im.src=url}
+function undoTeach(){if(history.length){redo.push(canvas.toDataURL());restore(history.pop())}}function redoTeach(){if(redo.length){history.push(canvas.toDataURL());restore(redo.pop())}}function clearTeach(){snap();ctx.clearRect(0,0,innerWidth,innerHeight)}
+let activeTeachText=null;
+function addTeachText(){
+  let d=document.createElement('div');
+  d.className='teach-text';
+  d.contentEditable=true;
+  d.textContent='Nhập văn bản';
+  d.style.left='45%';
+  d.style.top='30%';
+  d.dataset.teachText='1';
+  d.addEventListener('pointerdown',()=>{activeTeachText=d;document.querySelectorAll('.teach-text').forEach(x=>x.classList.remove('selected'));d.classList.add('selected')});
+  d.addEventListener('focus',()=>{activeTeachText=d;document.querySelectorAll('.teach-text').forEach(x=>x.classList.remove('selected'));d.classList.add('selected')});
+  document.body.appendChild(d);
+  activeTeachText=d;
+  d.classList.add('selected');
+  d.focus();
+}
+function deleteTeachText(){
+  if(activeTeachText && document.body.contains(activeTeachText)){
+    activeTeachText.remove();
+    activeTeachText=null;
+    return;
+  }
+  const texts=[...document.querySelectorAll('.teach-text')];
+  if(texts.length){
+    texts[texts.length-1].remove();
+  }
+}
+</script></body></html>
