@@ -149,12 +149,23 @@ let canvas=document.getElementById('teachCanvas'),ctx=canvas.getContext('2d'),dr
 function sizeCanvas(){let d=devicePixelRatio||1;canvas.width=innerWidth*d;canvas.height=innerHeight*d;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(d,0,0,d,0,0)}sizeCanvas();addEventListener('resize',sizeCanvas);
 function toggleTeach(){on=!on;canvas.style.pointerEvents=on?'auto':'none';tbToggle.classList.toggle('on',on)}function setTeachTool(t){tool=t;if(!on)toggleTeach()}
 function pos(e){let r=canvas.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}function snap(){history.push(canvas.toDataURL());if(history.length>30)history.shift();redo=[]}
+function passTeachClick(e){
+  if(!on || drawing) return;
+  const oldPointer=canvas.style.pointerEvents;
+  canvas.style.pointerEvents='none';
+  const target=document.elementFromPoint(e.clientX,e.clientY);
+  canvas.style.pointerEvents=oldPointer;
+  const clickable=target?.closest('button,a,input,audio,.word');
+  if(clickable){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    clickable.click();
+  }
+}
+canvas.addEventListener('pointerdown',passTeachClick,true);
 canvas.addEventListener('pointerdown',e=>{snap();drawing=true;let[x,y]=pos(e);ctx.beginPath();ctx.moveTo(x,y)});
 canvas.addEventListener('pointermove',e=>{if(!drawing)return;let[x,y]=pos(e);ctx.lineCap='round';ctx.lineJoin='round';ctx.globalCompositeOperation=tool==='eraser'?'destination-out':'source-over';ctx.strokeStyle=tool==='highlight'?'rgba(255,220,70,.35)':'#31443B';ctx.lineWidth=tool==='highlight'?22:tool==='eraser'?28:3;ctx.lineTo(x,y);ctx.stroke()});canvas.addEventListener('pointerup',()=>{
   drawing=false;
-  on=false;
-  canvas.style.pointerEvents='none';
-  tbToggle.classList.remove('on');
 });
 function restore(url){let im=new Image();im.onload=()=>{ctx.clearRect(0,0,innerWidth,innerHeight);ctx.drawImage(im,0,0,innerWidth,innerHeight)};im.src=url}
 function undoTeach(){if(history.length){redo.push(canvas.toDataURL());restore(history.pop())}}function redoTeach(){if(redo.length){history.push(canvas.toDataURL());restore(redo.pop())}}function clearTeach(){snap();ctx.clearRect(0,0,innerWidth,innerHeight)}
