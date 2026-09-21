@@ -210,10 +210,23 @@ function exitTeachMode(){
   drawing=false; on=false;
   c.style.pointerEvents='none';
   document.querySelectorAll('.teachbar button').forEach(function(x){x.classList.remove('on')});
-}function pos(e){let r=c.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}function snap(){hist.push(c.toDataURL());if(hist.length>30)hist.shift();redo=[]}c.addEventListener('pointerdown',e=>{snap();drawing=true;c.setPointerCapture(e.pointerId);let[x,y]=pos(e);ctx.beginPath();ctx.moveTo(x,y)});c.addEventListener('pointermove',e=>{if(!drawing)return;let[x,y]=pos(e);ctx.lineCap='round';ctx.lineJoin='round';ctx.globalCompositeOperation=tool==='eraser'?'destination-out':'source-over';ctx.strokeStyle=tool==='highlight'?'rgba(255,220,70,.35)':'#31443B';ctx.lineWidth=tool==='highlight'?22:tool==='eraser'?28:3;ctx.lineTo(x,y);ctx.stroke()});c.addEventListener('pointerup',function(e){
+}function pos(e){let r=c.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}function snap(){hist.push(c.toDataURL());if(hist.length>30)hist.shift();redo=[]}function passTeachClick(e){
+  if(!on || drawing) return;
+  const oldPointer=c.style.pointerEvents;
+  c.style.pointerEvents='none';
+  const target=document.elementFromPoint(e.clientX,e.clientY);
+  c.style.pointerEvents=oldPointer;
+  const clickable=target?.closest('button,a,input,audio,.word');
+  if(clickable){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    clickable.click();
+  }
+}
+c.addEventListener('pointerdown',passTeachClick,true);
+c.addEventListener('pointerdown',e=>{snap();drawing=true;c.setPointerCapture(e.pointerId);let[x,y]=pos(e);ctx.beginPath();ctx.moveTo(x,y)});c.addEventListener('pointermove',e=>{if(!drawing)return;let[x,y]=pos(e);ctx.lineCap='round';ctx.lineJoin='round';ctx.globalCompositeOperation=tool==='eraser'?'destination-out':'source-over';ctx.strokeStyle=tool==='highlight'?'rgba(255,220,70,.35)':'#31443B';ctx.lineWidth=tool==='highlight'?22:tool==='eraser'?28:3;ctx.lineTo(x,y);ctx.stroke()});c.addEventListener('pointerup',function(e){
   drawing=false;
   try{c.releasePointerCapture(e.pointerId)}catch(err){}
-  exitTeachMode();
 });
-c.addEventListener('pointercancel',function(){drawing=false;exitTeachMode();});function restore(u){let im=new Image();im.onload=()=>{ctx.clearRect(0,0,innerWidth,innerHeight);ctx.drawImage(im,0,0,innerWidth,innerHeight)};im.src=u}function undoTeach(){if(hist.length){redo.push(c.toDataURL());restore(hist.pop())}}function redoTeach(){if(redo.length){hist.push(c.toDataURL());restore(redo.pop())}}function clearTeach(){snap();ctx.clearRect(0,0,innerWidth,innerHeight)}let activeText=null;function addTeachText(){exitTeachMode();let d=document.createElement('div');d.className='teach-text';d.contentEditable=true;d.textContent='Nhập văn bản';d.style.left='45%';d.style.top='30%';d.onfocus=()=>activeText=d;document.body.appendChild(d);activeText=d;d.focus()}function deleteTeachText(){if(activeText&&document.body.contains(activeText)){activeText.remove();activeText=null;return}let t=[...document.querySelectorAll('.teach-text')];if(t.length)t[t.length-1].remove()}
+c.addEventListener('pointercancel',function(){drawing=false;});function restore(u){let im=new Image();im.onload=()=>{ctx.clearRect(0,0,innerWidth,innerHeight);ctx.drawImage(im,0,0,innerWidth,innerHeight)};im.src=u}function undoTeach(){if(hist.length){redo.push(c.toDataURL());restore(hist.pop())}}function redoTeach(){if(redo.length){hist.push(c.toDataURL());restore(redo.pop())}}function clearTeach(){snap();ctx.clearRect(0,0,innerWidth,innerHeight)}let activeText=null;function addTeachText(){exitTeachMode();let d=document.createElement('div');d.className='teach-text';d.contentEditable=true;d.textContent='Nhập văn bản';d.style.left='45%';d.style.top='30%';d.onfocus=()=>activeText=d;document.body.appendChild(d);activeText=d;d.focus()}function deleteTeachText(){if(activeText&&document.body.contains(activeText)){activeText.remove();activeText=null;return}let t=[...document.querySelectorAll('.teach-text')];if(t.length)t[t.length-1].remove()}
 </script></body></html>
