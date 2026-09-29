@@ -73,19 +73,278 @@ h2{font-size:30px;margin:8px 0}.sub{color:var(--muted)}.grid{display:grid;grid-t
       <button onclick="checkWarm(this,'D')">D 不错 búcuò</button>
     </div><div class="warm-feedback"></div>
   </div>
-</div></section><section class="slide"><h2>✍️ Khởi động 2 · Thêm danh từ</h2><div class="card"><p>给下面的动词加上合适的名词。 Hãy thêm danh từ thích hợp cho các động từ sau.</p><div class="grid"><div><p>① 送 ________</p><p>② 拿 ________</p><p>③ 做 ________</p></div><div><p>④ 吃 ________</p><p>⑤ 洗 ________</p><p>⑥ 看 ________</p></div></div></div></section><section class="slide"><h2>📚 Từ vựng 1</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v1"></div><div id="d1"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-2.mp3')">▶ Nghe 3-2</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 1</h2><div class="card listenbox"><audio controls src="assets/audio/3-1.mp3"></audio><p>（1）刘明为什么回来晚了？ A 没做完工作　B 去外边吃饭　C 在公司休息</p><p>（2）刘明现在要做什么？ A 吃饭　B 喝水　C 工作</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 1</h2><div class="card"><div class="controls read-audio-controls">
-      <button class="btn primary" onclick="playAudio('assets/audio/3-1.mp3')">▶ Nghe bài khóa</button>
-      <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
+</div></section><section class="slide"><h2>✍️ Khởi động 2 · Thêm danh từ</h2><div class="card"><p>给下面的动词加上合适的名词。 Hãy thêm danh từ thích hợp cho các động từ sau.</p><div class="grid"><div><p>① 送 ________</p><p>② 拿 ________</p><p>③ 做 ________</p></div><div><p>④ 吃 ________</p><p>⑤ 洗 ________</p><p>⑥ 看 ________</p></div></div></div></section><section class="slide"><h2>📚 Từ vựng 1</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v1"></div><div id="d1"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-2.mp3')">▶ Nghe 3-2</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 1</h2><div class="card listenbox"><audio controls src="assets/audio/3-1.mp3"></audio><p>（1）刘明为什么回来晚了？ A 没做完工作　B 去外边吃饭　C 在公司休息</p><p>（2）刘明现在要做什么？ A 吃饭　B 喝水　C 工作</p></div></section><section class="slide"><section class="slide">
+  <h2>💬 Đọc Bài khóa 1</h2>
+
+  <div class="grid">
+
+    <!-- CỘT TRÁI: BÀI KHÓA -->
+    <div class="card">
+
+      <div class="controls read-audio-controls">
+        <button class="btn primary"
+          onclick="playAudio('assets/audio/3-1.mp3')">
+          ▶ Nghe bài khóa
+        </button>
+
+        <button class="btn" onclick="pauseAudio()">
+          ⏸ Pause
+        </button>
+      </div>
+
+      <audio controls preload="metadata"
+        src="assets/audio/3-1.mp3"
+        style="width:100%;margin:12px 0 18px">
+      </audio>
+
+      <div class="dialogue" id="dlg1"></div>
+
+      <div class="controls">
+        <button class="btn"
+          onclick="toggleInCard(this,'pyline')">
+          拼音 Ẩn
+        </button>
+
+        <button class="btn"
+          onclick="toggleInCard(this,'trline')">
+          🇻🇳 Nghĩa Ẩn
+        </button>
+      </div>
+
     </div>
-    <audio controls preload="metadata" src="assets/audio/3-1.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg1"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section><section class="slide grammar"><h2>🧠 Ngữ pháp 1 · 结果补语 Bổ ngữ kết quả</h2><div class="card"><p>Một số động từ hoặc tính từ đặt sau động từ để biểu thị kết quả của hành động.</p><div class="formula">菜都做好了。 · 我吃完饭了。 · 小雪今天来晚了。</div><p><b>Phủ định:</b> 没（有） + động từ + bổ ngữ kết quả; bỏ 了 ở cuối câu.</p><div class="formula">我没吃完饭。　小雪没来晚。</div><p><b>Nghi vấn:</b> V+结果+了吗？ / V+结果+了没有？ / V+没+V+结果？</p><div class="formula">你吃完饭了吗？　小雪来晚了没有？　你学没学会？</div></div></section><section class="slide"><h2>📚 Từ vựng 2</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v2"></div><div id="d2"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-4.mp3')">▶ Nghe 3-4</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 2</h2><div class="card listenbox"><audio controls src="assets/audio/3-3.mp3"></audio><p>（1）刘明想找时间做什么？ A 去吃饭　B 去旅游　C 买东西</p><p>（2）刘明让王一雪做什么？ A 去买票　B 看一下时间　C 想想去哪儿玩</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 2</h2><div class="card"><div class="controls read-audio-controls">
-      <button class="btn primary" onclick="playAudio('assets/audio/3-3.mp3')">▶ Nghe bài khóa</button>
-      <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
+
+
+    <!-- CỘT PHẢI: NGỮ CẢNH + CÂU HỎI -->
+    <div class="card">
+
+      <h2 style="font-size:24px;margin-top:0">
+        📍 Ngữ cảnh & câu hỏi
+      </h2>
+
+     <p style="font-size:17px;line-height:1.6">
+  Lưu Minh hôm nay đi làm về rất muộn vì công việc quá nhiều,
+  đến giờ tan làm vẫn chưa làm xong. Vương Nhất Tuyết nói
+  cơm đã nấu xong và gọi Lưu Minh qua ăn cơm.
+</p>
+
+      <div class="formula" style="margin-top:22px">
+        （1）今天刘明的工作多不多？
+      </div>
+
+      <div class="formula">
+        （2）王一雪已经做好什么了？
+      </div>
+
     </div>
-    <audio controls preload="metadata" src="assets/audio/3-3.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg2"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section><section class="slide grammar"><h2>🧠 Ngữ pháp 2 · 动词重叠（1）Động từ lặp lại (1)</h2><div class="card"><p>Động từ có tính hành động mạnh có thể lặp lại để diễn đạt thời gian ngắn, số lượng ít, thử làm; sắc thái khẩu ngữ nhẹ nhàng.</p><div class="formula">Đơn âm tiết: A（一）A　·　Song âm tiết: ABAB　·　Từ li hợp: AAB</div><p>那你再想一想，你想好了，我来买票。<br>我有点儿累，现在想休息休息。<br>你能过来帮帮忙吗？</p></div></section><section class="slide"><h2>📚 Từ vựng 3</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v3"></div><div id="d3"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-6.mp3')">▶ Nghe 3-6</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 3</h2><div class="card listenbox"><audio controls src="assets/audio/3-5.mp3"></audio><p>（1）刘明让王一雪做什么？ A 洗手　B 洗苹果　C 吃苹果</p><p>（2）王一雪想去哪儿旅游？ A 西安　B 北京　C 上海</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 3</h2><div class="card"><div class="controls read-audio-controls">
+
+  </div>
+</section><section class="slide grammar"><h2>🧠 Ngữ pháp 1 · 结果补语 Bổ ngữ kết quả</h2><div class="card"><p>Một số động từ hoặc tính từ đặt sau động từ để biểu thị kết quả của hành động.</p><div class="formula">菜都做好了。 · 我吃完饭了。 · 小雪今天来晚了。</div><p><b>Phủ định:</b> 没（有） + động từ + bổ ngữ kết quả; bỏ 了 ở cuối câu.</p><div class="formula">我没吃完饭。　小雪没来晚。</div><p><b>Nghi vấn:</b> V+结果+了吗？ / V+结果+了没有？ / V+没+V+结果？</p><div class="formula">你吃完饭了吗？　小雪来晚了没有？　你学没学会？</div><div class="card" style="margin-top:24px">
+  <h3>✍️ 练习 · Hoàn thành hội thoại</h3>
+  <p class="sub">Điền từ thích hợp vào chỗ trống.</p>
+
+  <div class="formula" style="margin-top:16px">
+    <b>(1)</b><br>
+    A：小明，你
+    <input type="text"
+           style="width:150px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    衣服没有？<br><br>
+    B：我穿好了。
+  </div>
+
+  <div class="formula" style="margin-top:14px">
+    <b>(2)</b><br>
+    A：老师，我写完了。<br><br>
+    B：很好，这几个字都
+    <input type="text"
+           style="width:150px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    了。（对）
+  </div>
+
+  <div class="formula" style="margin-top:14px">
+    <b>(3)</b><br>
+    A：这本书你
+    <input type="text"
+           style="width:150px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    ？<br><br>
+    B：没看懂，我有很多问题。
+  </div>
+</div></div></section><section class="slide"><h2>📚 Từ vựng 2</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v2"></div><div id="d2"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-4.mp3')">▶ Nghe 3-4</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 2</h2><div class="card listenbox"><audio controls src="assets/audio/3-3.mp3"></audio><p>（1）刘明想找时间做什么？ A 去吃饭　B 去旅游　C 买东西</p><p>（2）刘明让王一雪做什么？ A 去买票　B 看一下时间　C 想想去哪儿玩</p></div></section><section class="slide">
+  <h2>💬 Đọc Bài khóa 2</h2>
+
+  <div style="
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    align-items:stretch;
+  ">
+
+    <!-- BÊN TRÁI: BÀI KHÓA -->
+    <div class="card">
+
+      <div class="controls read-audio-controls">
+        <button class="btn primary"
+          onclick="playAudio('assets/audio/3-3.mp3')">
+          ▶ Nghe bài khóa
+        </button>
+
+        <button class="btn"
+          onclick="pauseAudio()">
+          ⏸ Pause
+        </button>
+      </div>
+
+      <audio controls preload="metadata"
+        src="assets/audio/3-3.mp3"
+        style="width:100%;margin:12px 0 18px">
+      </audio>
+
+      <div class="dialogue" id="dlg2"></div>
+
+      <div class="controls">
+        <button class="btn"
+          onclick="toggleInCard(this,'pyline')">
+          拼音 Ẩn
+        </button>
+
+        <button class="btn"
+          onclick="toggleInCard(this,'trline')">
+          🇻🇳 Nghĩa Ẩn
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- BÊN PHẢI: NGỮ CẢNH + CÂU HỎI -->
+    <div class="card">
+
+      <h2 style="font-size:24px;margin-top:0">
+        📍 Ngữ cảnh &amp; câu hỏi
+      </h2>
+
+      <p style="font-size:17px;line-height:1.6">
+        Lưu Minh và Vương Nhất Tuyết đang bàn kế hoạch đi du lịch.
+        Lưu Minh hỏi muốn đi đâu, nhưng Vương Nhất Tuyết vẫn chưa
+        quyết định địa điểm.
+      </p>
+
+      <div class="formula" style="margin-top:22px">
+        (1) 王一雪想好去哪儿了吗？
+      </div>
+
+      <div class="formula" style="margin-top:14px">
+        (2) 谁来买票？
+      </div>
+
+    </div>
+
+  </div>
+</section><section class="slide grammar"><h2>🧠 Ngữ pháp 2 · 动词重叠（1）Động từ lặp lại (1)</h2><div class="card"><p>Động từ có tính hành động mạnh có thể lặp lại để diễn đạt thời gian ngắn, số lượng ít, thử làm; sắc thái khẩu ngữ nhẹ nhàng.</p><div class="formula">Đơn âm tiết: A（一）A　·　Song âm tiết: ABAB　·　Từ li hợp: AAB</div><p>那你再想一想，你想好了，我来买票。<br>我有点儿累，现在想休息休息。<br>你能过来帮帮忙吗？</p><div class="card" style="margin-top:24px">
+
+  <h3>✍️ 练习 · Hoàn thành hội thoại</h3>
+  <p class="sub">Điền từ thích hợp vào chỗ trống.</p>
+
+  <div class="formula" style="margin-top:16px">
+    <b>(1)</b><br><br>
+    A：家月，学校里有没有超市？<br><br>
+    B：我也不知道，你去
+    <input type="text"
+      style="width:160px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    老师吧。
+  </div>
+
+  <div class="formula" style="margin-top:14px">
+    <b>(2)</b><br><br>
+    A：那个人是谁？<br><br>
+    B：你不认识？那我给你
+    <input type="text"
+      style="width:160px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    。
+  </div>
+
+  <div class="formula" style="margin-top:14px">
+    <b>(3)</b><br>
+    A：他的歌真好听！<br><br>
+    B：是吗？让我
+    <input type="text"
+      style="width:160px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    。
+  </div>
+
+</div></div></section><section class="slide"><h2>📚 Từ vựng 3</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v3"></div><div id="d3"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-6.mp3')">▶ Nghe 3-6</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 3</h2><div class="card listenbox"><audio controls src="assets/audio/3-5.mp3"></audio><p>（1）刘明让王一雪做什么？ A 洗手　B 洗苹果　C 吃苹果</p><p>（2）王一雪想去哪儿旅游？ A 西安　B 北京　C 上海</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 3</h2>
+
+<div style="
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  align-items:stretch;
+">
+
+<div class="card">
+<div class="controls read-audio-controls">
       <button class="btn primary" onclick="playAudio('assets/audio/3-5.mp3')">▶ Nghe bài khóa</button>
       <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
     </div>
-    <audio controls preload="metadata" src="assets/audio/3-5.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg3"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div></section><section class="slide grammar"><h2>🧠 Ngữ pháp 3 · 动词重叠（2）Động từ lặp lại (2)</h2><div class="card"><p>Khi diễn đạt tình huống đã xảy ra:</p><div class="formula">Động từ đơn âm tiết: A了A<br>Động từ song âm tiết: thường dùng AB了一下<br>Từ li hợp: A了AB</div><p>我看了看网上的介绍。<br>我休息了一下，现在觉得不累了。<br>他昨天来帮了帮忙。</p></div></section><section class="slide"><h2>📚 Từ vựng 4</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v4"></div><div id="d4"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-8.mp3')">▶ Nghe 3-8</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 4</h2><div class="card listenbox"><audio controls src="assets/audio/3-7.mp3"></audio><p>判断正误：</p><p>（1）刘明今天没去医院上班。</p><p>（2）今天早上是刘明送孩子去学校的。</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 4</h2><div class="card"><div class="controls read-audio-controls">
+    <audio controls preload="metadata" src="assets/audio/3-5.mp3" style="width:100%;margin:12px 0 18px"></audio><div class="dialogue" id="dlg3"></div><div class="controls"><button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button><button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button></div></div><div class="card">
+
+  <h2 style="font-size:24px;margin-top:0">
+    📍 Ngữ cảnh &amp; câu hỏi
+  </h2>
+
+  <p style="font-size:17px;line-height:1.6">
+    Lưu Minh mời Vương Nhất Tuyết ăn táo. Táo đã được rửa sạch
+    và đặt trên bàn. Sau đó hai người nói về kế hoạch đi du lịch,
+    Vương Nhất Tuyết muốn đi Tây An.
+  </p>
+
+  <div class="formula" style="margin-top:22px">
+    (1) 苹果在哪儿？
+  </div>
+
+  <div class="formula" style="margin-top:14px">
+    (2) 王一雪为什么想去西安旅游？
+  </div>
+
+</div>
+
+</div>
+</section>
+</section><section class="slide grammar"><h2>🧠 Ngữ pháp 3 · 动词重叠（2）Động từ lặp lại (2)</h2><div class="card"><p>Khi diễn đạt tình huống đã xảy ra:</p><div class="formula">Động từ đơn âm tiết: A了A<br>Động từ song âm tiết: thường dùng AB了一下<br>Từ li hợp: A了AB</div><p>我看了看网上的介绍。<br>我休息了一下，现在觉得不累了。<br>他昨天来帮了帮忙。</p><div class="card" style="margin-top:24px">
+
+  <h3>✍️ 练习 · Hoàn thành hội thoại</h3>
+  <p class="sub">Điền từ thích hợp vào chỗ trống.</p>
+
+  <div class="formula" style="margin-top:16px">
+    <b>(1)</b><br><br>
+    A: 昨天你在家吗？<br><br>
+    B: 我有点儿事，
+    <input type="text"
+      style="width:160px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    了一下。
+  </div>
+
+  <div class="formula" style="margin-top:14px">
+    <b>(2)</b><br><br>
+    A: 你的手机是不是在桌子上？<br><br>
+    B: 我在桌子上
+    <input type="text"
+      style="width:160px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    ，但没有。
+  </div>
+
+  <div class="formula" style="margin-top:14px">
+    <b>(3)</b><br><br>
+    A: 昨天下午你做什么了？<br><br>
+    B: 我在房间
+    <input type="text"
+      style="width:160px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    书，
+    <input type="text"
+      style="width:160px;padding:8px;border:1px solid #DCEAE2;border-radius:8px">
+    字。
+  </div>
+
+</div></div></section><section class="slide"><h2>📚 Từ vựng 4</h2><p class="sub">Nhấn vào từng từ để xem phân tích chữ Hán, 例句 và 词语搭配 khi có kết hợp tự nhiên.</p><div class="vocab" id="v4"></div><div id="d4"></div><div class="controls"><button class="btn" onclick="playAudio('assets/audio/3-8.mp3')">▶ Nghe 3-8</button><button class="btn" onclick="pauseAudio()">⏸ Dừng</button></div></section><section class="slide"><h2>🎧 Nghe Bài khóa 4</h2><div class="card listenbox"><audio controls src="assets/audio/3-7.mp3"></audio><p>判断正误：</p><p>（1）刘明今天没去医院上班。</p><p>（2）今天早上是刘明送孩子去学校的。</p></div></section><section class="slide"><h2>💬 Đọc Bài khóa 4</h2><div class="card"><div class="controls read-audio-controls">
       <button class="btn primary" onclick="playAudio('assets/audio/3-7.mp3')">▶ Nghe bài khóa</button>
       <button class="btn" onclick="pauseAudio()">⏸ Pause</button>
     </div>
