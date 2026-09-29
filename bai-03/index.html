@@ -488,6 +488,12 @@ const dialogues={
 ]]
 };
 for(let n=1;n<=4;n++){document.getElementById('dlg'+n).innerHTML=dialogues[n].map((x,i)=>`<div class="bubble ${i%2?'right':''}"><div class="speaker">${x[0]}</div><div class="zh">${x[1]}</div><div class="py pyline">${x[2]}</div><div class="trans trline">${x[3]}</div></div>`).join('')}
+document.getElementById('dlg4').insertAdjacentHTML('beforeend', `
+  <div class="controls">
+    <button class="btn" onclick="toggleInCard(this,'pyline')">拼音 Ẩn</button>
+    <button class="btn" onclick="toggleInCard(this,'trline')">🇻🇳 Nghĩa Ẩn</button>
+  </div>
+`);
 function speakDialogue(n){speak(dialogues[n].map(x=>x[1]).join(' '))}
 let canvas=document.getElementById('teachCanvas'),ctx=canvas.getContext('2d'),drawing=false,tool='pen',on=false,history=[],redo=[];
 function sizeCanvas(){let d=devicePixelRatio||1,old=canvas.toDataURL();canvas.width=innerWidth*d;canvas.height=innerHeight*d;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.scale(d,d);let im=new Image();im.onload=()=>ctx.drawImage(im,0,0,innerWidth,innerHeight);im.src=old}sizeCanvas();addEventListener('resize',sizeCanvas);
