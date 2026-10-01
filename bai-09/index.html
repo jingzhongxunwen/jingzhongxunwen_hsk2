@@ -124,7 +124,80 @@ function openVocab(group,index){
 }
 
 const ds={d1:[['王一雪','儿子的裤子坏了，我们给他买条新的吧。','Quần của con trai bị rách rồi, chúng ta mua cho con một chiếc mới đi.'],['刘明','好啊。','Nhất trí nhé.'],['王一雪','你看这条黑色的怎么样？','Anh xem chiếc màu đen này thế nào?'],['刘明','没有你上次买的那条好看。','Không đẹp bằng chiếc em đã mua lần trước.'],['王一雪','旁边那个男孩儿就穿了这样的裤子，我觉得很好看啊！','Cậu bé bên cạnh đang mặc kiểu quần này đấy, em thấy rất đẹp mà!'],['刘明','儿子的个子没有他那么高，穿上就不一定太好看。','Con trai chúng ta không cao bằng cậu bé đó, mặc vào có thể không đẹp được thế.'],['王一雪','好吧，我们再去那边看看。','Vâng, chúng ta qua bên kia xem thêm nhé.']],d2:[['王一雪','门口有家奶茶店。你想喝杯奶茶吗？','Trước cửa có quán trà sữa. Anh có muốn uống trà sữa không?'],['刘明','我想喝咖啡，还是去咖啡店吧。','Anh muốn uống cà phê, hay là đến quán cà phê đi.'],['王一雪','咖啡店离这儿有点儿远。','Quán cà phê cách chỗ này hơi xa.'],['刘明','没关系，那家店的咖啡很好喝。','Không sao đâu, cà phê ở quán đó rất ngon.'],['王一雪','那你等一下，我去买杯奶茶。','Vậy anh đợi một lát, em đi mua cốc trà sữa.'],['刘明','你不想喝咖啡吗？','Em không muốn uống cà phê sao?'],['王一雪','喝了咖啡，晚上就别想睡觉了。','Uống cà phê thì buổi tối khỏi ngủ mất.']],d3:[['刘明','我们打车回去吧。','Chúng ta bắt taxi về nhé.'],['王一雪','这里离家很近，还是走路吧。','Chỗ này cách nhà mình rất gần, hay là đi bộ về đi.'],['刘明','要走多长时间？','Đi bộ mất bao lâu vậy?'],['王一雪','走半个多小时就到了。','Đi bộ hơn nửa tiếng thì sẽ tới.'],['刘明','好的。每天上下班都坐车，今天运动运动吧。','Được rồi. Hằng ngày anh đi làm bằng ô tô, hôm nay vận động một chút vậy.']],d4:[['王一雪','这周刘明休息，我下班后跟他去了一家商店。商店里边的衣服没有大商场里的好看。我们没有买到喜欢的衣服，从商店出来就到咖啡店坐了坐。因为想运动运动，所以喝完东西，我们就走回家了。','Tuần này, Lưu Minh được nghỉ, sau giờ làm tôi đã đi cùng anh ấy đến một cửa hàng. Quần áo trong cửa hàng đó không đẹp bằng quần áo trong trung tâm thương mại. Chúng tôi không mua được quần áo nào mình thích, vì vậy sau khi rời cửa hàng, chúng tôi đến quán cà phê ngồi một lúc. Vì muốn vận động một chút, nên sau khi uống xong chúng tôi đã đi bộ về nhà.']]};for(let id in ds)document.getElementById(id).innerHTML=ds[id].map(x=>`<div class="bubble"><div class="speaker">${x[0]}</div><div class="zh">${x[1]}</div><div class="tr">${x[2]}</div></div>`).join('');
-let teachCanvas=document.getElementById('teachCanvas'),teachCtx=teachCanvas.getContext('2d'),teachDrawing=false,teachTool='pen',teachOn=false,teachHistory=[],teachRedo=[];
+// Bổ sung phiên âm cho Bài khóa 1
+const pinyinD1 = [
+  "Érzi de kùzi huài le, wǒmen gěi tā mǎi tiáo xīn de ba.",
+  "Hǎo a.",
+  "Nǐ kàn zhè tiáo hēisè de zěnmeyàng?",
+  "Méiyǒu nǐ shàng cì mǎi de nà tiáo hǎokàn.",
+  "Pángbiān nàge nánháir jiù chuānle zhèyàng de kùzi, wǒ juéde hěn hǎokàn a!",
+  "Érzi de gèzi méiyǒu tā nàme gāo, chuānshang jiù bù yídìng tài hǎokàn.",
+  "Hǎo ba, wǒmen zài qù nàbiān kànkan."
+];
+
+// Giữ nguyên tên người nói, chữ Hán và nghĩa Việt;
+// thêm phiên âm giữa chữ Hán và nghĩa Việt.
+document.getElementById("d1").innerHTML = ds.d1.map((x, i) => `
+  <div class="bubble">
+    <div class="speaker">${x[0]}</div>
+    <div class="zh">${x[1]}</div>
+    <div class="py">${pinyinD1[i]}</div>
+    <div class="tr">${x[2]}</div>
+  </div>
+`).join("");
+  // Bổ sung phiên âm cho Bài khóa 2
+const pinyinD2 = [
+  "Ménkǒu yǒu jiā nǎichádiàn. Nǐ xiǎng hē bēi nǎichá ma?",
+  "Wǒ xiǎng hē kāfēi, háishi qù kāfēidiàn ba.",
+  "Kāfēidiàn lí zhèr yǒudiǎnr yuǎn.",
+  "Méi guānxi, nà jiā diàn de kāfēi hěn hǎo hē.",
+  "Nà nǐ děng yíxià, wǒ qù mǎi bēi nǎichá.",
+  "Nǐ bù xiǎng hē kāfēi ma?",
+  "Hēle kāfēi, wǎnshang jiù bié xiǎng shuìjiào le."
+];
+
+// Giữ nguyên dữ liệu cũ, thêm phiên âm vào mỗi câu
+document.getElementById("d2").innerHTML = ds.d2.map((x, i) => `
+  <div class="bubble">
+    <div class="speaker">${x[0]}</div>
+    <div class="zh">${x[1]}</div>
+    <div class="py">${pinyinD2[i]}</div>
+    <div class="tr">${x[2]}</div>
+  </div>
+`).join("");
+  // Bổ sung phiên âm cho Bài khóa 3
+const pinyinD3 = [
+  "Wǒmen dǎchē huíqù ba.",
+  "Zhèlǐ lí jiā hěn jìn, háishi zǒulù ba.",
+  "Yào zǒu duō cháng shíjiān?",
+  "Zǒu bàn ge duō xiǎoshí jiù dào le.",
+  "Hǎo de. Měi tiān shàng xià bān dōu zuò chē, jīntiān yùndòng yùndòng ba."
+];
+
+// Giữ nguyên dữ liệu cũ, thêm phiên âm vào mỗi câu
+document.getElementById("d3").innerHTML = ds.d3.map((x, i) => `
+  <div class="bubble">
+    <div class="speaker">${x[0]}</div>
+    <div class="zh">${x[1]}</div>
+    <div class="py">${pinyinD3[i]}</div>
+    <div class="tr">${x[2]}</div>
+  </div>
+`).join("");
+  // Bổ sung phiên âm cho Bài khóa 4
+const pinyinD4 = [
+  "Zhè zhōu Liú Míng xiūxi, wǒ xiàbān hòu gēn tā qùle yì jiā shāngdiàn. Shāngdiàn lǐbian de yīfu méiyǒu dà shāngchǎng li de hǎokàn. Wǒmen méiyǒu mǎidào xǐhuan de yīfu, cóng shāngdiàn chūlái jiù dào kāfēidiàn zuòle zuò. Yīnwèi xiǎng yùndòng yùndòng, suǒyǐ hēwán dōngxi, wǒmen jiù zǒuhuí jiā le."
+];
+
+// Giữ nguyên dữ liệu cũ, thêm phiên âm vào đoạn đọc
+document.getElementById("d4").innerHTML = ds.d4.map((x, i) => `
+  <div class="bubble">
+    <div class="speaker">${x[0]}</div>
+    <div class="zh">${x[1]}</div>
+    <div class="py">${pinyinD4[i]}</div>
+    <div class="tr">${x[2]}</div>
+  </div>
+`).join("");
+  let teachCanvas=document.getElementById('teachCanvas'),teachCtx=teachCanvas.getContext('2d'),teachDrawing=false,teachTool='pen',teachOn=false,teachHistory=[],teachRedo=[];
 function sizeTeachCanvas(){let d=devicePixelRatio||1;let old=teachCanvas.toDataURL();teachCanvas.width=innerWidth*d;teachCanvas.height=innerHeight*d;teachCanvas.style.width=innerWidth+'px';teachCanvas.style.height=innerHeight+'px';teachCtx.setTransform(d,0,0,d,0,0)}
 sizeTeachCanvas();addEventListener('resize',sizeTeachCanvas);
 function toggleTeach(){teachOn=!teachOn;teachCanvas.style.pointerEvents=teachOn?'auto':'none';document.getElementById('tbToggle').classList.toggle('on',teachOn)}
