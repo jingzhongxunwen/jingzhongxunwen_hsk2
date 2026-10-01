@@ -1,46 +1,353 @@
 <!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>静中寻文 · HSK2 · Bài 13</title><script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script><style>
 :root{--g:#78a892;--g2:#5f907a;--bg:#f4f9f6;--line:#dceae2;--soft:#eaf4ef;--ink:#31443b;--mut:#718079}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Noto Sans","Noto Sans SC",sans-serif}.app{display:grid;grid-template-columns:290px 1fr;min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:#fbfdfc;border-right:1px solid var(--line);padding:22px 14px}.brand{font-size:24px;font-weight:900;color:var(--g2)}.brand small{display:block;font-size:13px;color:var(--mut);margin-top:4px}.nav h5{margin:18px 10px 5px;color:#98a2b3}.nav button{width:100%;border:0;background:none;text-align:left;padding:10px;border-radius:11px}.nav button.active{background:var(--soft);font-weight:800;color:var(--g2)}main{padding:28px 32px 90px}.top{display:flex;justify-content:space-between}.counter{background:var(--soft);padding:7px 12px;border-radius:99px;font-weight:800}.slide{display:none}.slide.active{display:block}.hero{min-height:350px;padding:50px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,#a8cbb9,#e7f1eb);display:flex;align-items:center}.hero h1{font-size:49px;margin:5px 0}.card{background:white;border:1px solid var(--line);border-radius:19px;padding:20px;margin-top:15px}.vocab{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.word{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;position:relative;cursor:pointer}.word:hover{box-shadow:0 8px 22px #0001}.deep-detail{margin-top:16px}.detailbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.chars{display:flex;gap:14px;flex-wrap:wrap}.charbox{min-width:150px;text-align:center;background:var(--soft);border-radius:14px;padding:12px}.writer{width:120px;height:120px;margin:auto}.word-extra{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.extra-box{border:1px solid var(--line);border-radius:14px;padding:14px}.extra-zh{font-size:22px}.small{font-size:13px;color:var(--mut);margin-top:6px}.hz{font-size:29px;font-weight:900}.py{color:var(--g2)}.spk{position:absolute;right:8px;top:8px;border:0;background:var(--soft);border-radius:8px;padding:6px}.dialogue{display:flex;flex-direction:column;gap:9px}.bubble{background:#eef5f1;border-radius:15px;padding:13px;max-width:90%}.bubble:nth-child(even){align-self:flex-end;background:#e4f0ea}.zh{font-size:22px}.speaker{font-size:12px;color:var(--g2);font-weight:800}.tr{color:#475467}.formula{background:var(--soft);border-radius:14px;padding:14px;font-size:19px;font-weight:750;line-height:1.8}.btn,.read-tools button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer}.primary{background:var(--g);color:#fff}.warm-grid,.pic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.pic{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px}.pic img{width:100%;height:210px;object-fit:cover;border-radius:12px}.listen audio{width:100%}.footer{z-index:8200;position:fixed;left:320px;right:25px;bottom:18px;display:flex;justify-content:space-between;pointer-events:none}.footer button{pointer-events:auto}.lock{position:fixed;inset:0;z-index:99;background:#edf5f0;display:grid;place-items:center}.lock>div{background:#fff;padding:28px;border-radius:22px;width:min(420px,90vw);text-align:center}.lock input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;margin:10px 0}.blank{display:inline-block;border-bottom:1px solid #777;min-width:115px}.hide-py .py{display:none!important}.hide-tr .tr{display:none!important}.read-tools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}#teachCanvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:8000;pointer-events:none;touch-action:none}.teachbar{position:fixed;z-index:8100;right:22px;top:18px;display:flex;gap:7px;flex-wrap:wrap;padding:8px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:16px}.teachbar button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-weight:700}.teachbar button.on{background:var(--soft)}.teach-text{position:fixed;z-index:8050;min-width:120px;min-height:38px;padding:7px;border:1px dashed var(--g);background:#fffc;border-radius:8px;font-size:22px}@media(max-width:900px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.vocab{grid-template-columns:1fr 1fr}main{padding:20px}.footer{left:20px}.hero h1{font-size:38px}}@media(max-width:600px){.vocab,.warm-grid,.pic-grid{grid-template-columns:1fr}}
-.scene{width:min(420px,100%);display:block;margin:12px auto;border-radius:18px;border:1px solid var(--line)}</style></head><body>
+.scene{width:min(420px,100%);display:block;margin:12px auto;border-radius:18px;border:1px solid var(--line)}
+  .lesson1-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.lesson1-layout > .card {
+  min-width: 0;
+  margin: 0;
+}
+
+.lesson1-questions {
+  line-height: 1.8;
+}
+
+.lesson1-questions h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .lesson1-layout {
+    grid-template-columns: 1fr;
+  }
+}
+</style></head><body>
 <div class="lock" id="lock"><div><div class="brand">静中寻文 · HSK2</div><h2>Bài 13</h2><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><p id="err"></p></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>Bài 13 · 我们爱上中文课</small></div><div class="nav">
 <h5>Mở đầu</h5><button data-i="0" class="active">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động</button>
 <h5>Bài khóa 1</h5><button data-i="2">📚 Từ vựng 1</button><button data-i="3">🎧 Nghe 1</button><button data-i="4">💬 Bài khóa 1</button><button data-i="5">🧠 Câu có hai tân ngữ</button>
 <h5>Bài khóa 2</h5><button data-i="6">📚 Từ vựng 2</button><button data-i="7">🎧 Nghe 2</button><button data-i="8">💬 Bài khóa 2</button><button data-i="9">🧠 Câu so sánh (7)</button>
 <h5>Bài khóa 3</h5><button data-i="10">📚 Từ vựng 3</button><button data-i="11">🎧 Nghe 3</button><button data-i="12">💬 Bài khóa 3</button><button data-i="13">🧠 Câu so sánh (8)</button>
-<h5>Bài khóa 4</h5><button data-i="14">📚 Từ vựng 4</button><button data-i="15">📖 Bài khóa 4</button>
-<h5>Luyện tập</h5><button data-i="16">✏️ Bài tập tổng hợp</button><button data-i="17">🖼️ Nhìn tranh</button><button data-i="18">🎭 Hoạt động lớp</button><button data-i="19">🎯 Tổng kết</button>
+<h5>Bài khoá 4</h5>
+<button data-i="14">📚 Từ vựng 4</button>
+<button data-i="15">🎧 Nghe 4</button>
+<button data-i="16">📖 Bài khoá 4</button>
+<h5>Luyện tập</h5>
+<button data-i="17">✏️ Bài tập tổng hợp</button>
+<button data-i="18">🖼️ Nhìn tranh</button>
+<button data-i="19">🎭 Hoạt động lớp</button>
+<button data-i="20">🎯 Tổng kết</button>
 </div></aside>
-<main><div class="top"><b>HSK2 · Bài 13</b><span class="counter" id="counter">1 / 20</span></div>
+<main><div class="top"><b>HSK2 · Bài 13</b><span class="counter" id="counter">1 / 21</span></div>
 <section class="slide active"><div class="hero"><div><div class="py">Wǒmen ài shàng Zhōngwén kè</div><h1>我们爱上中文课</h1><h3>Chúng tôi yêu thích môn tiếng Trung Quốc</h3><p>Mục tiêu: sử dụng câu so sánh để nói sự khác biệt cụ thể/nhỏ; nắm cách dùng câu có hai tân ngữ để diễn đạt ý cho, tặng.</p><button class="btn primary" onclick="go(1)">Bắt đầu →</button></div></div></section>
 
 <section class="slide"><h2>🔥 Khởi động</h2><div class="card"><p><b>1.</b> Chọn hình tương ứng: A 教　B 花　C 新年　D 希望　E 告诉　F 洗手间</p><div class="warm-grid"><div class="pic"><img src="assets/img/warmup_1.png"></div><div class="pic"><img src="assets/img/warmup_2.png"></div><div class="pic"><img src="assets/img/warmup_3.png"></div><div class="pic"><img src="assets/img/warmup_4.png"></div><div class="pic"><img src="assets/img/warmup_5.png"></div><div class="pic"><img src="assets/img/warmup_6.png"></div></div><p><b>2.</b> Nói sự khác biệt: 上楼/楼上　下楼/楼下　上网/网上</p></div></section>
 
 <section class="slide"><h2>📚 Từ vựng 1</h2><div class="vocab" id="v1"></div><div id="detail1" class="deep-detail"></div><div class="card"><button class="btn" onclick="play('assets/audio/13-2.mp3')">▶ Nghe từ mới 13-2</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button></div></section>
 <section class="slide"><h2>🎧 Nghe Bài khóa 1</h2><div class="card listen"><button class="btn" onclick="play('assets/audio/13-1.mp3')">▶ Nghe 13-1</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button><p>（1）同学们想送给王老师什么？ A 花　B 衣服　C 中文书</p><p>（2）同学们今天要去哪儿看看？ A 教室　B 花店　C 商店</p></div></section>
-<section class="slide"><h2>💬 Bài khóa 1</h2><div class="read-tools"><button onclick="togglePy('d1')">Ẩn/Hiện 拼音</button><button onclick="toggleTr('d1')">Ẩn/Hiện nghĩa Việt</button></div><div class="dialogue" id="d1"></div></section>
-<section class="slide"><h2>🧠 Câu có hai tân ngữ (2)</h2><div class="card"><p>Câu có hai tân ngữ: động từ mang hai tân ngữ, thường tân ngữ thứ nhất chỉ người, tân ngữ thứ hai chỉ sự vật.</p><div class="formula">王老师喜欢花，就送给她花吧。<br>她拿给我一杯水。<br>他卖给我一本中文书。</div></div></section>
+<section class="slide">
+  <h2>💬 Bài khoá 1</h2>
 
+  <div class="read-tools">
+    <button onclick="togglePy('d1')">Ẩn/Hiện 拼音</button>
+    <button onclick="toggleTr('d1')">Ẩn/Hiện nghĩa Việt</button>
+  </div>
+
+  <div class="lesson1-layout">
+    <div class="card lesson1-dialogue">
+      <div class="dialogue" id="d1"></div>
+    </div>
+
+    <div class="card lesson1-questions">
+      <h3>📍 Câu hỏi</h3>
+
+      <p>分角色朗读对话，读后回答问题。</p>
+      <p>
+        Phân vai đọc to đoạn hội thoại, sau đó trả lời câu hỏi.
+      </p>
+
+      <p>（1）同学们为什么爱上中文课？</p>
+      <p>（2）陈天中希望花店现在还有什么？</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <h2>🧠 双宾语句（2） Câu có hai tân ngữ (2)</h2>
+
+  <div class="card">
+    <p>
+      双宾语句是一个动词带两个宾语的句子，一般前一个宾语指人，
+      后一个宾语指事物。本课学习动词“拿、送、卖”加“给”
+      构成的双宾语句。例如：
+    </p>
+
+    <p>
+      Câu có hai tân ngữ là câu mà động từ mang hai tân ngữ,
+      thông thường tân ngữ thứ nhất chỉ người, tân ngữ thứ hai
+      chỉ sự vật. Trong bài này, câu hai tân ngữ được tạo bởi
+      các động từ “拿”, “送”, “卖” và “给”. Ví dụ:
+    </p>
+
+    <div class="formula">
+      <p>（1）王老师喜欢花，就送给她花吧。</p>
+      <p>（2）她拿给我一杯水。</p>
+      <p>（3）他卖给我一本中文书。</p>
+    </div>
+
+    <h3>🔶 完成对话。 Hoàn thành hội thoại.</h3>
+
+    <div style="line-height: 1.9;">
+      <p>
+        （1）A：我想送给<span class="blank"></span>，她会喜欢吗？<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：没问题，她的爱好就是读书。
+        </span>
+      </p>
+
+      <p>
+        （2）A：昨天过生日，爸爸送<span class="blank"></span>。<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：我看看。这个手机很好啊！
+        </span>
+      </p>
+
+      <p>
+        （3）A：小雪，你爸爸回来了吗？<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：回来了，他还拿<span class="blank"></span>。
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
 <section class="slide"><h2>📚 Từ vựng 2</h2><div class="vocab" id="v2"></div><div id="detail2" class="deep-detail"></div><div class="card"><button class="btn" onclick="play('assets/audio/13-4.mp3')">▶ Nghe từ mới 13-4</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button></div></section>
 <section class="slide"><h2>🎧 Nghe Bài khóa 2</h2><div class="card listen"><button class="btn" onclick="play('assets/audio/13-3.mp3')">▶ Nghe 13-3</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button><p>（1）今天的词比昨天多多少？ A 四个　B 七个　C 十个</p><p>（2）同学们写错了哪个字？ A 口　B 日　C 间</p></div></section>
-<section class="slide"><h2>💬 Bài khóa 2</h2><div class="read-tools"><button onclick="togglePy('d2')">Ẩn/Hiện 拼音</button><button onclick="toggleTr('d2')">Ẩn/Hiện nghĩa Việt</button></div><div class="dialogue" id="d2"></div></section>
-<section class="slide"><h2>🧠 Câu so sánh (7)</h2><div class="card"><p>Trong câu so sánh dùng “比”, cụm từ chỉ số lượng đặt sau tính từ để biểu thị sự khác biệt cụ thể.</p><div class="formula">A 比 B + tính từ + cụm từ chỉ số lượng<br>今天的词比昨天多了十个。<br>姐姐比我大三岁。</div></div></section>
+<section class="slide">
+  <h2>💬 Bài khoá 2</h2>
+
+  <div class="read-tools">
+    <button onclick="togglePy('d2')">Ẩn/Hiện 拼音</button>
+    <button onclick="toggleTr('d2')">Ẩn/Hiện nghĩa Việt</button>
+  </div>
+
+  <div class="lesson1-layout">
+    <div class="card lesson1-dialogue">
+      <div class="dialogue" id="d2"></div>
+    </div>
+
+    <div class="card lesson1-questions">
+      <h3>📍 Câu hỏi</h3>
+
+      <p>分角色朗读对话，读后回答问题。</p>
+      <p>
+        Phân vai đọc to đoạn hội thoại, sau đó trả lời câu hỏi.
+      </p>
+
+      <p>（1）王老师让同学们在哪儿写字？</p>
+      <p>（2）“间”比“问”多几笔？</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <h2>🧠 比较句（7） Câu so sánh (7)</h2>
+
+  <div class="card">
+    <p>
+      用“比”表示的比较句中，数量短语放在形容词后面，
+      表示具体差别。基本结构：A比B+形容词+数量短语。例如：
+    </p>
+
+    <p>
+      Trong câu so sánh sử dụng “比”, cụm từ chỉ số lượng được
+      đặt sau tính từ để biểu thị sự khác biệt cụ thể.
+      Cấu trúc cơ bản: A 比 B + tính từ + cụm từ chỉ số lượng.
+      Ví dụ:
+    </p>
+
+    <div class="formula">
+      <p>（1）今天的词比昨天多了十个。</p>
+      <p>（2）姐姐比我大三岁。</p>
+      <p>（3）坐飞机比坐火车快五个多小时。</p>
+    </div>
+
+    <h3>🔶 完成对话。 Hoàn thành hội thoại.</h3>
+
+    <div style="line-height: 1.9;">
+      <p>
+        （1）A：今天你是几点起床的？<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：七点半，比昨天早<span class="blank"></span>。
+        </span>
+      </p>
+
+      <p>
+        （2）A：这一课的汉字真多啊！<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：是啊，比第十课多<span class="blank"></span>。
+        </span>
+      </p>
+
+      <p>
+        （3）A：你比弟弟大几岁？<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：<span class="blank"></span>。
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
 
 <section class="slide"><h2>📚 Từ vựng 3</h2><div class="vocab" id="v3"></div><div id="detail3" class="deep-detail"></div><div class="card"><button class="btn" onclick="play('assets/audio/13-6.mp3')">▶ Nghe từ mới 13-6</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button></div></section>
 <section class="slide"><h2>🎧 Nghe Bài khóa 3</h2><div class="card listen"><button class="btn" onclick="play('assets/audio/13-5.mp3')">▶ Nghe 13-5</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button><p>（1）这个本子是在哪儿买的？ A 商店　B 超市　C 网上</p><p>（2）安妮让白家月送给她什么礼物？ A 本子　B 咖啡　C 咖啡杯</p></div></section>
-<section class="slide"><h2>💬 Bài khóa 3</h2><div class="read-tools"><button onclick="togglePy('d3')">Ẩn/Hiện 拼音</button><button onclick="toggleTr('d3')">Ẩn/Hiện nghĩa Việt</button></div><img class="scene" src="assets/img/notebook.png"><div class="dialogue" id="d3"></div></section>
-<section class="slide"><h2>🧠 Câu so sánh (8)</h2><div class="card"><p>Trong câu so sánh dùng “比”, “一点儿” hoặc “一些” đặt sau tính từ để biểu thị sự khác biệt không lớn.</p><div class="formula">A 比 B + tính từ + 一点儿 / 一些<br>比我们一起买的那个本子贵一点儿。<br>姐姐比我高一点儿。</div></div></section>
+<section class="slide">
+  <h2>💬 Bài khoá 3</h2>
 
+  <div class="read-tools">
+    <button onclick="togglePy('d3')">Ẩn/Hiện 拼音</button>
+    <button onclick="toggleTr('d3')">Ẩn/Hiện nghĩa Việt</button>
+  </div>
+
+  <div class="lesson1-layout">
+    <div class="card lesson1-dialogue">
+      <img
+        class="scene"
+        src="assets/img/notebook.png"
+        alt="Cuốn vở"
+        style="max-width: 100%; height: auto;"
+      >
+
+      <div class="dialogue" id="d3"></div>
+    </div>
+
+    <div class="card lesson1-questions">
+      <h3>📍 Câu hỏi</h3>
+
+      <p>分角色朗读对话，读后回答问题。</p>
+      <p>
+        Phân vai đọc to đoạn hội thoại, sau đó trả lời câu hỏi.
+      </p>
+
+      <p>（1）白家月觉得这个本子怎么样？</p>
+      <p>（2）白家月和安妮都有新年礼物了吗？</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <h2>🧠 比较句（8） Câu so sánh (8)</h2>
+
+  <div class="card">
+    <p>
+      用“比”表示的比较句中，“一点儿”或“一些”用在形容词后面，
+      表示差别不大。基本结构：A比B+形容词+一点儿/一些。例如：
+    </p>
+
+    <p>
+      Trong câu so sánh dùng “比”, “一点儿” hoặc “一些” được đặt
+      sau tính từ để biểu thị sự khác biệt không lớn.
+      Cấu trúc cơ bản: A 比 B + tính từ + 一点儿/一些. Ví dụ:
+    </p>
+
+    <div class="formula">
+      <p>（1）比我们一起买的那个本子贵一点儿。</p>
+      <p>（2）姐姐比我高一点儿。</p>
+      <p>（3）那间教室比这间大一些。</p>
+    </div>
+
+    <h3>🔶 完成对话。 Hoàn thành hội thoại.</h3>
+
+    <div style="line-height: 1.9;">
+      <p>
+        （1）A：你觉得这条白色的裤子长不长？<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：<span class="blank"></span>那条黑色的<span class="blank"></span>，
+          还是买那条吧。
+        </span>
+      </p>
+
+      <p>
+        （2）A：今天的苹果<span class="blank"></span>昨天的<span class="blank"></span>。<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：便宜的也很好吃。
+        </span>
+      </p>
+
+      <p>
+        （3）A：姐姐的书和本子比我多，所以她的书包<span class="blank"></span>。<br>
+        <span style="display: inline-block; padding-left: 3em;">
+          B：也比你的书包贵一点儿。
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
 <section class="slide"><h2>📚 Từ vựng 4</h2><div class="vocab" id="v4"></div><div id="detail4" class="deep-detail"></div><div class="card"><button class="btn" onclick="play('assets/audio/13-8.mp3')">▶ Nghe từ mới 13-8</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button></div></section>
-<section class="slide"><h2>📖 Bài khóa 4</h2><div class="read-tools"><button onclick="togglePy('d4')">Ẩn/Hiện 拼音</button><button onclick="toggleTr('d4')">Ẩn/Hiện nghĩa Việt</button></div><div class="dialogue" id="d4"></div><div class="card"><button class="btn" onclick="play('assets/audio/13-7.mp3')">▶ Nghe 13-7</button> <button class="btn" onclick="stopAudio()">⏹ Dừng</button><p>（1）安妮送了白家月一个新年礼物。 （　）</p><p>（2）白家月送了王老师漂亮的花。 （　）</p></div></section>
+<!-- NGHE 4 -->
+<section class="slide">
+  <h2>🎧 Nghe Bài khoá 4</h2>
 
+  <div class="card listen">
+    <button
+      class="btn"
+      onclick="play('assets/audio/13-7.mp3')"
+    >▶ Nghe 13-7</button>
+
+    <button
+      class="btn"
+      onclick="stopAudio()"
+    >■ Dừng</button>
+
+    <p>（1）安妮送了白家月一个新年礼物。（　）</p>
+    <p>（2）白家月送了王老师漂亮的花。（　）</p>
+  </div>
+</section>
+
+<!-- BÀI KHOÁ 4 -->
+<section class="slide">
+  <h2>📖 Bài khoá 4</h2>
+
+  <div class="read-tools">
+    <button onclick="togglePy('d4')">Ẩn/Hiện 拼音</button>
+    <button onclick="toggleTr('d4')">Ẩn/Hiện nghĩa Việt</button>
+  </div>
+
+  <div class="dialogue" id="d4"></div>
+
+  <div class="card" style="margin-top: 20px; line-height: 1.8;">
+    <h3>📍 Câu hỏi</h3>
+
+    <p>朗读课文，读后选择正确答案。</p>
+    <p>Đọc to bài khoá, sau đó lựa chọn đáp án đúng.</p>
+
+    <p>（1）这个新本子贵不贵？（　）</p>
+
+    <div style="padding-left: 2em;">
+      <p>A　没有白家月的本子贵</p>
+      <p>B　比白家月的本子贵多了</p>
+      <p>C　比白家月的本子贵一点儿</p>
+    </div>
+
+    <p>（2）同学们为什么送王老师花？（　）</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 16px 40px;">
+      <span>A　她很漂亮</span>
+      <span>B　她要回国了</span>
+      <span>C　新年就要到了</span>
+    </div>
+  </div>
+</section>
 <section class="slide"><h2>✏️ Bài tập tổng hợp</h2><div class="card"><p>Chọn: A 上网　B 可能　C 班　D 告诉　E 里面</p><p>（1）你们 ______ 有多少学生？</p><p>（2）我经常 ______ 听歌、看电影。</p><p>（3）教室的门开着，但是 ______ 没有人。</p><p>（4）小李呢？—— ______ 去洗手间了。</p><p>（5）姐姐，家月 ______ 我你已经接到她们了。</p></div></section>
-<section class="slide"><h2>🖼️ Điền từ vào chỗ trống theo tranh</h2>
-<div class="pic-grid">
-<div class="pic"><img src="assets/img/describe_1.png"><p class="zh" style="font-size:22px;margin:12px 6px 4px">老师 ______ 我们新的汉字。</p></div>
-<div class="pic"><img src="assets/img/describe_2.png"><p class="zh" style="font-size:22px;margin:12px 6px 4px">哥哥比我大 ______，我喜欢跟他玩。</p></div>
-<div class="pic"><img src="assets/img/describe_3.png"><p class="zh" style="font-size:22px;margin:12px 6px 4px">妻子游得 ______ 丈夫快 ______。</p></div>
-<div class="pic"><img src="assets/img/describe_4.png"><p class="zh" style="font-size:22px;margin:12px 6px 4px">我们一起高高兴兴地过 ______。</p></div>
-</div></section>
+<section class="slide">
+  <img
+    src="assets/img/nhin-tranh.png"
+    alt=""
+    style="display: block; width: 100%; height: auto;"
+  >
+</section>
 <section class="slide"><h2>🎭 Hoạt động trên lớp</h2><div class="card"><p>Sắp đến năm mới rồi, hai người một nhóm, tặng quà cho nhau và mời đối phương đến nhà dự tiệc. Cố gắng sử dụng tối đa từ vựng và điểm ngôn ngữ đã học.</p><div class="formula">A：就要过新年了，我送你一个小礼物。<br>B：这么好啊，你还给我准备了礼物。……</div></div></section>
 <section class="slide"><h2>🎯 Tổng kết Bài 13</h2><div class="card"><p>✓ Câu có hai tân ngữ với 拿、送、卖、给.</p><p>✓ So sánh bằng 比 với cụm từ chỉ số lượng.</p><p>✓ So sánh khác biệt nhỏ với 一点儿 / 一些.</p><p>✓ Từ trọng tâm: 新年、教、花、希望、上面、洗手间、里面、笔、可能、上网、那样、告诉、班.</p></div></section>
 </main></div><canvas id="teachCanvas"></canvas><div class="teachbar"><button id="tbToggle" onclick="setTeachTool('pen')">✏️ Bút</button><button id="tbHi" onclick="setTeachTool('highlight')">🖍 Highlight</button><button id="tbEr" onclick="setTeachTool('eraser')">🧽 Tẩy</button><button onclick="undoTeach()">↶ Undo</button><button onclick="redoTeach()">↷ Redo</button><button onclick="addTeachText()">T Văn bản</button><button onclick="deleteTeachText()">🗑 Xóa văn bản</button><button onclick="clearTeach()">🗑 Xóa bảng</button></div><div class="footer"><button class="btn" onclick="go(cur-1)">← Trước</button><button class="btn primary" onclick="go(cur+1)">Tiếp →</button></div>
