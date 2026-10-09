@@ -3,7 +3,37 @@
 <style>
 :root{--p:#789B91;--p2:#91B3A8;--soft:#F1F7F4;--soft2:#EDF6F2;--peach:#F7F4EC;--ink:#3F514C;--muted:#7B8D87;--line:#DFEAE5;--bg:#FAFCFB;--surface:#FFFFFF;--ok:#EEF7F3}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Noto Sans",Arial,sans-serif;color:var(--ink);background:var(--bg)}.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--surface);border-right:1px solid var(--line);padding:24px 16px}.brand{font-weight:900;font-size:25px;color:var(--p)}.brand small{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-top:4px}.nav-section{margin-top:18px}.nav-section-title{font-size:11px;color:#98a2b3;text-transform:uppercase;letter-spacing:.08em;padding:0 12px 6px}.nav button{width:100%;text-align:left;border:0;background:transparent;padding:10px 12px;border-radius:12px;margin:2px 0;cursor:pointer;color:#344054;font-size:14px}.nav button.active{background:var(--soft);color:var(--p);font-weight:800}.main{padding:28px 32px 90px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.crumb{font-weight:800;color:var(--p)}.counter{background:var(--soft);color:var(--p);font-weight:800;border-radius:999px;padding:7px 12px}.slide{display:none}.slide.active{display:block}.hero{background:linear-gradient(135deg,#E7F2ED,#DDECE6 58%,#F6F2E9);color:var(--ink);border:1px solid var(--line);border-radius:28px;padding:54px;min-height:320px;display:flex;align-items:center;box-shadow:0 20px 55px rgba(94,128,118,.10)}.hero h1{font-size:48px;margin:5px 0}.hero .py{font-size:20px;color:#5F687B}.go,.btn{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 15px;font-size:15px;cursor:pointer}.go{margin-top:18px;border:0;font-weight:800;color:var(--p)}.btn.primary{background:#789B91;color:#fff;border-color:#789B91}.btn.primary:hover{background:#668A80}.go{box-shadow:0 6px 18px rgba(94,128,118,.10)}h2{font-size:30px;margin:8px 0 8px}.sub{color:var(--muted);margin-top:0}.stage-title{display:flex;gap:12px;align-items:center}.stage-no{width:38px;height:38px;border-radius:12px;background:var(--p);color:#fff;display:grid;place-items:center;font-weight:900}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 26px rgba(16,24,40,.05)}.picq img{width:100%;aspect-ratio:1.18/1;object-fit:contain;background:#fff;border-radius:14px}.picq .opts{margin-top:10px;font-weight:700}.table{width:100%;border-collapse:collapse}.table th,.table td{border:1px solid var(--line);padding:12px;text-align:left}.table th{background:var(--soft);color:var(--p)}.vocab{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.word{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;cursor:pointer}.word .hz{font-size:30px;font-weight:900}.word .py{color:var(--p);font-weight:700}.meaning{margin-top:5px}.tag{display:inline-block;margin-top:9px;font-size:12px;background:var(--soft2);color:var(--p2);padding:4px 8px;border-radius:999px}.spk{position:absolute;right:9px;top:9px;border:0;background:var(--soft);border-radius:9px;padding:6px;cursor:pointer}.deep-detail{margin-top:16px}.detailbox{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px}.chars{display:flex;gap:14px;flex-wrap:wrap}.charbox{min-width:160px;background:var(--soft);border-radius:15px;padding:12px}.writer{width:110px;height:110px;background:#fff;border-radius:10px;margin-bottom:7px}.dialogue{display:flex;flex-direction:column;gap:10px}.bubble{background:var(--soft);border-radius:16px;padding:14px 16px;max-width:88%}.bubble.right{align-self:flex-end;background:var(--soft2)}.speaker{font-size:12px;color:var(--muted);font-weight:800}.zh{font-size:23px;margin:4px 0}.py{color:var(--p2)}.trans{color:#475467;margin-top:3px}.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.context{background:linear-gradient(135deg,#EEF6F2,#E8F2ED)}.listenbox audio{width:100%;margin:12px 0}.q{padding:13px 0;border-bottom:1px dashed var(--line)}.q:last-child{border:0}.choices label{display:block;padding:6px 0}.grammar .formula{font-size:21px;font-weight:800;background:var(--soft);padding:14px;border-radius:14px;margin:10px 0}.answerline{display:inline-block;min-width:120px;border-bottom:2px solid #98a2b3}.footer-nav{position:fixed;bottom:18px;left:330px;right:28px;display:flex;justify-content:space-between;pointer-events:none}.footer-nav button{pointer-events:auto}.lock{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#E2EFEA,#DDECE6 55%,#F5EFE4);display:grid;place-items:center}.lock-card{width:min(430px,90vw);background:var(--surface);border-radius:24px;padding:30px;text-align:center}.lock-card input{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;margin:10px 0}.err{color:#b42318;font-size:13px}.rolebox{font-size:18px}.formula{line-height:1.8}.hide{display:none!important}.word-extra{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.extra-box{background:var(--peach);border:1px solid #E2DDD2;border-radius:14px;padding:14px}.extra-box h4{margin:0 0 7px;color:#526C64}.extra-zh{font-size:20px;font-weight:750;margin-bottom:3px}.extra-py{font-size:13px;color:var(--p2);margin-bottom:4px}.extra-vi{color:#626477}.collocs{display:flex;flex-wrap:wrap;gap:7px}.colloc{background:rgba(255,255,255,.7);border:1px solid #DCE5E0;border-radius:999px;padding:6px 10px;font-size:14px}
 /* Bảng viết giáo viên - có mặt trên mọi trang */
-#teachCanvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:8000;pointer-events:none;touch-action:none}#teachCanvas.draw-on{pointer-events:auto}.teachbar{position:fixed;z-index:8100;right:22px;top:18px;display:flex;gap:7px;flex-wrap:wrap;max-width:min(760px,calc(100vw - 44px));padding:8px;background:rgba(255,254,253,.94);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 30px rgba(63,64,86,.12);backdrop-filter:blur(8px)}.teachbar button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink);font-weight:700}.teachbar button.on{background:var(--soft);color:var(--p);border-color:#D5E5DE}.teachbar .danger{background:#FFF4F1}.teach-text{position:fixed;z-index:8050;min-width:120px;min-height:38px;padding:7px 9px;border:1px dashed var(--p);border-radius:8px;background:rgba(255,255,255,.72);outline:none;font-size:22px;color:var(--ink)}
+#teachCanvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:8000;pointer-events:none;touch-action:none}#teachCanvas.draw-on{pointer-events:auto}.teachbar{position:fixed;z-index:8100;right:22px;top:18px;display:flex;gap:7px;flex-wrap:wrap;max-width:min(760px,calc(100vw - 44px));padding:8px;background:rgba(255,254,253,.94);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 30px rgba(63,64,86,.12);backdrop-filter:blur(8px)}.teachbar button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--ink);font-weight:700}.teachbar button.on{background:var(--soft);color:var(--p);border-color:#D5E5DE}.teachbar .danger{background:#FFF4F1}.teach-text{
+  position:fixed;
+  z-index:8050;
+  min-width:160px;
+  max-width:calc(100vw - 20px);
+  border:1px dashed var(--p);
+  border-radius:8px;
+  background:rgba(255,255,255,.94);
+  color:var(--ink);
+}
+
+.teach-text-handle{
+  padding:5px 9px;
+  border-bottom:1px solid var(--line);
+  border-radius:8px 8px 0 0;
+  background:var(--soft);
+  font-size:12px;
+  font-weight:700;
+  cursor:move;
+  user-select:none;
+  touch-action:none;
+}
+
+.teach-text-editor{
+  min-height:38px;
+  padding:7px 9px;
+  outline:none;
+  font-size:22px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
 @media(max-width:700px){.word-extra{grid-template-columns:1fr}}@media(max-width:1050px){.vocab,.grid4{grid-template-columns:repeat(2,1fr)}}@media(max-width:850px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.nav{display:flex;overflow:auto}.nav-section{margin:5px}.nav-section-title{display:none}.nav button{white-space:nowrap}.grid,.vocab,.grid4{grid-template-columns:1fr}.main{padding:20px}.footer-nav{left:20px}.hero{padding:30px}.hero h1{font-size:38px}}
 </style><style id="unified-green">
 :root{--bg:#F4F9F6!important;--panel:#fff!important;--ink:#31443B!important;--muted:#718079!important;--primary:#78A892!important;--primary2:#A8CBB9!important;--line:#DCEAE2!important;--blue:#668F7C!important;--yellow:#F5F8EE!important;--shadow:0 10px 30px rgba(72,110,91,.08)!important}
@@ -163,5 +193,88 @@ tc.addEventListener('pointerdown',passTeachClick,true);
 
 tc.addEventListener('mousedown',startDraw);tc.addEventListener('mousemove',moveDraw);addEventListener('mouseup',endDraw);tc.addEventListener('touchstart',startDraw,{passive:false});tc.addEventListener('touchmove',moveDraw,{passive:false});tc.addEventListener('touchend',endDraw);
 function clearTeach(){snapTeach();tx.clearRect(0,0,innerWidth,innerHeight);document.querySelectorAll('.teach-text').forEach(x=>x.remove())}function undoTeach(){if(!history.length)return;redoStack.push(tc.toDataURL());restoreTeach(history.pop())}function redoTeach(){if(!redoStack.length)return;history.push(tc.toDataURL());restoreTeach(redoStack.pop())}
-function addTeachText(){setTeachTool('text');let d=document.createElement('div');d.className='teach-text';d.contentEditable='true';d.textContent='Nhập văn bản…';d.style.left='38%';d.style.top='24%';document.body.appendChild(d);d.focus();d.addEventListener('mousedown',e=>e.stopPropagation());d.addEventListener('blur',()=>{if(!d.textContent.trim())d.remove()})}
+function addTeachText(){
+  setTeachTool('text');
+
+  const box = document.createElement('div');
+  box.className = 'teach-text';
+  box.style.left = '38%';
+  box.style.top = '24%';
+
+  const handle = document.createElement('div');
+  handle.className = 'teach-text-handle';
+  handle.textContent = '✥ Kéo di chuyển';
+
+  const editor = document.createElement('div');
+  editor.className = 'teach-text-editor';
+  editor.contentEditable = 'true';
+  editor.textContent = 'Nhập văn bản…';
+
+  box.append(handle, editor);
+  document.body.appendChild(box);
+
+  // Không để thao tác trên ô chữ truyền xuống bảng vẽ.
+  box.addEventListener('pointerdown', e => e.stopPropagation());
+  box.addEventListener('mousedown', e => e.stopPropagation());
+
+  let drag = null;
+
+  handle.addEventListener('pointerdown', e => {
+    if(e.button !== 0) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const rect = box.getBoundingClientRect();
+
+    // Chuyển vị trí phần trăm sang pixel trước khi kéo.
+    box.style.left = rect.left + 'px';
+    box.style.top = rect.top + 'px';
+
+    drag = {
+      id: e.pointerId,
+      offsetX: e.clientX - rect.left,
+      offsetY: e.clientY - rect.top
+    };
+
+    handle.setPointerCapture(e.pointerId);
+  });
+
+  handle.addEventListener('pointermove', e => {
+    if(!drag || e.pointerId !== drag.id) return;
+
+    e.preventDefault();
+
+    const maxX = Math.max(0, window.innerWidth - box.offsetWidth);
+    const maxY = Math.max(0, window.innerHeight - box.offsetHeight);
+
+    const x = Math.max(0, Math.min(
+      e.clientX - drag.offsetX, maxX
+    ));
+
+    const y = Math.max(0, Math.min(
+      e.clientY - drag.offsetY, maxY
+    ));
+
+    box.style.left = x + 'px';
+    box.style.top = y + 'px';
+  });
+
+  function finishDrag(e){
+    if(!drag || e.pointerId !== drag.id) return;
+    drag = null;
+
+    if(handle.hasPointerCapture(e.pointerId)){
+      handle.releasePointerCapture(e.pointerId);
+    }
+  }
+
+  handle.addEventListener('pointerup', finishDrag);
+  handle.addEventListener('pointercancel', finishDrag);
+  handle.addEventListener('lostpointercapture', () => {
+    drag = null;
+  });
+
+  editor.focus();
+}
 </script></body></html>
