@@ -39,6 +39,36 @@
 </style><style id="unified-green">
 :root{--bg:#F4F9F6!important;--panel:#fff!important;--ink:#31443B!important;--muted:#718079!important;--primary:#78A892!important;--primary2:#A8CBB9!important;--line:#DCEAE2!important;--blue:#668F7C!important;--yellow:#F5F8EE!important;--shadow:0 10px 30px rgba(72,110,91,.08)!important}
 body{background:#F4F9F6!important;color:#31443B!important}aside{background:#F9FCFA!important;border-color:#DCEAE2!important}.logo,.brand-mini{color:#5F907A!important}.nav button.active,.badge{background:#E8F3ED!important;color:#4F7F6A!important}.progress{background:#E4EEE8!important}.progress>i{background:#78A892!important}.hero{background:linear-gradient(135deg,#A8CBB9,#D8E9DF)!important;color:#31443B!important}.hero .go,.btn.primary,.lock button{background:#78A892!important;color:#fff!important}.card,.word,.footer button{background:#fff!important;border-color:#DCEAE2!important}.py{color:#668F7C!important}.spk{background:#EAF4EF!important;color:#557E6B!important}.bubble{background:#EEF5F1!important}.bubble.right{background:#E4F0EA!important}.speaker{color:#5F907A!important}.grammar .formula,.formula{background:#EAF4EF!important;color:#4D7865!important}.lesson-feature{background:#F2F8F5!important;border-color:#D8E8DF!important}.memo{background:#F4F8EF!important;border-color:#DCE8CF!important;color:#53634E!important}.listenbox{background:#EFF7F3!important;border-color:#D4E7DD!important}.lock{background:linear-gradient(135deg,#E7F2EC,#F8FBF9)!important}.lock-logo{color:#5F907A!important}#teacherTools button.active{background:#E8F3ED!important;color:#4F7F6A!important;border-color:#C9E0D4!important}
+</style><style>
+.teach-text {
+  padding: 0;
+  pointer-events: auto;
+}
+
+.teach-text-handle {
+  padding: 5px 9px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  border-radius: 8px 8px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.teach-text-handle:active {
+  cursor: grabbing;
+}
+
+.teach-text-editor {
+  min-width: 120px;
+  min-height: 38px;
+  padding: 7px 9px;
+  outline: none;
+  cursor: text;
+}
 </style></head><body>
 <div class="lock" id="lock"><div class="lock-card"><div class="brand">静中寻文 · HSK2</div><h2>Bài 2 · Khu vực học viên</h2><p class="sub">Nhập mật mã để mở bài học.</p><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><div class="err" id="err"></div></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>jingzhongxunwen · New HSK 2<br>Bài 2 · 还是打车去北大吧</small></div><div class="nav" id="nav">
@@ -423,5 +453,81 @@ tc.addEventListener('pointerdown',passTeachClick,true);
 
 tc.addEventListener('mousedown',startDraw);tc.addEventListener('mousemove',moveDraw);addEventListener('mouseup',endDraw);tc.addEventListener('touchstart',startDraw,{passive:false});tc.addEventListener('touchmove',moveDraw,{passive:false});tc.addEventListener('touchend',endDraw);
 function clearTeach(){snapTeach();tx.clearRect(0,0,innerWidth,innerHeight);document.querySelectorAll('.teach-text').forEach(x=>x.remove())}function undoTeach(){if(!history.length)return;redoStack.push(tc.toDataURL());restoreTeach(history.pop())}function redoTeach(){if(!redoStack.length)return;history.push(tc.toDataURL());restoreTeach(redoStack.pop())}
-function addTeachText(){setTeachTool('text');let d=document.createElement('div');d.className='teach-text';d.contentEditable='true';d.textContent='Nhập văn bản…';d.style.left='38%';d.style.top='24%';document.body.appendChild(d);d.focus();d.addEventListener('mousedown',e=>e.stopPropagation());d.addEventListener('blur',()=>{if(!d.textContent.trim())d.remove()})}
+function addTeachText() {
+  setTeachTool('text');
+
+  const box = document.createElement('div');
+  box.className = 'teach-text';
+  box.style.left = '38%';
+  box.style.top = '24%';
+
+  const handle = document.createElement('div');
+  handle.className = 'teach-text-handle';
+  handle.textContent = '⠿ Kéo di chuyển';
+
+  const editor = document.createElement('div');
+  editor.className = 'teach-text-editor';
+  editor.contentEditable = 'true';
+  editor.textContent = 'Nhập văn bản…';
+
+  box.append(handle, editor);
+  document.body.appendChild(box);
+
+  // Giữ thao tác trong ô văn bản, tránh ảnh hưởng bảng vẽ.
+  box.addEventListener('pointerdown', e => e.stopPropagation());
+  box.addEventListener('mousedown', e => e.stopPropagation());
+
+  let drag = null;
+
+  handle.addEventListener('pointerdown', e => {
+    if (!e.isPrimary || e.button !== 0) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const rect = box.getBoundingClientRect();
+
+    drag = {
+      pointerId: e.pointerId,
+      offsetX: e.clientX - rect.left,
+      offsetY: e.clientY - rect.top
+    };
+
+    handle.setPointerCapture(e.pointerId);
+  });
+
+  handle.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.pointerId) return;
+
+    e.preventDefault();
+
+    // Giới hạn vị trí để ô không bị kéo ra ngoài màn hình.
+    const maxX = Math.max(0, window.innerWidth - box.offsetWidth);
+    const maxY = Math.max(0, window.innerHeight - box.offsetHeight);
+
+    const x = Math.max(0, Math.min(maxX, e.clientX - drag.offsetX));
+    const y = Math.max(0, Math.min(maxY, e.clientY - drag.offsetY));
+
+    box.style.left = x + 'px';
+    box.style.top = y + 'px';
+  });
+
+  function stopDrag(e) {
+    if (!drag || e.pointerId !== drag.pointerId) return;
+
+    drag = null;
+
+    if (handle.hasPointerCapture(e.pointerId)) {
+      handle.releasePointerCapture(e.pointerId);
+    }
+  }
+
+  handle.addEventListener('pointerup', stopDrag);
+  handle.addEventListener('pointercancel', stopDrag);
+  handle.addEventListener('lostpointercapture', () => {
+    drag = null;
+  });
+
+  editor.focus();
+}
 </script></body></html>
