@@ -28,6 +28,36 @@ h2{font-size:30px;margin:8px 0}.sub{color:var(--muted)}.grid{display:grid;grid-t
 .warm-choice{justify-content:center}.warm-choice button{min-width:38px;font-weight:800}
 @media(max-width:1050px){.warm-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.warm-grid{grid-template-columns:1fr}}
+</style><style>
+.teach-text {
+  padding: 0;
+  pointer-events: auto;
+}
+
+.teach-text-handle {
+  padding: 5px 9px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  border-radius: 8px 8px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.teach-text-handle:active {
+  cursor: grabbing;
+}
+
+.teach-text-editor {
+  min-width: 120px;
+  min-height: 38px;
+  padding: 7px 9px;
+  outline: none;
+  cursor: text;
+}
 </style></head>
 <body><div class="lock" id="lock"><div class="lock-card"><div class="brand">静中寻文 · HSK2</div><h2>Bài 6 · Khu vực học viên</h2><p class="sub">Nhập mật mã để mở bài học.</p><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><div class="err" id="err"></div></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>jingzhongxunwen · New HSK 2<br>Bài 6 · 小雪，生日快乐！</small></div><div class="nav">
@@ -367,7 +397,85 @@ canvas.addEventListener('pointermove',e=>{if(!drawing)return;let[x,y]=pos(e);ctx
 });
 function restore(url){let im=new Image();im.onload=()=>{ctx.clearRect(0,0,innerWidth,innerHeight);ctx.drawImage(im,0,0,innerWidth,innerHeight)};im.src=url}
 function undoTeach(){if(history.length){redo.push(canvas.toDataURL());restore(history.pop())}}function redoTeach(){if(redo.length){history.push(canvas.toDataURL());restore(redo.pop())}}function clearTeach(){snap();ctx.clearRect(0,0,innerWidth,innerHeight)}
-let activeTeachText=null;function addTeachText(){let d=document.createElement('div');d.className='teach-text';d.contentEditable=true;d.textContent='Nhập văn bản';d.style.left='45%';d.style.top='30%';d.addEventListener('focus',()=>activeTeachText=d);document.body.appendChild(d);activeTeachText=d;d.focus()}
+let activeTeachText=null;function addTeachText() {
+  const box = document.createElement('div');
+  box.className = 'teach-text';
+  box.style.left = '45%';
+  box.style.top = '30%';
+  box.dataset.teachText = '1';
+
+  const handle = document.createElement('div');
+  handle.className = 'teach-text-handle';
+  handle.textContent = '⠿ Kéo di chuyển';
+
+  const editor = document.createElement('div');
+  editor.className = 'teach-text-editor';
+  editor.contentEditable = 'true';
+  editor.textContent = 'Nhập văn bản';
+
+  function selectText() {
+    activeTeachText = box;
+    document.querySelectorAll('.teach-text').forEach(el => {
+      el.classList.remove('selected');
+    });
+    box.classList.add('selected');
+  }
+
+  box.addEventListener('pointerdown', e => {
+    e.stopPropagation();
+    selectText();
+  });
+  box.addEventListener('mousedown', e => e.stopPropagation());
+  editor.addEventListener('focus', selectText);
+
+  let drag = null;
+
+  handle.addEventListener('pointerdown', e => {
+    if (!e.isPrimary || e.button !== 0) return;
+    e.preventDefault();
+
+    const rect = box.getBoundingClientRect();
+    drag = {
+      id: e.pointerId,
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+
+    handle.setPointerCapture(e.pointerId);
+  });
+
+  handle.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    e.preventDefault();
+
+    const maxX = Math.max(0, innerWidth - box.offsetWidth);
+    const maxY = Math.max(0, innerHeight - box.offsetHeight);
+
+    box.style.left =
+      Math.max(0, Math.min(maxX, e.clientX - drag.x)) + 'px';
+    box.style.top =
+      Math.max(0, Math.min(maxY, e.clientY - drag.y)) + 'px';
+  });
+
+  function stopDrag(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    drag = null;
+    if (handle.hasPointerCapture(e.pointerId)) {
+      handle.releasePointerCapture(e.pointerId);
+    }
+  }
+
+  handle.addEventListener('pointerup', stopDrag);
+  handle.addEventListener('pointercancel', stopDrag);
+  handle.addEventListener('lostpointercapture', () => {
+    drag = null;
+  });
+
+  box.append(handle, editor);
+  document.body.appendChild(box);
+  selectText();
+  editor.focus();
+}
 function deleteTeachText(){if(activeTeachText&&document.body.contains(activeTeachText)){activeTeachText.remove();activeTeachText=null;return}const texts=[...document.querySelectorAll('.teach-text')];if(texts.length)texts[texts.length-1].remove()}
 
 const vocab={
