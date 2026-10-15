@@ -54,7 +54,84 @@ h2{font-size:30px;margin:8px 0}.sub{color:var(--muted)}.grid{display:grid;grid-t
   outline: none;
   cursor: text;
 }
-</style></head><body>
+</style>
+<style>
+.hanzi-practice {
+  width: 260px;
+  max-width: 100%;
+  margin-bottom: 12px;
+}
+
+.hanzi-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.hanzi-tabs button,
+.hanzi-reset {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  padding: 8px 10px;
+  color: var(--ink);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hanzi-tabs button.active {
+  background: var(--p);
+  border-color: var(--p);
+  color: #fff;
+}
+
+.hanzi-board {
+  width: 240px;
+  height: 240px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  touch-action: none;
+  background:
+    linear-gradient(
+      to right,
+      transparent calc(50% - .5px),
+      #e4ece7 50%,
+      transparent calc(50% + .5px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(50% - .5px),
+      #e4ece7 50%,
+      transparent calc(50% + .5px)
+    ),
+    #fff;
+}
+
+.hanzi-board svg,
+.hanzi-board canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.hanzi-status {
+  min-height: 48px;
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.main .charbox {
+  min-width: 0;
+  width: 284px;
+  max-width: 100%;
+}
+</style>
+</head><body>
 <div class="lock" id="lock"><div class="lock-card"><div class="brand">静中寻文 · HSK2</div><h2>Bài 3 · Khu vực học viên</h2><p class="sub">Nhập mật mã để mở bài học.</p><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><div class="err" id="err"></div></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>jingzhongxunwen · New HSK 2<br>Bài 3 · 我想去西安旅游</small></div><div class="nav">
 <div class="nav-section"><div class="nav-section-title">Mở đầu</div><button class="active" data-i="0">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động 1</button><button data-i="2">✍️ Khởi động 2</button></div>
@@ -504,7 +581,233 @@ const vocabNotes={
 };
 const radicals={'回':'囗 — bộ Vi; khung 囗 bao quanh 口.','来':'木 — bộ Mộc; chữ 来.','这':'辶 — bộ Sước; 辶 + 文.','么':'丿 — nét phẩy; dạng giản thể.','完':'宀 — bộ Miên; 宀 + 元.','一':'一 — bộ Nhất.','起':'走 — bộ Tẩu; 走 + 己.','出':'凵 — bộ Khảm; cấu tạo chữ 出.','去':'厶 — bộ Khư; 土 + 厶.','洗':'氵 — bộ Thủy; 氵 + 先.','自':'自 — bộ Tự.','己':'己 — bộ Kỷ.','拿':'手 — bộ Thủ; 合 + 手.','手':'手 — bộ Thủ.','为':'丶 — bộ Chủ; chữ 为.','什':'亻 — bộ Nhân; 亻 + 十.','错':'钅 — bộ Kim; 钅 + 昔.','送':'辶 — bộ Sước; 辶 + 关.','每':'母 — bộ Mẫu; cấu tạo 每.','累':'糸 — bộ Mịch; 田 + 糸.'};
 function renderV(id,did){document.getElementById(id).innerHTML=vocab[id].map(w=>`<div class="word" onclick="openWord('${w[0]}','${did}')"><button class="spk" onclick="event.stopPropagation();speak('${w[0]}')">🔊</button><div class="hz">${w[0]}</div><div class="py">${w[1]}</div><div class="meaning">${w[3]}</div><span class="tag">${w[2]}</span></div>`).join('')}
-function openWord(word,did){let chars=[...word].filter(c=>/\p{Script=Han}/u.test(c)),note=vocabNotes[word],h=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((c,i)=>h+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b>${c}</b><div class="small">${radicals[c]||'Phân tích theo thành phần chữ Hán và luyện thứ tự nét.'}</div></div>`);h+='</div>';if(note){h+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${note.ex[0]}</div><div class="extra-py">${note.ex[1]}</div><div class="extra-vi">${note.ex[2]}</div></div>${note.co&&note.co.length?`<div class="extra-box"><h4>词语搭配 · Cụm từ thường dùng</h4><div class="collocs">${note.co.map(x=>`<span class="colloc">${x}</span>`).join('')}</div></div>`:''}</div>`}h+='</div>';document.getElementById(did).innerHTML=h;if(window.HanziWriter)chars.forEach((c,i)=>{try{HanziWriter.create(`w_${did}_${i}`,c,{width:105,height:105,padding:5,showOutline:true}).loopCharacterAnimation()}catch(e){}})}
+function setupHanziPractice(host, character) {
+  const panel = document.createElement('div');
+  panel.className = 'hanzi-practice';
+
+  panel.innerHTML = `
+    <div class="hanzi-tabs">
+      <button type="button" data-mode="strokes">Nét</button>
+      <button type="button" data-mode="practice">Tập viết</button>
+      <button type="button" data-mode="free">Viết tự do</button>
+    </div>
+    <div class="hanzi-board"></div>
+    <div class="hanzi-status" aria-live="polite"></div>
+    <button type="button" class="hanzi-reset">↶ Viết lại</button>
+  `;
+
+  host.replaceWith(panel);
+
+  const board = panel.querySelector('.hanzi-board');
+  const status = panel.querySelector('.hanzi-status');
+  const tabs = [...panel.querySelectorAll('[data-mode]')];
+  const reset = panel.querySelector('.hanzi-reset');
+
+  let writer = null;
+  let currentMode = 'strokes';
+  let version = 0;
+
+  // Tránh thao tác luyện viết tác động đến bảng viết giáo viên.
+  panel.addEventListener('pointerdown', e => e.stopPropagation());
+  panel.addEventListener('mousedown', e => e.stopPropagation());
+
+  function startFreeWriting() {
+    const canvas = document.createElement('canvas');
+    const size = 240;
+    const ratio = window.devicePixelRatio || 1;
+
+    canvas.width = size * ratio;
+    canvas.height = size * ratio;
+    board.appendChild(canvas);
+
+    const context = canvas.getContext('2d');
+    context.scale(ratio, ratio);
+    context.strokeStyle = '#31443B';
+    context.fillStyle = '#31443B';
+    context.lineWidth = 5;
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+
+    let pointerId = null;
+
+    function getPoint(e) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: (e.clientX - rect.left) * size / rect.width,
+        y: (e.clientY - rect.top) * size / rect.height
+      };
+    }
+
+    canvas.addEventListener('pointerdown', e => {
+      if (!e.isPrimary || e.button !== 0) return;
+      e.preventDefault();
+
+      pointerId = e.pointerId;
+      canvas.setPointerCapture(pointerId);
+
+      const point = getPoint(e);
+
+      // Hiển thị cả nét chấm khi chỉ chạm một lần.
+      context.beginPath();
+      context.arc(point.x, point.y, 2.5, 0, Math.PI * 2);
+      context.fill();
+
+      context.beginPath();
+      context.moveTo(point.x, point.y);
+    });
+
+    canvas.addEventListener('pointermove', e => {
+      if (e.pointerId !== pointerId) return;
+      e.preventDefault();
+
+      const point = getPoint(e);
+      context.lineTo(point.x, point.y);
+      context.stroke();
+    });
+
+    function stopWriting(e) {
+      if (e.pointerId !== pointerId) return;
+      pointerId = null;
+
+      if (canvas.hasPointerCapture(e.pointerId)) {
+        canvas.releasePointerCapture(e.pointerId);
+      }
+    }
+
+    canvas.addEventListener('pointerup', stopWriting);
+    canvas.addEventListener('pointercancel', stopWriting);
+    canvas.addEventListener('lostpointercapture', () => {
+      pointerId = null;
+    });
+
+    status.textContent =
+      'Tự viết vào ô trống. Chế độ này không kiểm tra nét.';
+  }
+
+  function changeMode(mode) {
+    currentMode = mode;
+    const thisVersion = ++version;
+
+    if (writer) {
+      writer.cancelQuiz();
+      writer = null;
+    }
+
+    board.replaceChildren();
+
+    tabs.forEach(button => {
+      const active = button.dataset.mode === mode;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    reset.textContent =
+      mode === 'strokes' ? '↶ Xem lại nét' : '↶ Viết lại';
+
+    if (mode === 'free') {
+      startFreeWriting();
+      return;
+    }
+
+    if (!window.HanziWriter) {
+      status.textContent =
+        'Chưa tải được công cụ luyện nét. Hãy tải lại trang.';
+      return;
+    }
+
+    status.textContent = 'Đang tải dữ liệu nét…';
+
+    // Dùng một vùng mới cho mỗi lần đổi chế độ.
+    const target = document.createElement('div');
+    board.appendChild(target);
+
+    let loadedWriter;
+
+    loadedWriter = HanziWriter.create(target, character, {
+      width: 240,
+      height: 240,
+      padding: 16,
+      showCharacter: false,
+      showOutline: true,
+      outlineColor: '#DCE5DF',
+      strokeColor: '#31443B',
+      drawingColor: '#31443B',
+      drawingWidth: 5,
+      strokeAnimationSpeed: 1,
+      delayBetweenStrokes: 350,
+
+      // Không tự hiện nét gợi ý sau nhiều lần viết sai.
+      showHintAfterMisses: false,
+      highlightOnComplete: false,
+
+      onLoadCharDataSuccess() {
+        // Chờ biến loadedWriter được gán xong.
+        Promise.resolve().then(() => {
+          if (
+            thisVersion !== version ||
+            !panel.isConnected
+          ) return;
+
+          if (mode === 'strokes') {
+            status.textContent = 'Quan sát thứ tự từng nét.';
+            loadedWriter.animateCharacter();
+          } else {
+            status.textContent =
+              'Viết theo nét mờ, bắt đầu từ nét thứ nhất.';
+
+            loadedWriter.quiz({
+              onCorrectStroke(data) {
+                if (thisVersion !== version) return;
+                status.textContent =
+                  `Đúng nét ${data.strokeNum + 1}! ` +
+                  `Còn ${data.strokesRemaining} nét.`;
+              },
+
+              onMistake() {
+                if (thisVersion !== version) return;
+                status.textContent =
+                  'Nét chưa đúng hoặc chưa đúng thứ tự. Hãy thử lại.';
+              },
+
+              onComplete() {
+                if (thisVersion !== version) return;
+                status.textContent =
+                  '✓ Hoàn thành! Bạn đã viết đúng thứ tự nét.';
+              }
+            });
+          }
+        });
+      },
+
+      onLoadCharDataError() {
+        if (thisVersion !== version) return;
+        status.textContent =
+          'Không tải được nét chữ này. Bạn vẫn có thể chọn Viết tự do.';
+      }
+    });
+
+    writer = loadedWriter;
+  }
+
+  tabs.forEach(button => {
+    button.addEventListener('click', () => {
+      changeMode(button.dataset.mode);
+    });
+  });
+
+  reset.addEventListener('click', () => {
+    changeMode(currentMode);
+  });
+
+  changeMode('strokes');
+}
+  function openWord(word,did){let chars=[...word].filter(c=>/\p{Script=Han}/u.test(c)),note=vocabNotes[word],h=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((c,i)=>h+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b>${c}</b><div class="small">${radicals[c]||'Phân tích theo thành phần chữ Hán và luyện thứ tự nét.'}</div></div>`);h+='</div>';if(note){h+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${note.ex[0]}</div><div class="extra-py">${note.ex[1]}</div><div class="extra-vi">${note.ex[2]}</div></div>${note.co&&note.co.length?`<div class="extra-box"><h4>词语搭配 · Cụm từ thường dùng</h4><div class="collocs">${note.co.map(x=>`<span class="colloc">${x}</span>`).join('')}</div></div>`:''}</div>`}h+='</div>';document.getElementById(did).innerHTML=h;// Tắt lớp bảng viết để học sinh tương tác với ô luyện chữ.
+if (teachOn) toggleTeach();
+
+chars.forEach((c, i) => {
+  const host = document.getElementById(`w_${did}_${i}`);
+  if (host) setupHanziPractice(host, c);
+});}
 ['v1','v2','v3','v4'].forEach((x,i)=>renderV(x,'d'+(i+1)));
 const dialogues={
 1:[['王一雪','今天回来这么晚啊！','Jīntiān huílái zhème wǎn a!','Hôm nay anh về muộn thế!'],['刘明','工作太多了，下班的时候没做完。','Gōngzuò tài duō le, xiàbān de shíhou méi zuòwán.','Anh có nhiều việc quá, đến giờ tan làm mà vẫn chưa xong.'],['王一雪','菜都做好了，过来吃饭吧。','Cài dōu zuòhǎo le, guòlái chīfàn ba.','Cơm nấu xong rồi. Anh ra ăn cơm nhé.'],['刘明','我想休息一下，喝杯水。','Wǒ xiǎng xiūxi yíxià, hē bēi shuǐ.','Anh muốn nghỉ ngơi một lát, uống cốc nước đã.'],['王一雪','好的。','Hǎo de.','Vâng ạ.']],
