@@ -38,6 +38,82 @@
 </style><style id="unified-green">
 :root{--bg:#F4F9F6!important;--panel:#fff!important;--ink:#31443B!important;--muted:#718079!important;--primary:#78A892!important;--primary2:#A8CBB9!important;--line:#DCEAE2!important;--blue:#668F7C!important;--yellow:#F5F8EE!important;--shadow:0 10px 30px rgba(72,110,91,.08)!important}
 body{background:#F4F9F6!important;color:#31443B!important}aside{background:#F9FCFA!important;border-color:#DCEAE2!important}.logo,.brand-mini{color:#5F907A!important}.nav button.active,.badge{background:#E8F3ED!important;color:#4F7F6A!important}.progress{background:#E4EEE8!important}.progress>i{background:#78A892!important}.hero{background:linear-gradient(135deg,#A8CBB9,#D8E9DF)!important;color:#31443B!important}.hero .go,.btn.primary,.lock button{background:#78A892!important;color:#fff!important}.card,.word,.footer button{background:#fff!important;border-color:#DCEAE2!important}.py{color:#668F7C!important}.spk{background:#EAF4EF!important;color:#557E6B!important}.bubble{background:#EEF5F1!important}.bubble.right{background:#E4F0EA!important}.speaker{color:#5F907A!important}.grammar .formula,.formula{background:#EAF4EF!important;color:#4D7865!important}.lesson-feature{background:#F2F8F5!important;border-color:#D8E8DF!important}.memo{background:#F4F8EF!important;border-color:#DCE8CF!important;color:#53634E!important}.listenbox{background:#EFF7F3!important;border-color:#D4E7DD!important}.lock{background:linear-gradient(135deg,#E7F2EC,#F8FBF9)!important}.lock-logo{color:#5F907A!important}#teacherTools button.active{background:#E8F3ED!important;color:#4F7F6A!important;border-color:#C9E0D4!important}
+</style>
+<style>
+.hanzi-practice {
+  width: 260px;
+  max-width: 100%;
+  margin-bottom: 12px;
+}
+
+.hanzi-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.hanzi-tabs button,
+.hanzi-reset {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  padding: 8px 10px;
+  color: var(--ink);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hanzi-tabs button.active {
+  background: var(--p);
+  border-color: var(--p);
+  color: #fff;
+}
+
+.hanzi-board {
+  width: 240px;
+  height: 240px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  touch-action: none;
+  background:
+    linear-gradient(
+      to right,
+      transparent calc(50% - .5px),
+      #e4ece7 50%,
+      transparent calc(50% + .5px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(50% - .5px),
+      #e4ece7 50%,
+      transparent calc(50% + .5px)
+    ),
+    #fff;
+}
+
+.hanzi-board svg,
+.hanzi-board canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.hanzi-status {
+  min-height: 48px;
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.main .charbox {
+  min-width: 0;
+  width: 284px;
+  max-width: 100%;
+}
 </style></head><body>
 <div class="lock" id="lock"><div class="lock-card"><div class="brand">静中寻文 · HSK2</div><h2>Bài 1 · Khu vực học viên</h2><p class="sub">Nhập mật mã để mở bài học.</p><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><div class="err" id="err"></div></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>jingzhongxunwen · New HSK 2<br>Bài 1 · 她请我们吃了北京烤鸭</small></div><div class="nav" id="nav">
@@ -160,7 +236,233 @@ const vocabNotes={
 };
 const radicals={'就':'尢 — bộ Uông; gồm 京 + 尤, chữ dùng với nghĩa “thì/chính là”.','给':'纟 — bộ Mịch (tơ); thành phần 合 gợi âm.','让':'讠 — bộ Ngôn; liên quan lời nói/yêu cầu.','接':'扌 — bộ Thủ; động tác dùng tay để tiếp/đón.','次':'欠 — bộ Khiếm; cấu tạo 冫 + 欠.','旅':'方 — bộ Phương; liên quan hành trình/đi lại.','游':'氵 — bộ Thủy; cấu tạo 氵 + 斿.','帮':'巾 — bộ Cân; chữ trên 邦, dưới 巾.','忙':'忄 — bộ Tâm; liên quan trạng thái tâm trí.','不':'一 — bộ Nhất.','好':'女 — bộ Nữ; 女 + 子.','意':'心 — bộ Tâm; 音 + 心, liên quan ý nghĩ.','思':'心 — bộ Tâm; 田 + 心, liên quan suy nghĩ.','已':'己 — bộ Kỷ.','经':'纟 — bộ Mịch; 纟 + 圣 (dạng giản thể).','那':'阝 — bộ Ấp ở bên phải, liên quan địa danh/chỉ định trong lịch sử chữ.','介':'人 — bộ Nhân.','绍':'纟 — bộ Mịch; 纟 + 召.','有':'月 — bộ Nguyệt.','时':'日 — bộ Nhật; liên quan thời gian.','懂':'忄 — bộ Tâm; 忄 + 董.','北':'匕 — bộ Chủy.','京':'亠 — bộ Đầu.','烤':'火 — bộ Hỏa; liên quan nướng.','鸭':'鸟 — bộ Điểu; chỉ loài chim/vịt.'};
 function renderV(id,did){let el=document.getElementById(id);el.innerHTML=vocab[id].map(w=>`<div class="word" onclick="openWord('${w[0]}','${did}')"><button class="spk" onclick="event.stopPropagation();speak('${w[0]}')">🔊</button><div class="hz">${w[0]}</div><div class="py">${w[1]}</div><div class="meaning">${w[3]}</div><span class="tag">${w[2]}</span></div>`).join('')}
-function openWord(word,did){let chars=[...word].filter(c=>/\p{Script=Han}/u.test(c));let note=vocabNotes[word];let html=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((c,i)=>{html+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b>${c}</b><div class="small">${radicals[c]||'Phân tích theo thành phần chữ Hán và luyện thứ tự nét.'}</div></div>`});html+='</div>';if(note){html+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${note.ex[0]}</div><div class="extra-py">${note.ex[1]}</div><div class="extra-vi">${note.ex[2]}</div></div><div class="extra-box"><h4>词语搭配 · Cụm từ thường dùng</h4><div class="collocs">${note.co.map(x=>`<span class="colloc">${x}</span>`).join('')}</div></div></div>`}html+='</div>';document.getElementById(did).innerHTML=html;if(window.HanziWriter)chars.forEach((c,i)=>{try{let w=HanziWriter.create(`w_${did}_${i}`,c,{width:105,height:105,padding:5,showOutline:true});w.loopCharacterAnimation()}catch(e){}})}['v1','v2','v3','v4'].forEach((x,i)=>renderV(x,'d'+(i+1)));
+function setupHanziPractice(host, character) {
+  const panel = document.createElement('div');
+  panel.className = 'hanzi-practice';
+
+  panel.innerHTML = `
+    <div class="hanzi-tabs">
+      <button type="button" data-mode="strokes">Nét</button>
+      <button type="button" data-mode="practice">Tập viết</button>
+      <button type="button" data-mode="free">Viết tự do</button>
+    </div>
+    <div class="hanzi-board"></div>
+    <div class="hanzi-status" aria-live="polite"></div>
+    <button type="button" class="hanzi-reset">↶ Viết lại</button>
+  `;
+
+  host.replaceWith(panel);
+
+  const board = panel.querySelector('.hanzi-board');
+  const status = panel.querySelector('.hanzi-status');
+  const tabs = [...panel.querySelectorAll('[data-mode]')];
+  const reset = panel.querySelector('.hanzi-reset');
+
+  let writer = null;
+  let currentMode = 'strokes';
+  let version = 0;
+
+  // Tránh thao tác luyện viết tác động đến bảng viết giáo viên.
+  panel.addEventListener('pointerdown', e => e.stopPropagation());
+  panel.addEventListener('mousedown', e => e.stopPropagation());
+
+  function startFreeWriting() {
+    const canvas = document.createElement('canvas');
+    const size = 240;
+    const ratio = window.devicePixelRatio || 1;
+
+    canvas.width = size * ratio;
+    canvas.height = size * ratio;
+    board.appendChild(canvas);
+
+    const context = canvas.getContext('2d');
+    context.scale(ratio, ratio);
+    context.strokeStyle = '#31443B';
+    context.fillStyle = '#31443B';
+    context.lineWidth = 5;
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+
+    let pointerId = null;
+
+    function getPoint(e) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: (e.clientX - rect.left) * size / rect.width,
+        y: (e.clientY - rect.top) * size / rect.height
+      };
+    }
+
+    canvas.addEventListener('pointerdown', e => {
+      if (!e.isPrimary || e.button !== 0) return;
+      e.preventDefault();
+
+      pointerId = e.pointerId;
+      canvas.setPointerCapture(pointerId);
+
+      const point = getPoint(e);
+
+      // Hiển thị cả nét chấm khi chỉ chạm một lần.
+      context.beginPath();
+      context.arc(point.x, point.y, 2.5, 0, Math.PI * 2);
+      context.fill();
+
+      context.beginPath();
+      context.moveTo(point.x, point.y);
+    });
+
+    canvas.addEventListener('pointermove', e => {
+      if (e.pointerId !== pointerId) return;
+      e.preventDefault();
+
+      const point = getPoint(e);
+      context.lineTo(point.x, point.y);
+      context.stroke();
+    });
+
+    function stopWriting(e) {
+      if (e.pointerId !== pointerId) return;
+      pointerId = null;
+
+      if (canvas.hasPointerCapture(e.pointerId)) {
+        canvas.releasePointerCapture(e.pointerId);
+      }
+    }
+
+    canvas.addEventListener('pointerup', stopWriting);
+    canvas.addEventListener('pointercancel', stopWriting);
+    canvas.addEventListener('lostpointercapture', () => {
+      pointerId = null;
+    });
+
+    status.textContent =
+      'Tự viết vào ô trống. Chế độ này không kiểm tra nét.';
+  }
+
+  function changeMode(mode) {
+    currentMode = mode;
+    const thisVersion = ++version;
+
+    if (writer) {
+      writer.cancelQuiz();
+      writer = null;
+    }
+
+    board.replaceChildren();
+
+    tabs.forEach(button => {
+      const active = button.dataset.mode === mode;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    reset.textContent =
+      mode === 'strokes' ? '↶ Xem lại nét' : '↶ Viết lại';
+
+    if (mode === 'free') {
+      startFreeWriting();
+      return;
+    }
+
+    if (!window.HanziWriter) {
+      status.textContent =
+        'Chưa tải được công cụ luyện nét. Hãy tải lại trang.';
+      return;
+    }
+
+    status.textContent = 'Đang tải dữ liệu nét…';
+
+    // Dùng một vùng mới cho mỗi lần đổi chế độ.
+    const target = document.createElement('div');
+    board.appendChild(target);
+
+    let loadedWriter;
+
+    loadedWriter = HanziWriter.create(target, character, {
+      width: 240,
+      height: 240,
+      padding: 16,
+      showCharacter: false,
+      showOutline: true,
+      outlineColor: '#DCE5DF',
+      strokeColor: '#31443B',
+      drawingColor: '#31443B',
+      drawingWidth: 5,
+      strokeAnimationSpeed: 1,
+      delayBetweenStrokes: 350,
+
+      // Không tự hiện nét gợi ý sau nhiều lần viết sai.
+      showHintAfterMisses: false,
+      highlightOnComplete: false,
+
+      onLoadCharDataSuccess() {
+        // Chờ biến loadedWriter được gán xong.
+        Promise.resolve().then(() => {
+          if (
+            thisVersion !== version ||
+            !panel.isConnected
+          ) return;
+
+          if (mode === 'strokes') {
+            status.textContent = 'Quan sát thứ tự từng nét.';
+            loadedWriter.animateCharacter();
+          } else {
+            status.textContent =
+              'Viết theo nét mờ, bắt đầu từ nét thứ nhất.';
+
+            loadedWriter.quiz({
+              onCorrectStroke(data) {
+                if (thisVersion !== version) return;
+                status.textContent =
+                  `Đúng nét ${data.strokeNum + 1}! ` +
+                  `Còn ${data.strokesRemaining} nét.`;
+              },
+
+              onMistake() {
+                if (thisVersion !== version) return;
+                status.textContent =
+                  'Nét chưa đúng hoặc chưa đúng thứ tự. Hãy thử lại.';
+              },
+
+              onComplete() {
+                if (thisVersion !== version) return;
+                status.textContent =
+                  '✓ Hoàn thành! Bạn đã viết đúng thứ tự nét.';
+              }
+            });
+          }
+        });
+      },
+
+      onLoadCharDataError() {
+        if (thisVersion !== version) return;
+        status.textContent =
+          'Không tải được nét chữ này. Bạn vẫn có thể chọn Viết tự do.';
+      }
+    });
+
+    writer = loadedWriter;
+  }
+
+  tabs.forEach(button => {
+    button.addEventListener('click', () => {
+      changeMode(button.dataset.mode);
+    });
+  });
+
+  reset.addEventListener('click', () => {
+    changeMode(currentMode);
+  });
+
+  changeMode('strokes');
+}
+  function openWord(word,did){let chars=[...word].filter(c=>/\p{Script=Han}/u.test(c));let note=vocabNotes[word];let html=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((c,i)=>{html+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b>${c}</b><div class="small">${radicals[c]||'Phân tích theo thành phần chữ Hán và luyện thứ tự nét.'}</div></div>`});html+='</div>';if(note){html+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${note.ex[0]}</div><div class="extra-py">${note.ex[1]}</div><div class="extra-vi">${note.ex[2]}</div></div><div class="extra-box"><h4>词语搭配 · Cụm từ thường dùng</h4><div class="collocs">${note.co.map(x=>`<span class="colloc">${x}</span>`).join('')}</div></div></div>`}html+='</div>';document.getElementById(did).innerHTML=html;// Tắt lớp bảng viết để học sinh tương tác với ô luyện chữ.
+if (teachOn) toggleTeach();
+
+chars.forEach((c, i) => {
+  const host = document.getElementById(`w_${did}_${i}`);
+  if (host) setupHanziPractice(host, c);
+});}['v1','v2','v3','v4'].forEach((x,i)=>renderV(x,'d'+(i+1)));
 const dialogues={dlg1:[['白家月','请问，您是王一飞老师的姐姐吗？','Qǐngwèn, nín shì Wáng Yīfēi lǎoshī de jiějie ma?','Xin hỏi, chị là chị gái của cô Vương Nhất Phi phải không ạ?'],['王一雪','是的，你们就是她的学生吧？','Shì de, nǐmen jiù shì tā de xuésheng ba?','Đúng rồi, các em là học sinh của cô ấy phải không?'],['白家月','对。我是白家月，她是安妮。','Duì. Wǒ shì Bái Jiāyuè, tā shì Ānnī.','Vâng ạ, em là Bạch Gia Nguyệt, bạn ấy là Annie.'],['王一雪','你们好，我叫王一雪。一飞给我打电话了，让我来接你们。','Nǐmen hǎo, wǒ jiào Wáng Yīxuě. Yīfēi gěi wǒ dǎ diànhuà le, ràng wǒ lái jiē nǐmen.','Chào các em. Chị tên là Vương Nhất Tuyết. Nhất Phi đã gọi điện cho chị, nhờ chị đến đón các em.'],['白家月、安妮','谢谢您。','Xièxie nín.','Chúng em cảm ơn chị ạ.'],['王一雪','不客气。','Bú kèqi.','Đừng khách sáo vậy.']],dlg2:[['王一雪','你们是第一次来北京吗？','Nǐmen shì dì-yī cì lái Běijīng ma?','Đây là lần đầu các em đến Bắc Kinh phải không?'],['白家月','是的，我们都是第一次来。','Shì de, wǒmen dōu shì dì-yī cì lái.','Vâng ạ, chúng em đều là lần đầu đến đây.'],['王一雪','你们是来学中文的吗？','Nǐmen shì lái xué Zhōngwén de ma?','Các em đến học tiếng Trung à?'],['安妮','不是，我们是来旅游的。','Bú shì, wǒmen shì lái lǚyóu de.','Không phải, chúng em đến du lịch ạ.'],['王一雪','我这几天都不忙，你们有事就找我。','Wǒ zhè jǐ tiān dōu bù máng, nǐmen yǒu shì jiù zhǎo wǒ.','Mấy hôm nay chị đều không bận, các em có việc gì thì cứ tìm chị nhé.'],['白家月','好的，谢谢您。','Hǎo de, xièxie nín.','Vâng ạ, cảm ơn chị.']],dlg3:[['陈天中','喂，家月，你明天有时间吗？我想请你帮个忙。','Wéi, Jiāyuè, nǐ míngtiān yǒu shíjiān ma? Wǒ xiǎng qǐng nǐ bāng ge máng.','A lô, Gia Nguyệt à, mai bạn có thời gian không? Mình muốn nhờ bạn giúp một việc.'],['白家月','不好意思，天中，我已经到北京了。','Bù hǎoyìsi, Tiānzhōng, wǒ yǐjīng dào Běijīng le.','Xin lỗi Thiên Trung nhé, mình đã đến Bắc Kinh rồi.'],['陈天中','你是什么时候到的？','Nǐ shì shénme shíhou dào de?','Bạn đến khi nào vậy?'],['白家月','我是今天早上到的。你有事可以叫李文帮忙，他还在学校呢。','Wǒ shì jīntiān zǎoshang dào de. Nǐ yǒu shì kěyǐ jiào Lǐ Wén bāngmáng, tā hái zài xuéxiào ne.','Sáng hôm nay mình đến. Nếu bạn cần giúp việc gì thì có thể nhờ Lý Văn nhé, bạn ấy vẫn đang ở trường.'],['陈天中','好的，那我给他打个电话。','Hǎo de, nà wǒ gěi tā dǎ ge diànhuà.','Được rồi, vậy mình sẽ gọi điện thoại cho bạn ấy.'],['白家月','好，再见！','Hǎo, zàijiàn!','Ừ, tạm biệt nhé.']],dlg4:[['白家月','王老师，我们已经到北京了，是您姐姐来接的我们。她请我们吃了北京烤鸭，还给我们介绍了很多东西。我们中文不太好，有时不太懂她的意思。','Wáng lǎoshī, wǒmen yǐjīng dào Běijīng le, shì nín jiějie lái jiē de wǒmen. Tā qǐng wǒmen chīle Běijīng Kǎoyā, hái gěi wǒmen jièshào le hěn duō dōngxi. Wǒmen de Zhōngwén bù tài hǎo, yǒushí bù tài dǒng tā de yìsi.','Thưa cô Vương, chúng em đã tới Bắc Kinh rồi, chị gái của cô đã tới đón chúng em. Chị ấy đã mời chúng em ăn vịt quay Bắc Kinh, còn giới thiệu cho chúng em rất nhiều thứ. Tiếng Trung Quốc của chúng em không tốt lắm, đôi khi chưa hiểu hết ý của chị ấy.']]};
 function renderDlg(id,n){document.getElementById(id).innerHTML=dialogues[id].map((d,i)=>`<div class="bubble ${i%2?'right':''}"><div class="speaker">${d[0]}</div><div class="zh">${d[1]}</div><div class="py p${n}">${d[2]}</div><div class="trans v${n}t">${d[3]}</div></div>`).join('')}renderDlg('dlg1',1);renderDlg('dlg2',2);renderDlg('dlg3',3);renderDlg('dlg4',4);
 
