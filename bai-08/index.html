@@ -118,7 +118,37 @@
   min-width: 0;
   overflow-wrap: anywhere;
 }
-</style></head><body>
+</style>
+<style>
+.vd-stroke {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.hanzi-character-card {
+  width: 260px;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.hanzi-character-title {
+  margin-bottom: 8px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.vocab-grid-detail > .vocab-panel {
+  min-width: 0;
+}
+
+/* Dành trọn một hàng cho các ô luyện viết */
+.vocab-grid-detail > .vocab-panel:first-child {
+  grid-column: 1 / -1;
+}
+</style>
+</head><body>
 <div class="lock" id="lock"><div><div class="brand">静中寻文 · HSK2</div><h2>Bài 8</h2><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><p id="err"></p></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>Bài 8 · 虽然你忘了，但是我记得</small></div><div class="nav">
 <h5>Mở đầu</h5><button data-i="0" class="active">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động</button>
@@ -380,28 +410,58 @@ for(let id in voc){
   </div>`;
 }
 
-function openVocab(group,index){
-  const w=voc[group][index], d=document.getElementById(group+'-detail');
-  d.querySelector('.vd-word').textContent=w[0];
-  d.querySelector('.vd-py').textContent=w[1];
-  d.querySelector('.vd-meaning').textContent=w[2];
-  d.querySelector('.vd-radical').textContent=w[3];
-  d.querySelector('.vd-exzh').textContent=w[4];
-  d.querySelector('.vd-expy').textContent=w[5];
-  d.querySelector('.vd-exvi').textContent=w[6];
-  const stroke=d.querySelector('.vd-stroke'); stroke.innerHTML='';
-  [...w[0]].forEach(ch=>{
-    const box=document.createElement('div'); box.className='stroke-char'; stroke.appendChild(box);
-    if(window.HanziWriter){
-      const writer=HanziWriter.create(box,ch,{width:108,height:108,padding:8,showOutline:true,strokeAnimationSpeed:1,delayBetweenStrokes:120});
-      box.onclick=()=>writer.animateCharacter(); writer.animateCharacter();
-    }else{
-      box.style.display='grid'; box.style.placeItems='center'; box.style.fontSize='52px'; box.style.fontWeight='800'; box.textContent=ch;
-    }
+function openVocab(group, index) {
+  // Bài này phải truyền false để tắt lớp bảng viết.
+  toggleTeach(false);
+  document.querySelectorAll('.teachbar button').forEach(button => {
+    button.classList.remove('on');
   });
-  d.classList.add('show');
-  setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),30);
+
+  const w = voc[group][index];
+  const detail = document.getElementById(group + '-detail');
+
+  detail.querySelector('.vd-word').textContent = w[0];
+  detail.querySelector('.vd-py').textContent = w[1];
+  detail.querySelector('.vd-meaning').textContent = w[2];
+  detail.querySelector('.vd-radical').textContent = w[3];
+  detail.querySelector('.vd-exzh').textContent = w[4];
+  detail.querySelector('.vd-expy').textContent = w[5];
+  detail.querySelector('.vd-exvi').textContent = w[6];
+
+  const stroke = detail.querySelector('.vd-stroke');
+  stroke.replaceChildren();
+
+  // Hiện phần chi tiết trước khi tạo ô luyện viết.
+  detail.classList.add('show');
+
+  const characters = [...w[0]].filter(character =>
+    /\p{Script=Han}/u.test(character)
+  );
+
+  characters.forEach(character => {
+    const card = document.createElement('div');
+    card.className = 'hanzi-character-card';
+
+    const title = document.createElement('div');
+    title.className = 'hanzi-character-title';
+    title.textContent = character;
+
+    const host = document.createElement('div');
+
+    card.append(title, host);
+    stroke.appendChild(card);
+
+    setupHanziPractice(host, character);
+  });
+
+  setTimeout(() => {
+    detail.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest'
+    });
+  }, 30);
 }
+
 
 const ds={
 d1:[['王一雪','你看，这两块手表怎么样？','Nǐ kàn, zhè liǎng kuài shǒubiǎo zěnmeyàng?','Anh nhìn này, hai chiếc đồng hồ này thế nào?'],['刘明','都不错！','Dōu búcuò!','Đều rất đẹp!'],['王一雪','我喜欢左边这个。','Wǒ xǐhuan zuǒbian zhège.','Em thích chiếc bên trái này.'],['刘明','我也觉得左边的比右边的好看。','Wǒ yě juéde zuǒbian de bǐ yòubian de hǎokàn.','Anh cũng thấy chiếc bên trái đẹp hơn chiếc bên phải.'],['王一雪','你看看要多少钱！','Nǐ kànkan yào duōshao qián!','Anh nhìn xem bao nhiêu tiền!'],['刘明','真不便宜！八千八！','Zhēn bú piányi! Bā qiān bā!','Thật không rẻ! 8800 đồng!']],
