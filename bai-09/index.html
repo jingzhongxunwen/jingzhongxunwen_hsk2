@@ -31,7 +31,43 @@
 .stroke-row{display:flex;gap:8px;flex-wrap:wrap}.stroke-char{width:112px;height:112px;background:#fff;border:1px solid #e5eee9;border-radius:12px;overflow:hidden}
 .vd-example .zh{font-size:20px;font-weight:800}.vd-example .py,.vd-example .tr{margin-top:2px}
 @media(max-width:700px){.vd-main{grid-template-columns:1fr}}
-</style></head><body>
+</style>
+<style>
+/* Dành đủ chỗ cho các ô luyện viết */
+.vocab-detail .vd-main {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.vocab-detail .vd-analysis-inner {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.vocab-detail .vd-stroke {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.hanzi-character-card {
+  width: 260px;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.hanzi-character-title {
+  margin-bottom: 8px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.vocab-detail .vd-analysis,
+.vocab-detail .vd-collocation-box {
+  min-width: 0;
+}
+</style>
+</head><body>
 <div class="lock" id="lock"><div><div class="brand">静中寻文 · HSK2</div><h2>Bài 9</h2><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><p id="err"></p></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>Bài 9 · 我去买杯奶茶</small></div><div class="nav"><h5>Mở đầu</h5><button data-i="0" class="active">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động</button>
 <h5>Bài khóa 1</h5><button data-i="2">📚 Từ vựng 1</button><button data-i="3">🎧 Nghe 1</button><button data-i="4">💬 Bài khóa 1</button><button data-i="5">🧠 So sánh 没有</button>
@@ -300,13 +336,71 @@ for(let id in voc){
  <div class="vd-collocation-box"><div class="vd-box-title">词语搭配 · Cụm từ thường dùng</div><div class="vd-collocations"></div></div></div>
  <div class="vd-example-box"><div class="vd-box-title">例句 · Câu ví dụ</div><div class="vd-example"><div class="zh vd-exzh"></div><div class="py vd-expy"></div><div class="tr vd-exvi"></div></div></div></div>`;
 }
-function openVocab(group,index){
- const w=voc[group][index],d=document.getElementById(group+'-detail');
- d.querySelectorAll('.vd-word').forEach(x=>x.textContent=w[0]);d.querySelector('.vd-py').textContent=w[1];d.querySelector('.vd-meaning').textContent=w[2];d.querySelector('.vd-radical').textContent=w[3];
- d.querySelector('.vd-exzh').textContent=w[4];d.querySelector('.vd-expy').textContent=w[5];d.querySelector('.vd-exvi').textContent=w[6];
- const cp=d.querySelector('.vd-collocations');cp.innerHTML='';(w[7]||'').split(' · ').filter(Boolean).forEach(x=>{let e=document.createElement('span');e.className='vd-chip';e.textContent=x;cp.appendChild(e)});
- const stroke=d.querySelector('.vd-stroke');stroke.innerHTML='';[...w[0]].forEach(ch=>{let box=document.createElement('div');box.className='stroke-char';stroke.appendChild(box);if(window.HanziWriter){let wr=HanziWriter.create(box,ch,{width:108,height:108,padding:8,showOutline:true,strokeAnimationSpeed:1,delayBetweenStrokes:120});box.onclick=()=>wr.animateCharacter();wr.animateCharacter()}else{box.style.display='grid';box.style.placeItems='center';box.style.fontSize='52px';box.textContent=ch}});
- d.classList.add('show');setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),30);
+function openVocab(group, index) {
+  // Bài 9 dùng toggleTeach() để đảo trạng thái bật/tắt.
+  if (teachOn) toggleTeach();
+
+  const w = voc[group][index];
+  const detail = document.getElementById(group + '-detail');
+
+  // Từ, pinyin, nghĩa và phân tích chữ.
+  detail.querySelectorAll('.vd-word').forEach(element => {
+    element.textContent = w[0];
+  });
+
+  detail.querySelector('.vd-py').textContent = w[1];
+  detail.querySelector('.vd-meaning').textContent = w[2];
+  detail.querySelector('.vd-radical').textContent = w[3];
+
+  // Câu ví dụ.
+  detail.querySelector('.vd-exzh').textContent = w[4];
+  detail.querySelector('.vd-expy').textContent = w[5];
+  detail.querySelector('.vd-exvi').textContent = w[6];
+
+  // Giữ phần cụm từ thường dùng của bài 9.
+  const collocations = detail.querySelector('.vd-collocations');
+  collocations.replaceChildren();
+
+  (w[7] || '')
+    .split(' · ')
+    .filter(Boolean)
+    .forEach(text => {
+      const chip = document.createElement('span');
+      chip.className = 'vd-chip';
+      chip.textContent = text;
+      collocations.appendChild(chip);
+    });
+
+  const stroke = detail.querySelector('.vd-stroke');
+  stroke.replaceChildren();
+  detail.classList.add('show');
+
+  const characters = [...w[0]].filter(character =>
+    /\p{Script=Han}/u.test(character)
+  );
+
+  characters.forEach(character => {
+    const card = document.createElement('div');
+    card.className = 'hanzi-character-card';
+
+    const title = document.createElement('div');
+    title.className = 'hanzi-character-title';
+    title.textContent = character;
+
+    const host = document.createElement('div');
+
+    card.append(title, host);
+    stroke.appendChild(card);
+
+    setupHanziPractice(host, character);
+  });
+
+  setTimeout(() => {
+    detail.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest'
+    });
+  }, 30);
 }
 
 const ds={d1:[['王一雪','儿子的裤子坏了，我们给他买条新的吧。','Quần của con trai bị rách rồi, chúng ta mua cho con một chiếc mới đi.'],['刘明','好啊。','Nhất trí nhé.'],['王一雪','你看这条黑色的怎么样？','Anh xem chiếc màu đen này thế nào?'],['刘明','没有你上次买的那条好看。','Không đẹp bằng chiếc em đã mua lần trước.'],['王一雪','旁边那个男孩儿就穿了这样的裤子，我觉得很好看啊！','Cậu bé bên cạnh đang mặc kiểu quần này đấy, em thấy rất đẹp mà!'],['刘明','儿子的个子没有他那么高，穿上就不一定太好看。','Con trai chúng ta không cao bằng cậu bé đó, mặc vào có thể không đẹp được thế.'],['王一雪','好吧，我们再去那边看看。','Vâng, chúng ta qua bên kia xem thêm nhé.']],d2:[['王一雪','门口有家奶茶店。你想喝杯奶茶吗？','Trước cửa có quán trà sữa. Anh có muốn uống trà sữa không?'],['刘明','我想喝咖啡，还是去咖啡店吧。','Anh muốn uống cà phê, hay là đến quán cà phê đi.'],['王一雪','咖啡店离这儿有点儿远。','Quán cà phê cách chỗ này hơi xa.'],['刘明','没关系，那家店的咖啡很好喝。','Không sao đâu, cà phê ở quán đó rất ngon.'],['王一雪','那你等一下，我去买杯奶茶。','Vậy anh đợi một lát, em đi mua cốc trà sữa.'],['刘明','你不想喝咖啡吗？','Em không muốn uống cà phê sao?'],['王一雪','喝了咖啡，晚上就别想睡觉了。','Uống cà phê thì buổi tối khỏi ngủ mất.']],d3:[['刘明','我们打车回去吧。','Chúng ta bắt taxi về nhé.'],['王一雪','这里离家很近，还是走路吧。','Chỗ này cách nhà mình rất gần, hay là đi bộ về đi.'],['刘明','要走多长时间？','Đi bộ mất bao lâu vậy?'],['王一雪','走半个多小时就到了。','Đi bộ hơn nửa tiếng thì sẽ tới.'],['刘明','好的。每天上下班都坐车，今天运动运动吧。','Được rồi. Hằng ngày anh đi làm bằng ô tô, hôm nay vận động một chút vậy.']],d4:[['王一雪','这周刘明休息，我下班后跟他去了一家商店。商店里边的衣服没有大商场里的好看。我们没有买到喜欢的衣服，从商店出来就到咖啡店坐了坐。因为想运动运动，所以喝完东西，我们就走回家了。','Tuần này, Lưu Minh được nghỉ, sau giờ làm tôi đã đi cùng anh ấy đến một cửa hàng. Quần áo trong cửa hàng đó không đẹp bằng quần áo trong trung tâm thương mại. Chúng tôi không mua được quần áo nào mình thích, vì vậy sau khi rời cửa hàng, chúng tôi đến quán cà phê ngồi một lúc. Vì muốn vận động một chút, nên sau khi uống xong chúng tôi đã đi bộ về nhà.']]};for(let id in ds)document.getElementById(id).innerHTML=ds[id].map(x=>`<div class="bubble"><div class="speaker">${x[0]}</div><div class="zh">${x[1]}</div><div class="tr">${x[2]}</div></div>`).join('');
