@@ -67,6 +67,76 @@
   min-width: 0;
 }
 </style>
+<style>
+.hanzi-practice {
+  width: 260px;
+  max-width: 100%;
+  margin-bottom: 12px;
+}
+
+.hanzi-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.hanzi-tabs button,
+.hanzi-reset {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  padding: 8px 10px;
+  color: var(--ink);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hanzi-tabs button.active {
+  background: var(--g);
+  border-color: var(--g);
+  color: #fff;
+}
+
+.hanzi-board {
+  width: 240px;
+  height: 240px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  touch-action: none;
+  background:
+    linear-gradient(
+      to right,
+      transparent calc(50% - .5px),
+      #e4ece7 50%,
+      transparent calc(50% + .5px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(50% - .5px),
+      #e4ece7 50%,
+      transparent calc(50% + .5px)
+    ),
+    #fff;
+}
+
+.hanzi-board svg,
+.hanzi-board canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.hanzi-status {
+  min-height: 48px;
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+</style>
 </head><body>
 <div class="lock" id="lock"><div><div class="brand">静中寻文 · HSK2</div><h2>Bài 9</h2><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><p id="err"></p></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>Bài 9 · 我去买杯奶茶</small></div><div class="nav"><h5>Mở đầu</h5><button data-i="0" class="active">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động</button>
@@ -336,7 +406,225 @@ for(let id in voc){
  <div class="vd-collocation-box"><div class="vd-box-title">词语搭配 · Cụm từ thường dùng</div><div class="vd-collocations"></div></div></div>
  <div class="vd-example-box"><div class="vd-box-title">例句 · Câu ví dụ</div><div class="vd-example"><div class="zh vd-exzh"></div><div class="py vd-expy"></div><div class="tr vd-exvi"></div></div></div></div>`;
 }
-function openVocab(group, index) {
+function setupHanziPractice(host, character) {
+  const panel = document.createElement('div');
+  panel.className = 'hanzi-practice';
+
+  panel.innerHTML = `
+    <div class="hanzi-tabs">
+      <button type="button" data-mode="strokes">Nét</button>
+      <button type="button" data-mode="practice">Tập viết</button>
+      <button type="button" data-mode="free">Viết tự do</button>
+    </div>
+    <div class="hanzi-board"></div>
+    <div class="hanzi-status" aria-live="polite"></div>
+    <button type="button" class="hanzi-reset">↶ Viết lại</button>
+  `;
+
+  host.replaceWith(panel);
+
+  const board = panel.querySelector('.hanzi-board');
+  const status = panel.querySelector('.hanzi-status');
+  const tabs = [...panel.querySelectorAll('[data-mode]')];
+  const reset = panel.querySelector('.hanzi-reset');
+
+  let writer = null;
+  let currentMode = 'strokes';
+  let version = 0;
+
+  function startFreeWriting() {
+    const canvas = document.createElement('canvas');
+    const size = 240;
+    const ratio = window.devicePixelRatio || 1;
+
+    canvas.width = size * ratio;
+    canvas.height = size * ratio;
+    board.appendChild(canvas);
+
+    const context = canvas.getContext('2d');
+    context.scale(ratio, ratio);
+    context.strokeStyle = '#31443B';
+    context.fillStyle = '#31443B';
+    context.lineWidth = 5;
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+
+    let pointerId = null;
+
+    function getPoint(e) {
+      const rect = canvas.getBoundingClientRect();
+
+      return {
+        x: (e.clientX - rect.left) * size / rect.width,
+        y: (e.clientY - rect.top) * size / rect.height
+      };
+    }
+
+    canvas.addEventListener('pointerdown', e => {
+      if (!e.isPrimary || e.button !== 0) return;
+      e.preventDefault();
+
+      pointerId = e.pointerId;
+      canvas.setPointerCapture(pointerId);
+
+      const point = getPoint(e);
+
+      context.beginPath();
+      context.arc(point.x, point.y, 2.5, 0, Math.PI * 2);
+      context.fill();
+
+      context.beginPath();
+      context.moveTo(point.x, point.y);
+    });
+
+    canvas.addEventListener('pointermove', e => {
+      if (pointerId === null || e.pointerId !== pointerId) return;
+      e.preventDefault();
+
+      const point = getPoint(e);
+      context.lineTo(point.x, point.y);
+      context.stroke();
+    });
+
+    function stopWriting(e) {
+      if (e.pointerId !== pointerId) return;
+
+      pointerId = null;
+
+      if (canvas.hasPointerCapture(e.pointerId)) {
+        canvas.releasePointerCapture(e.pointerId);
+      }
+    }
+
+    canvas.addEventListener('pointerup', stopWriting);
+    canvas.addEventListener('pointercancel', stopWriting);
+    canvas.addEventListener('lostpointercapture', () => {
+      pointerId = null;
+    });
+
+    status.textContent =
+      'Tự viết vào ô trống. Chế độ này không kiểm tra nét.';
+  }
+
+  function changeMode(mode) {
+    currentMode = mode;
+    const currentVersion = ++version;
+
+    if (writer) {
+      writer.cancelQuiz();
+      writer = null;
+    }
+
+    board.replaceChildren();
+
+    tabs.forEach(button => {
+      const active = button.dataset.mode === mode;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    reset.textContent =
+      mode === 'strokes' ? '↶ Xem lại nét' : '↶ Viết lại';
+
+    if (mode === 'free') {
+      startFreeWriting();
+      return;
+    }
+
+    if (!window.HanziWriter) {
+      status.textContent =
+        'Chưa tải được công cụ luyện nét. Hãy tải lại trang.';
+      return;
+    }
+
+    status.textContent = 'Đang tải dữ liệu nét…';
+
+    const target = document.createElement('div');
+    board.appendChild(target);
+
+    let instance;
+
+    instance = HanziWriter.create(target, character, {
+      width: 240,
+      height: 240,
+      padding: 16,
+      showCharacter: false,
+      showOutline: true,
+      outlineColor: '#DCE5DF',
+      strokeColor: '#31443B',
+      drawingColor: '#31443B',
+      drawingWidth: 5,
+      strokeAnimationSpeed: 1,
+      delayBetweenStrokes: 350,
+      showHintAfterMisses: false,
+      highlightOnComplete: false,
+
+      onLoadCharDataSuccess() {
+        Promise.resolve().then(() => {
+          if (
+            currentVersion !== version ||
+            !panel.isConnected
+          ) return;
+
+          if (mode === 'strokes') {
+            status.textContent = 'Quan sát thứ tự từng nét.';
+            instance.animateCharacter();
+            return;
+          }
+
+          status.textContent =
+            'Viết theo nét mờ, bắt đầu từ nét thứ nhất.';
+
+          instance.quiz({
+            onCorrectStroke(data) {
+              if (currentVersion !== version) return;
+
+              status.textContent =
+                `Đúng nét ${data.strokeNum + 1}! ` +
+                `Còn ${data.strokesRemaining} nét.`;
+            },
+
+            onMistake() {
+              if (currentVersion !== version) return;
+
+              status.textContent =
+                'Nét chưa đúng hoặc sai thứ tự. Hãy thử lại.';
+            },
+
+            onComplete() {
+              if (currentVersion !== version) return;
+
+              status.textContent =
+                '✓ Hoàn thành! Bạn đã viết đúng thứ tự nét.';
+            }
+          });
+        });
+      },
+
+      onLoadCharDataError() {
+        if (currentVersion !== version) return;
+
+        status.textContent =
+          'Không tải được nét chữ. Bạn vẫn có thể chọn Viết tự do.';
+      }
+    });
+
+    writer = instance;
+  }
+
+  tabs.forEach(button => {
+    button.addEventListener('click', () => {
+      changeMode(button.dataset.mode);
+    });
+  });
+
+  reset.addEventListener('click', () => {
+    changeMode(currentMode);
+  });
+
+  changeMode('strokes');
+}
+  function openVocab(group, index) {
   // Bài 9 dùng toggleTeach() để đảo trạng thái bật/tắt.
   if (teachOn) toggleTeach();
 
