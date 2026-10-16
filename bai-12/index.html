@@ -30,7 +30,174 @@
     grid-template-columns: 1fr;
   }
 }
-</style></head><body>
+</style>
+<style>
+main {
+  min-width: 0;
+}
+
+.practice-word-head {
+  margin-bottom: 20px;
+}
+
+.practice-word {
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.practice-pinyin {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--g2);
+  margin: 4px 0;
+}
+
+.practice-definition {
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.practice-type {
+  font-weight: 600;
+}
+
+/* Khung ngoài xanh */
+.practice-section {
+  background: #eaf4ef;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.practice-section h3 {
+  margin: 0 0 16px;
+  font-size: 24px;
+}
+
+.practice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.practice-card {
+  width: 338px;
+  max-width: 100%;
+  padding: 16px;
+  background: #eaf4ef;
+  border: 1px solid #d5e5dc;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.practice-character {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+/* Ô bên trong trắng */
+.practice-board {
+  width: 300px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid #d5e5dc;
+  border-radius: 16px;
+  background: #fff;
+  touch-action: none;
+}
+
+.practice-board > div,
+.practice-board svg,
+.practice-board canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.practice-modes,
+.practice-free-tools {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.practice-card button {
+  border: 1px solid #d5e5dc;
+  border-radius: 12px;
+  background: #fff;
+  color: #31443b;
+  font-size: 18px;
+  line-height: 1.3;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.practice-card button.active {
+  background: #78a892;
+  color: #fff;
+  border-color: #78a892;
+}
+
+.practice-card button:focus-visible {
+  outline: 3px solid #477a61;
+  outline-offset: 3px;
+}
+
+.practice-card [hidden] {
+  display: none !important;
+}
+
+.practice-status {
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 48px;
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+
+.practice-radicals {
+  margin-top: 16px;
+  background: #eaf4ef;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 19px;
+}
+
+.practice-radicals p {
+  margin: 8px 0 0;
+}
+
+@media (max-width: 600px) {
+  .practice-section,
+  .practice-card {
+    padding: 10px;
+  }
+
+  .practice-word {
+    font-size: 38px;
+  }
+
+  .practice-pinyin {
+    font-size: 23px;
+  }
+
+  .practice-definition {
+    font-size: 20px;
+  }
+}
+</style>
+</head><body>
 <div class="lock" id="lock"><div><div class="brand">静中寻文 · HSK2</div><h2>Bài 12</h2><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><p id="err"></p></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>Bài 12 · 这里比北京冷多了</small></div><div class="nav">
 <h5>Mở đầu</h5><button data-i="0">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động</button>
@@ -367,7 +534,431 @@ const voc={v1:[['事情','shìqing','sự việc, việc'],['晴','qíng','nắn
 const notes={'事情':['我有点儿事情想跟你说。','Wǒ yǒudiǎnr shìqing xiǎng gēn nǐ shuō.','Tôi có chút việc muốn nói với bạn.',['有事情','什么事情']], '晴':['今天是个晴天。','Jīntiān shì ge qíngtiān.','Hôm nay là một ngày nắng đẹp.',['晴天','天气晴']], '正':['外边还正下着雪呢。','Wàibian hái zhèng xiàzhe xuě ne.','Bên ngoài tuyết vẫn đang rơi.',['正在','正下着雪']], '外面':['你去外面的时候多穿点儿衣服。','Nǐ qù wàimian de shíhou duō chuān diǎnr yīfu.','Khi ra ngoài bạn nhớ mặc thêm quần áo.',['去外面','外面很冷']], '阴':['阴天下雪什么的就少出去吧。','Yīntiān xiàxuě shénme de jiù shǎo chūqù ba.','Trời âm u hoặc có tuyết thì hạn chế ra ngoài.',['阴天','天气阴']], '从小':['我从小就经常跟爸爸跑步。','Wǒ cóngxiǎo jiù jīngcháng gēn bàba pǎobù.','Từ nhỏ tôi đã thường xuyên chạy bộ cùng bố.',['从小就…','从小喜欢']], '地铁':['我现在坐地铁去找你。','Wǒ xiànzài zuò dìtiě qù zhǎo nǐ.','Bây giờ tôi đi tàu điện ngầm đến tìm bạn.',['坐地铁','地铁站']], '楼':['一会儿楼下见。','Yíhuìr lóuxià jiàn.','Lát nữa gặp nhau dưới lầu nhé.',['楼下','楼上']], '站':['每天坐两站地铁去学校。','Měitiān zuò liǎng zhàn dìtiě qù xuéxiào.','Mỗi ngày đi hai trạm tàu điện ngầm đến trường.',['地铁站','两站']], '小时候':['他小时候经常跑步。','Tā xiǎoshíhou jīngcháng pǎobù.','Hồi nhỏ anh ấy thường xuyên chạy bộ.',['小时候','我小时候']], '好':['你看，前边的那个人好高啊！','Nǐ kàn, qiánbian de nàge rén hǎo gāo a!','Bạn xem, người phía trước cao thật đấy!',['好高','好冷']]};
 const radicals={'事':'亅部','情':'忄部','晴':'日部','正':'止部','外':'夕部','面':'面部','阴':'阝部','从':'人部','小':'小部','地':'土部','铁':'钅部','楼':'木部','站':'立部','时':'日部','候':'亻部','好':'女部'};
 for(let id in voc){let host=document.getElementById(id);host.innerHTML='<div class="vocab-grid">'+voc[id].map((w,i)=>`<div class="word" onclick="openWord('${id}',${i})"><button class="spk" onclick="event.stopPropagation();speak('${w[0]}')">🔊</button><div class="hz">${w[0]}</div><div class="py">${w[1]}</div><div>${w[2]}</div></div>`).join('')+'</div><div class="detail" id="'+id+'d"></div>'}
-let writers={};function openWord(g,i){let w=voc[g][i],n=notes[w[0]],d=document.getElementById(g+'d'),chars=[...w[0]];d.innerHTML=`<h3>🔎 Phân tích · ${w[0]}</h3><div class="analysis"><div class="writers">${chars.map((c,j)=>`<div class="writer" id="wr_${g}_${i}_${j}"></div>`).join('')}</div><div><b>${w[0]}</b> <span class="py">${w[1]}</span> · ${w[2]}<br>${chars.map(c=>c+'：'+(radicals[c]||'phân tích chữ Hán')).join('； ')}</div></div><div class="bottom"><div class="box"><b>例句 · Câu ví dụ</b><div class="zh">${n[0]}</div><div class="py">${n[1]}</div><div class="tr">${n[2]}</div></div><div class="box"><b>词语搭配 · Cụm từ thường dùng</b><div>${n[3].map(x=>`<span class="chip">${x}</span>`).join('')}</div></div></div>`;d.classList.add('show');chars.forEach((ch,j)=>{if(window.HanziWriter){let wr=HanziWriter.create(`wr_${g}_${i}_${j}`,ch,{width:108,height:108,padding:8,showOutline:true,strokeAnimationSpeed:1});writers[g+i+j]=wr;wr.animateCharacter()}});d.scrollIntoView({behavior:'smooth',block:'nearest'})}
+// Từ loại theo cách dùng trong bài 12.
+const wordTypes = {
+  '事情': 'danh từ',
+  '晴': 'tính từ',
+  '正': 'phó từ',
+  '外面': 'danh từ chỉ nơi chốn',
+  '阴': 'tính từ',
+  '从小': 'cụm từ chỉ thời gian',
+  '地铁': 'danh từ',
+  '楼': 'danh từ',
+  '站': 'lượng từ (trong bài: trạm)',
+  '小时候': 'danh từ chỉ thời gian',
+  '好': 'phó từ (trong bài: rất, thật là)'
+};
+
+// Quản lý các ô luyện để dừng bài cũ khi chọn từ khác.
+const practiceSessions = new Map();
+
+function makePractice(host, character, registerCleanup) {
+  host.className = 'practice-card';
+
+  host.innerHTML = `
+    <div class="practice-character">${character}</div>
+
+    <div class="practice-board"></div>
+
+    <div class="practice-modes">
+      <button type="button" data-mode="strokes">▶ Nét</button>
+      <button type="button" data-mode="guided">✍️ Viết</button>
+      <button type="button" data-mode="free">📝 Viết tự do</button>
+    </div>
+
+    <div class="practice-free-tools" hidden>
+      <button type="button" data-tool="pen">✏️ Bút</button>
+      <button type="button" data-tool="eraser">🧽 Tẩy</button>
+      <button type="button" data-action="clear">🗑 Xóa nét</button>
+    </div>
+
+    <p class="practice-status" aria-live="polite"></p>
+
+    <button type="button" class="practice-restart">
+      ↶ Xem lại nét
+    </button>
+  `;
+
+  const board = host.querySelector('.practice-board');
+  const status = host.querySelector('.practice-status');
+  const freeTools = host.querySelector('.practice-free-tools');
+  const restart = host.querySelector('.practice-restart');
+
+  let writer = null;
+  let mode = 'strokes';
+  let version = 0;
+  let disposed = false;
+  let penTool = 'pen';
+  let clearFree = null;
+
+  function isCurrent(token) {
+    return !disposed &&
+      token === version &&
+      host.isConnected;
+  }
+
+  function selectPen(tool) {
+    penTool = tool;
+
+    freeTools.querySelectorAll('[data-tool]').forEach(button => {
+      const active = button.dataset.tool === tool;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    board.style.cursor =
+      tool === 'eraser' ? 'cell' : 'crosshair';
+  }
+
+  function freeWriting() {
+    const canvas = document.createElement('canvas');
+    const size = 300;
+    const ratio = window.devicePixelRatio || 1;
+
+    canvas.width = size * ratio;
+    canvas.height = size * ratio;
+    board.appendChild(canvas);
+
+    const context = canvas.getContext('2d');
+    context.scale(ratio, ratio);
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+
+    let pointer = null;
+    let last = null;
+
+    function getPoint(event) {
+      const rect = canvas.getBoundingClientRect();
+
+      return {
+        x: (event.clientX - rect.left) * size / rect.width,
+        y: (event.clientY - rect.top) * size / rect.height
+      };
+    }
+
+    function applyPenStyle() {
+      context.globalCompositeOperation =
+        penTool === 'eraser'
+          ? 'destination-out'
+          : 'source-over';
+
+      context.strokeStyle = '#31443b';
+      context.fillStyle = '#31443b';
+      context.lineWidth = penTool === 'eraser' ? 24 : 5;
+    }
+
+    canvas.addEventListener('pointerdown', event => {
+      if (
+        !event.isPrimary ||
+        event.button !== 0 ||
+        pointer !== null
+      ) return;
+
+      event.preventDefault();
+
+      pointer = event.pointerId;
+      last = getPoint(event);
+      canvas.setPointerCapture(pointer);
+
+      applyPenStyle();
+
+      context.beginPath();
+      context.arc(
+        last.x,
+        last.y,
+        context.lineWidth / 2,
+        0,
+        Math.PI * 2
+      );
+      context.fill();
+    });
+
+    canvas.addEventListener('pointermove', event => {
+      if (
+        pointer === null ||
+        event.pointerId !== pointer
+      ) return;
+
+      event.preventDefault();
+
+      const point = getPoint(event);
+      applyPenStyle();
+
+      context.beginPath();
+      context.moveTo(last.x, last.y);
+      context.lineTo(point.x, point.y);
+      context.stroke();
+
+      last = point;
+    });
+
+    function stopWriting(event) {
+      if (event.pointerId !== pointer) return;
+
+      pointer = null;
+      last = null;
+
+      if (canvas.hasPointerCapture(event.pointerId)) {
+        canvas.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    canvas.addEventListener('pointerup', stopWriting);
+    canvas.addEventListener('pointercancel', stopWriting);
+
+    canvas.addEventListener('lostpointercapture', () => {
+      pointer = null;
+      last = null;
+    });
+
+    clearFree = () => {
+      context.clearRect(0, 0, size, size);
+      status.textContent =
+        'Đã xóa nét. Bạn có thể viết lại.';
+    };
+
+    selectPen('pen');
+
+    status.textContent =
+      'Khung trắng: tự nhớ chữ và viết bằng chuột, ' +
+      'bút hoặc ngón tay. Không kiểm tra đúng sai.';
+  }
+
+  function setMode(nextMode) {
+    mode = nextMode;
+    const token = ++version;
+
+    if (writer) {
+      writer.cancelQuiz();
+      writer = null;
+    }
+
+    clearFree = null;
+    board.replaceChildren();
+    board.style.cursor = 'default';
+
+    host.querySelectorAll('[data-mode]').forEach(button => {
+      const active = button.dataset.mode === mode;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    freeTools.hidden = mode !== 'free';
+    restart.hidden = mode === 'free';
+
+    restart.textContent =
+      mode === 'strokes'
+        ? '↶ Xem lại nét'
+        : '↶ Viết lại';
+
+    if (mode === 'free') {
+      freeWriting();
+      return;
+    }
+
+    if (!window.HanziWriter) {
+      status.textContent =
+        'Chưa tải được công cụ nét chữ. ' +
+        'Bạn vẫn có thể chọn Viết tự do.';
+      return;
+    }
+
+    status.textContent = 'Đang tải dữ liệu nét…';
+
+    const target = document.createElement('div');
+    board.appendChild(target);
+
+    let instance;
+
+    instance = HanziWriter.create(target, character, {
+      width: 300,
+      height: 300,
+      padding: 18,
+
+      showCharacter: false,
+      showOutline: mode === 'guided',
+
+      outlineColor: '#DEE7E1',
+      strokeColor: '#31443b',
+      drawingColor: '#31443b',
+      drawingWidth: 5,
+
+      strokeAnimationSpeed: 1,
+      delayBetweenStrokes: 300,
+
+      showHintAfterMisses: false,
+      highlightOnComplete: false,
+
+      onLoadCharDataSuccess() {
+        Promise.resolve().then(() => {
+          if (!isCurrent(token)) return;
+
+          if (mode === 'strokes') {
+            status.textContent =
+              'Quan sát thứ tự từng nét.';
+
+            instance.animateCharacter();
+            return;
+          }
+
+          status.textContent =
+            'Viết theo nét mờ, bắt đầu từ nét thứ nhất.';
+
+          instance.quiz({
+            onCorrectStroke(data) {
+              if (!isCurrent(token)) return;
+
+              status.textContent =
+                `Đúng nét ${data.strokeNum + 1}! ` +
+                `Còn ${data.strokesRemaining} nét.`;
+            },
+
+            onMistake() {
+              if (!isCurrent(token)) return;
+
+              status.textContent =
+                'Nét chưa đúng hoặc sai thứ tự. Hãy thử lại.';
+            },
+
+            onComplete() {
+              if (!isCurrent(token)) return;
+
+              status.textContent =
+                '✓ Hoàn thành! Bạn đã viết đúng thứ tự nét.';
+            }
+          });
+        });
+      },
+
+      onLoadCharDataError() {
+        if (!isCurrent(token)) return;
+
+        status.textContent =
+          'Không tải được dữ liệu chữ. ' +
+          'Thử lại hoặc chọn Viết tự do.';
+      }
+    });
+
+    writer = instance;
+  }
+
+  host.querySelectorAll('[data-mode]').forEach(button => {
+    button.addEventListener('click', () => {
+      setMode(button.dataset.mode);
+    });
+  });
+
+  freeTools.querySelectorAll('[data-tool]').forEach(button => {
+    button.addEventListener('click', () => {
+      selectPen(button.dataset.tool);
+    });
+  });
+
+  freeTools.querySelector('[data-action="clear"]')
+    .addEventListener('click', () => {
+      if (clearFree) clearFree();
+    });
+
+  restart.addEventListener('click', () => {
+    setMode(mode);
+  });
+
+  registerCleanup(() => {
+    disposed = true;
+    version++;
+
+    if (writer) writer.cancelQuiz();
+  });
+
+  setMode('strokes');
+}
+
+function openWord(g, i) {
+  // Bài 12 có sẵn hàm này để tắt bảng viết giáo viên.
+  exitTeach();
+
+  const previous = practiceSessions.get(g) || [];
+  previous.forEach(cleanup => cleanup());
+
+  const cleanups = [];
+  practiceSessions.set(g, cleanups);
+
+  const word = voc[g][i];
+  const note = notes[word[0]];
+  const detail = document.getElementById(g + 'd');
+
+  const characters = [...word[0]].filter(character =>
+    /\p{Script=Han}/u.test(character)
+  );
+
+  detail.innerHTML = `
+    <div class="practice-word-head">
+      <div class="practice-word">${word[0]}</div>
+      <div class="practice-pinyin">${word[1]}</div>
+      <div class="practice-definition">
+        ${word[2]} ·
+        <span class="practice-type">
+          ${wordTypes[word[0]] || ''}
+        </span>
+      </div>
+    </div>
+
+    <div class="practice-section">
+      <h3>✍️ Luyện viết</h3>
+      <div class="practice-list"></div>
+    </div>
+
+    <div class="practice-radicals">
+      <b>🧩 Bộ thủ / phân tích chữ</b>
+      <p>
+        ${characters.map(character =>
+          character + '：' +
+          (radicals[character] || 'Phân tích chữ Hán')
+        ).join('； ')}
+      </p>
+    </div>
+
+    ${note ? `
+      <div class="bottom">
+        <div class="box">
+          <b>例句 · Câu ví dụ</b>
+          <div class="zh">${note[0]}</div>
+          <div class="py">${note[1]}</div>
+          <div class="tr">${note[2]}</div>
+        </div>
+
+        <div class="box">
+          <b>词语搭配 · Cụm từ thường dùng</b>
+          <div>
+            ${(note[3] || []).map(text =>
+              `<span class="chip">${text}</span>`
+            ).join('')}
+          </div>
+        </div>
+      </div>
+    ` : ''}
+  `;
+
+  detail.classList.add('show');
+
+  characters.forEach(character => {
+    const host = document.createElement('div');
+
+    detail.querySelector('.practice-list')
+      .appendChild(host);
+
+    makePractice(
+      host,
+      character,
+      cleanup => cleanups.push(cleanup)
+    );
+  });
+
+  detail.scrollIntoView({
+    behavior: 'smooth',
+    block: 'nearest'
+  });
+}
 const ds={
 d1:[['王一雪','喂，家月，是你啊！有什么事情吗？','Wéi, Jiāyuè, shì nǐ a! Yǒu shénme shìqing ma?','A lô, Gia Nguyệt, là em à! Có việc gì không?'],['白家月','没什么事，就想跟您说说话。','Méi shénme shì, jiù xiǎng gēn nín shuōshuo huà.','Không có việc gì ạ, chỉ là muốn trò chuyện với chị một chút thôi.'],['王一雪','好啊。你今天没课吗？','Hǎo a. Nǐ jīntiān méi kè ma?','Được chứ. Hôm nay em không lên lớp à?'],['白家月','下午有课。您那里天气怎么样？','Xiàwǔ yǒu kè. Nín nàli tiānqì zěnmeyàng?','Buổi chiều em mới có tiết. Thời tiết chỗ chị thế nào?'],['王一雪','北京这几天虽然是晴天，但是有点儿冷。','Běijīng zhè jǐ tiān suīrán shì qíngtiān, dànshì yǒudiǎnr lěng.','Mấy ngày nay, Bắc Kinh tuy nắng nhưng vẫn hơi lạnh.'],['白家月','我这里比北京冷多了，外边还正下着雪呢！','Wǒ zhèlǐ bǐ Běijīng lěng duō le, wàibian hái zhèng xiàzhe xuě ne!','Chỗ em lạnh hơn Bắc Kinh nhiều, bên ngoài tuyết vẫn đang rơi đấy!']],
 d2:[['王一雪','喂，一飞，听家月说你那边下雪了，下得大不大？','Wéi, Yìfēi, tīng Jiāyuè shuō nǐ nàbian xià xuě le, xià de dà bu dà?','A lô, Nhất Phi à, nghe Gia Nguyệt nói chỗ em tuyết rơi rồi, tuyết to không em?'],['王一飞','今天不大，昨天比今天下得大。','Jīntiān bú dà, zuótiān bǐ jīntiān xià de dà.','Hôm nay không to, hôm qua tuyết to hơn hôm nay.'],['王一雪','天气不好，你去外面的时候多穿点儿衣服。','Tiānqì bù hǎo, nǐ qù wàimian de shíhou duō chuān diǎnr yīfu.','Thời tiết xấu, khi đi ra ngoài em nhớ mặc thêm nhiều quần áo một chút nhé.'],['王一飞','这几天我在网上上课，没出去过。','Zhè jǐ tiān wǒ zài wǎngshang shàngkè, méi chūqù guo.','Mấy ngày nay em dạy online nên không đi ra ngoài.'],['王一雪','那就好，有事记得给我打电话。','Nà jiù hǎo, yǒu shì jìde gěi wǒ dǎ diànhuà.','Vậy thì tốt rồi, có việc gì nhớ gọi điện cho chị nhé.'],['王一飞','好的。现在不下雪了，我出去买点儿吃的。','Hǎo de. Xiànzài bú xià xuě le, wǒ chūqù mǎi diǎnr chī de.','Vâng ạ. Bây giờ tuyết ngừng rơi rồi, em ra ngoài mua chút đồ ăn.'],['王一雪','一次多买点儿，阴天下雪什么的就少出去吧。','Yí cì duō mǎi diǎnr, yīntiān xiàxuě shénme de jiù shǎo chūqù ba.','Mỗi lần mua thì nên mua nhiều một chút, những lúc trời âm u hoặc có tuyết thì nên hạn chế ra ngoài.']],
