@@ -26,7 +26,169 @@
     grid-template-columns: 1fr;
   }
 }
-</style></head><body>
+</style>
+<style>
+main {
+  min-width: 0;
+}
+
+.practice-word-head {
+  margin-bottom: 20px;
+}
+
+.practice-word {
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.practice-pinyin {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--g2);
+  margin: 4px 0;
+}
+
+.practice-definition {
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+/* Khung ngoài xanh nhạt */
+.practice-section {
+  background: #eaf4ef;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.practice-section h3 {
+  margin: 0 0 16px;
+  font-size: 24px;
+}
+
+.practice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.practice-card {
+  width: 338px;
+  max-width: 100%;
+  padding: 16px;
+  background: #eaf4ef;
+  border: 1px solid #d5e5dc;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.practice-character {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+/* Ô viết bên trong trắng */
+.practice-board {
+  width: 300px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid #d5e5dc;
+  border-radius: 16px;
+  background: #fff;
+  touch-action: none;
+}
+
+.practice-board > div,
+.practice-board svg,
+.practice-board canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.practice-modes,
+.practice-free-tools {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.practice-card button {
+  border: 1px solid #d5e5dc;
+  border-radius: 12px;
+  background: #fff;
+  color: #31443b;
+  font-size: 18px;
+  line-height: 1.3;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.practice-card button.active {
+  background: #78a892;
+  color: #fff;
+  border-color: #78a892;
+}
+
+.practice-card button:focus-visible {
+  outline: 3px solid #477a61;
+  outline-offset: 3px;
+}
+
+.practice-card [hidden] {
+  display: none !important;
+}
+
+.practice-status {
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 48px;
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+
+.practice-radicals {
+  margin-top: 16px;
+  background: #eaf4ef;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 19px;
+}
+
+.practice-radicals p {
+  margin: 8px 0 0;
+}
+
+@media (max-width: 600px) {
+  .practice-section,
+  .practice-card {
+    padding: 10px;
+  }
+
+  .practice-word {
+    font-size: 38px;
+  }
+
+  .practice-pinyin {
+    font-size: 23px;
+  }
+
+  .practice-definition {
+    font-size: 20px;
+  }
+}
+</style>
+</head><body>
 <div class="lock" id="lock"><div><div class="brand">静中寻文 · HSK2</div><h2>Bài 13</h2><input id="pass" type="password" placeholder="Mật mã"><button class="btn primary" onclick="unlock()">Vào bài học</button><p id="err"></p></div></div>
 <div class="app"><aside><div class="brand">静中寻文<small>Bài 13 · 我们爱上中文课</small></div><div class="nav">
 <h5>Mở đầu</h5><button data-i="0" class="active">🏠 Mở đầu</button><button data-i="1">🔥 Khởi động</button>
@@ -369,7 +531,436 @@ const notes={
 '那样':['那样我们就都有新年礼物了。','Nàyàng wǒmen jiù dōu yǒu xīnnián lǐwù le.','Như vậy chúng ta đều có quà năm mới rồi.',['不要那样','那样做']],
 '告诉':['她告诉我是在网上买的。','Tā gàosu wǒ shì zài wǎngshàng mǎi de.','Bạn ấy nói với tôi là mua trên mạng.',['告诉我','告诉大家']],
 '班':['我们班同学也送了王老师漂亮的花。','Wǒmen bān tóngxué yě sòngle Wáng lǎoshī piàoliang de huā.','Các bạn lớp chúng tôi cũng tặng cô Vương hoa đẹp.',['我们班','班同学']]};
-function openWord(word,did){let chars=[...word].filter(c=>/[\u3400-\u9fff]/.test(c)),n=notes[word],h=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((ch,i)=>h+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b style="font-size:28px">${ch}</b><div class="small">${radicals[ch]||'Phân tích chữ Hán.'}</div><button class="btn" onclick="wordWriters['${did}_${i}']&&wordWriters['${did}_${i}'].animateCharacter()">▶ Nét viết</button></div>`);h+='</div>';if(n)h+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${n[0]}</div><div class="py">${n[1]}</div><div class="tr">${n[2]}</div></div><div class="extra-box"><h4>词语搭配</h4>${n[3].map(x=>`<span class="btn" style="display:inline-block;margin:4px">${x}</span>`).join('')}</div></div>`;h+='</div>';document.getElementById(did).innerHTML=h;chars.forEach((ch,i)=>{if(window.HanziWriter){try{wordWriters[did+'_'+i]=HanziWriter.create(`w_${did}_${i}`,ch,{width:120,height:120,padding:6,showOutline:true,strokeAnimationSpeed:1,delayBetweenStrokes:180});wordWriters[did+'_'+i].animateCharacter()}catch(e){}}});document.getElementById(did).scrollIntoView({behavior:'smooth',block:'nearest'})}
+// Từ loại theo nghĩa đang dùng trong bài 13.
+const wordTypes = {
+  '新年': 'danh từ',
+  '教': 'động từ',
+  '花': 'danh từ',
+  '希望': 'động từ',
+  '上面': 'danh từ chỉ nơi chốn',
+  '洗手间': 'danh từ',
+  '里面': 'danh từ chỉ nơi chốn',
+  '笔': 'lượng từ (đếm nét viết)',
+  '可能': 'động từ năng nguyện / phó từ',
+  '上网': 'động từ',
+  '那样': 'đại từ chỉ thị',
+  '告诉': 'động từ',
+  '班': 'danh từ'
+};
+
+const practiceSessions = new Map();
+
+function makePractice(host, character, registerCleanup) {
+  host.className = 'practice-card';
+
+  host.innerHTML = `
+    <div class="practice-character">${character}</div>
+    <div class="practice-board"></div>
+
+    <div class="practice-modes">
+      <button type="button" data-mode="strokes">▶ Nét</button>
+      <button type="button" data-mode="guided">✍️ Viết</button>
+      <button type="button" data-mode="free">📝 Viết tự do</button>
+    </div>
+
+    <div class="practice-free-tools" hidden>
+      <button type="button" data-tool="pen">✏️ Bút</button>
+      <button type="button" data-tool="eraser">🧽 Tẩy</button>
+      <button type="button" data-action="clear">🗑 Xóa nét</button>
+    </div>
+
+    <p class="practice-status" aria-live="polite"></p>
+
+    <button type="button" class="practice-restart">
+      ↶ Xem lại nét
+    </button>
+  `;
+
+  const board = host.querySelector('.practice-board');
+  const status = host.querySelector('.practice-status');
+  const freeTools = host.querySelector('.practice-free-tools');
+  const restart = host.querySelector('.practice-restart');
+
+  let writer = null;
+  let mode = 'strokes';
+  let version = 0;
+  let disposed = false;
+  let penTool = 'pen';
+  let clearFree = null;
+
+  function isCurrent(token) {
+    return !disposed &&
+      token === version &&
+      host.isConnected;
+  }
+
+  function selectPen(tool) {
+    penTool = tool;
+
+    freeTools.querySelectorAll('[data-tool]').forEach(button => {
+      const active = button.dataset.tool === tool;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    board.style.cursor =
+      tool === 'eraser' ? 'cell' : 'crosshair';
+  }
+
+  function freeWriting() {
+    const canvas = document.createElement('canvas');
+    const size = 300;
+    const ratio = window.devicePixelRatio || 1;
+
+    canvas.width = size * ratio;
+    canvas.height = size * ratio;
+    board.appendChild(canvas);
+
+    const context = canvas.getContext('2d');
+    context.scale(ratio, ratio);
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+
+    let pointer = null;
+    let last = null;
+
+    function getPoint(event) {
+      const rect = canvas.getBoundingClientRect();
+
+      return {
+        x: (event.clientX - rect.left) * size / rect.width,
+        y: (event.clientY - rect.top) * size / rect.height
+      };
+    }
+
+    function applyPenStyle() {
+      context.globalCompositeOperation =
+        penTool === 'eraser'
+          ? 'destination-out'
+          : 'source-over';
+
+      context.strokeStyle = '#31443b';
+      context.fillStyle = '#31443b';
+      context.lineWidth = penTool === 'eraser' ? 24 : 5;
+    }
+
+    canvas.addEventListener('pointerdown', event => {
+      if (
+        !event.isPrimary ||
+        event.button !== 0 ||
+        pointer !== null
+      ) return;
+
+      event.preventDefault();
+
+      pointer = event.pointerId;
+      last = getPoint(event);
+      canvas.setPointerCapture(pointer);
+
+      applyPenStyle();
+
+      context.beginPath();
+      context.arc(
+        last.x,
+        last.y,
+        context.lineWidth / 2,
+        0,
+        Math.PI * 2
+      );
+      context.fill();
+    });
+
+    canvas.addEventListener('pointermove', event => {
+      if (
+        pointer === null ||
+        event.pointerId !== pointer
+      ) return;
+
+      event.preventDefault();
+
+      const point = getPoint(event);
+      applyPenStyle();
+
+      context.beginPath();
+      context.moveTo(last.x, last.y);
+      context.lineTo(point.x, point.y);
+      context.stroke();
+
+      last = point;
+    });
+
+    function stopWriting(event) {
+      if (event.pointerId !== pointer) return;
+
+      pointer = null;
+      last = null;
+
+      if (canvas.hasPointerCapture(event.pointerId)) {
+        canvas.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    canvas.addEventListener('pointerup', stopWriting);
+    canvas.addEventListener('pointercancel', stopWriting);
+
+    canvas.addEventListener('lostpointercapture', () => {
+      pointer = null;
+      last = null;
+    });
+
+    clearFree = () => {
+      context.clearRect(0, 0, size, size);
+      status.textContent =
+        'Đã xóa nét. Bạn có thể viết lại.';
+    };
+
+    selectPen('pen');
+
+    status.textContent =
+      'Khung trắng: tự nhớ chữ và viết bằng chuột, ' +
+      'bút hoặc ngón tay. Không kiểm tra đúng sai.';
+  }
+
+  function setMode(nextMode) {
+    mode = nextMode;
+    const token = ++version;
+
+    if (writer) {
+      writer.cancelQuiz();
+      writer = null;
+    }
+
+    clearFree = null;
+    board.replaceChildren();
+    board.style.cursor = 'default';
+
+    host.querySelectorAll('[data-mode]').forEach(button => {
+      const active = button.dataset.mode === mode;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    freeTools.hidden = mode !== 'free';
+    restart.hidden = mode === 'free';
+
+    restart.textContent =
+      mode === 'strokes'
+        ? '↶ Xem lại nét'
+        : '↶ Viết lại';
+
+    if (mode === 'free') {
+      freeWriting();
+      return;
+    }
+
+    if (!window.HanziWriter) {
+      status.textContent =
+        'Chưa tải được công cụ nét chữ. ' +
+        'Bạn vẫn có thể chọn Viết tự do.';
+      return;
+    }
+
+    status.textContent = 'Đang tải dữ liệu nét…';
+
+    const target = document.createElement('div');
+    board.appendChild(target);
+
+    let instance;
+
+    instance = HanziWriter.create(target, character, {
+      width: 300,
+      height: 300,
+      padding: 18,
+      showCharacter: false,
+      showOutline: mode === 'guided',
+      outlineColor: '#DEE7E1',
+      strokeColor: '#31443b',
+      drawingColor: '#31443b',
+      drawingWidth: 5,
+      strokeAnimationSpeed: 1,
+      delayBetweenStrokes: 300,
+      showHintAfterMisses: false,
+      highlightOnComplete: false,
+
+      onLoadCharDataSuccess() {
+        Promise.resolve().then(() => {
+          if (!isCurrent(token)) return;
+
+          if (mode === 'strokes') {
+            status.textContent = 'Quan sát thứ tự từng nét.';
+            instance.animateCharacter();
+            return;
+          }
+
+          status.textContent =
+            'Viết theo nét mờ, bắt đầu từ nét thứ nhất.';
+
+          instance.quiz({
+            onCorrectStroke(data) {
+              if (!isCurrent(token)) return;
+
+              status.textContent =
+                `Đúng nét ${data.strokeNum + 1}! ` +
+                `Còn ${data.strokesRemaining} nét.`;
+            },
+
+            onMistake() {
+              if (!isCurrent(token)) return;
+
+              status.textContent =
+                'Nét chưa đúng hoặc sai thứ tự. Hãy thử lại.';
+            },
+
+            onComplete() {
+              if (!isCurrent(token)) return;
+
+              status.textContent =
+                '✓ Hoàn thành! Bạn đã viết đúng thứ tự nét.';
+            }
+          });
+        });
+      },
+
+      onLoadCharDataError() {
+        if (!isCurrent(token)) return;
+
+        status.textContent =
+          'Không tải được dữ liệu chữ. ' +
+          'Thử lại hoặc chọn Viết tự do.';
+      }
+    });
+
+    writer = instance;
+  }
+
+  host.querySelectorAll('[data-mode]').forEach(button => {
+    button.addEventListener('click', () => {
+      setMode(button.dataset.mode);
+    });
+  });
+
+  freeTools.querySelectorAll('[data-tool]').forEach(button => {
+    button.addEventListener('click', () => {
+      selectPen(button.dataset.tool);
+    });
+  });
+
+  freeTools.querySelector('[data-action="clear"]')
+    .addEventListener('click', () => {
+      if (clearFree) clearFree();
+    });
+
+  restart.addEventListener('click', () => {
+    setMode(mode);
+  });
+
+  registerCleanup(() => {
+    disposed = true;
+    version++;
+
+    if (writer) writer.cancelQuiz();
+  });
+
+  setMode('strokes');
+}
+
+function openWord(word, did) {
+  // Tắt lớp bảng viết giáo viên của bài 13.
+  drawing = false;
+  c.style.pointerEvents = 'none';
+
+  document.querySelectorAll('.teachbar button').forEach(button => {
+    button.classList.remove('on');
+  });
+
+  // Dừng phần luyện cũ khi chọn từ khác trong cùng nhóm.
+  const previous = practiceSessions.get(did) || [];
+  previous.forEach(cleanup => cleanup());
+
+  const cleanups = [];
+  practiceSessions.set(did, cleanups);
+
+  // Tìm pinyin và nghĩa trong dữ liệu từ vựng hiện có.
+  const entry = Object.values(voc)
+    .flat()
+    .find(item => item[0] === word);
+
+  const note = notes[word];
+  const detail = document.getElementById(did);
+
+  const characters = [...word].filter(character =>
+    /\p{Script=Han}/u.test(character)
+  );
+
+  detail.innerHTML = `
+    <div class="detailbox">
+      <div class="practice-word-head">
+        <div class="practice-word">${word}</div>
+        <div class="practice-pinyin">
+          ${entry ? entry[1] : ''}
+        </div>
+        <div class="practice-definition">
+          ${entry ? entry[2] : ''}
+          · ${wordTypes[word] || ''}
+        </div>
+      </div>
+
+      <div class="practice-section">
+        <h3>✍️ Luyện viết</h3>
+        <div class="practice-list"></div>
+      </div>
+
+      <div class="practice-radicals">
+        <b>🧩 Bộ thủ / phân tích chữ</b>
+        <p>
+          ${characters.map(character =>
+            character + '：' +
+            (radicals[character] || 'Phân tích chữ Hán.')
+          ).join('； ')}
+        </p>
+      </div>
+
+      ${note ? `
+        <div class="word-extra">
+          <div class="extra-box">
+            <h4>例句 · Câu ví dụ</h4>
+            <div class="extra-zh">${note[0]}</div>
+            <div class="py">${note[1]}</div>
+            <div class="tr">${note[2]}</div>
+          </div>
+
+          <div class="extra-box">
+            <h4>词语搭配 · Cụm từ thường dùng</h4>
+            <div>
+              ${(note[3] || []).map(text => `
+                <span class="btn"
+                  style="display:inline-block;margin:4px">
+                  ${text}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
+
+  characters.forEach(character => {
+    const host = document.createElement('div');
+    detail.querySelector('.practice-list').appendChild(host);
+
+    makePractice(
+      host,
+      character,
+      cleanup => cleanups.push(cleanup)
+    );
+  });
+
+  detail.scrollIntoView({
+    behavior: 'smooth',
+    block: 'nearest'
+  });
+}
 const wordWriters={};for(let id in voc){let did='detail'+id.slice(1);document.getElementById(id).innerHTML=voc[id].map(w=>`<div class="word" onclick="openWord('${w[0]}','${did}')"><button class="spk" onclick="event.stopPropagation();speak('${w[0]}')">🔊</button><div class="hz">${w[0]}</div><div class="py">${w[1]}</div><div class="tr">${w[2]}</div></div>`).join('')}
 const ds={
 d1:[['白家月','Shíjiān guò de zhēn kuài a! Xīnnián jiù yào dào le.','时间过得真快啊！新年就要到了。','Thời gian trôi nhanh thật đấy! Sắp đến năm mới rồi.'],['陈天中','Zhè yì nián Wáng lǎoshī jiāo wǒmen Zhōngwén, měitiān gōngzuò dōu hěn lèi.','这一年王老师教我们中文，每天工作都很累。','Một năm nay cô Vương dạy chúng ta tiếng Trung Quốc, ngày nào làm việc cũng rất mệt.'],['白家月','Shì a, tā jiāo de hěn hǎo. Yīnwèi tā, wǒmen dōu fēicháng ài shàng Zhōngwén kè.','是啊，她教得很好。因为她，我们都非常爱上中文课。','Đúng vậy, cô dạy rất hay. Nhờ có cô mà chúng ta đều rất yêu thích môn tiếng Trung Quốc.'],['陈天中','Wǒmen gěi tā zhǔnbèi ge xīnnián lǐwù ba. Nǐ juéde sòng gěi tā shénme hǎo ne?','我们给她准备个新年礼物吧。你觉得送给她什么好呢？','Chúng ta hãy chuẩn bị một món quà năm mới tặng cô nhé. Bạn thấy tặng cô quà gì thì hợp nhỉ?'],['白家月','Wáng lǎoshī xǐhuan huā, jiù sòng gěi tā huā ba.','王老师喜欢花，就送给她花吧。','Cô Vương thích hoa, cứ tặng hoa cho cô đi.'],['陈天中','Nà wǒmen qù huādiàn kànkan, xiànzài mǎi huā de rén duō, xīwàng huādiàn hái yǒu piàoliang de huā.','那我们去花店看看，现在买花的人多，希望花店还有漂亮的花。','Vậy chúng ta ra cửa hàng hoa xem thử. Bây giờ người mua hoa rất đông, hy vọng ở đó vẫn còn hoa đẹp.']],
