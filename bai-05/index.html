@@ -608,7 +608,7 @@ function renderV(id,did){document.getElementById(id).innerHTML=vocab[id].map(w=>
 
   changeMode('strokes');
 }function openWord(word,did){let chars=[...word].filter(c=>/\p{Script=Han}/u.test(c)),note=vocabNotes[word],h=`<div class="detailbox"><h3>🔎 Phân tích · ${word}</h3><div class="chars">`;chars.forEach((c,i)=>h+=`<div class="charbox"><div class="writer" id="w_${did}_${i}"></div><b>${c}</b><div class="small">${radicals[c]||'⚠ Chưa có dữ liệu bộ thủ cho chữ này.'}</div></div>`);h+='</div>';if(note){h+=`<div class="word-extra"><div class="extra-box"><h4>例句 · Câu ví dụ</h4><div class="extra-zh">${note.ex[0]}</div><div class="extra-py">${note.ex[1]}</div><div class="extra-vi">${note.ex[2]}</div></div><div class="extra-box"><h4>词语搭配 · Cụm từ thường dùng</h4><div class="collocs">${note.co.map(x=>`<span class="colloc">${x}</span>`).join('')}</div></div></div>`}h+='</div>';document.getElementById(did).innerHTML=h;// Tắt lớp bảng viết để học sinh tương tác với ô luyện chữ.
-if (teachOn) toggleTeach();
+if (on) toggleTeach();
 
 chars.forEach((c, i) => {
   const host = document.getElementById(`w_${did}_${i}`);
